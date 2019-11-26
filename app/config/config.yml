@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@OffreBundle/Resources/config/services.yml" }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -74,9 +75,12 @@ sensio_framework_extra:
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: UserBundle\Entity\User
+    user_class: UserBundle\Entity\Users
     service:
         mailer: fos_user.mailer.twig_swift
     from_email:
         address: "badiaa.bouhdid@esprit.tn"
         sender_name: "badi3a"
+    registration:
+        form:
+            type: UserBundle\Form\UsersType

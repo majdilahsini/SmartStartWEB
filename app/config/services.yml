@@ -29,6 +29,10 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    app.form.registration:
+        class: UserBundle\Form\UsersType
+        tags:
+            - { name: form.type, alias: app_user_registration }
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:

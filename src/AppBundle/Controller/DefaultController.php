@@ -13,9 +13,15 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        $authChecker = $this->container->get('security.authorization_checker');
+        if ($authChecker->isGranted('ROLE_ENTREPRISE')) {
+            return $this->render('@User/Default/entreprisehome.html.twig');
+        }
+        else if ($authChecker->isGranted('ROLE_USER'))
+            return $this->render('@User/Default/userhome.html.twig');
+        else {
+        return $this->render('Default/index.html.twig');
+    }
     }
 
     public function loginAction(Request $request)

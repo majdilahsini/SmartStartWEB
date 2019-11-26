@@ -48,37 +48,13 @@
                         <nav id="nav-menu-container">
                             <ul class="nav-menu">
                                 <li class="menu-active"><a href={{ path('index') }}>Home</a></li>
-                                <li class="menu-has-children"><a href="">Les Offres</a>
-                                    <ul>
-                                        <li><a href={{ path('ajouter_homepage') }}>Ajouter une offre</a></li>
-                                        <li><a href={{ path('read_homepage') }}>Consulter vos offres</a></li>
-                                        <li><a href="">Consulter toutes les offres</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="">Les Formations</a>
-                                    <ul>
-                                        <li><a href="elements.html">Ajouter une formation</a></li>
-                                        <li><a href="search.html">Consulter vos formations</a></li>
-                                        <li><a href="single.html">Consulter toutes les formations</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="">Crowdfundings</a>
-                                    <ul>
-                                        <li><a href="elements.html">Ajouter un projet</a></li>
-                                        <li><a href="search.html">Consulter vos projets</a></li>
-                                        <li><a href="single.html">Consulter toutes les projets</a></li>
-                                    </ul>
-                                </li>
+                                <li class="menu-active"><a href={{ path('index') }}>Les Offres</a></li>
+                                <li class="menu-active"><a href={{ path('index') }}>Les Formations</a></li>
+                                <li class="menu-active"><a href={{ path('index') }}>Crowdfundings</a></li>
+                                <li class="menu-active"><a href={{ path('index') }}>Forum</a></li>
 
-                                <li class="menu-has-children"><a href="">Pages</a>
-                                    <ul>
-                                        <li><a href="elements.html">elements</a></li>
-                                        <li><a href="search.html">search</a></li>
-                                        <li><a href="single.html">single</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="ticker-btn" href="#">Signup</a></li>
-                                <li><a class="ticker-btn" href={{ path('login') }}">Login</a></li>
+                                <li><a class="ticker-btn" href="{{ path('fos_user_registration_register') }}">Signup</a></li>
+                                <li><a class="ticker-btn" href="{{ path('fos_user_security_login') }}">Login</a></li>
                             </ul>
                         </nav><!-- #nav-menu-container -->
                     </div>
