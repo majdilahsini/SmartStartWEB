@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+    <head>
+        {% block meta %}
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <!-- Favicon-->
+            <link rel="shortcut icon" href="img/fav.png">
+            <!-- Author Meta -->
+            <meta name="author" content="codepixer">
+            <!-- Meta Description -->
+            <meta name="description" content="">
+            <!-- Meta Keyword -->
+            <meta name="keywords" content="">
+            <!-- meta character set -->
+            <meta charset="UTF-8">
+            <!-- Site Title -->
+            <title>Job Listing</title>
+
+            <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+        {% endblock %}
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+            <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block nav %}
+            <header id="header" id="home">
+                <div class="container">
+                    <div class="row align-items-center justify-content-between d-flex">
+                        <div id="logo">
+                            <a href={{ path('index') }}><img src="img/logo.png" alt="" title="" style="width:158px;height:30px;"/></a>
+                        </div>
+                        <nav id="nav-menu-container">
+                            <ul class="nav-menu">
+                                <li class="menu-active"><a href={{ path('index') }}>Home</a></li>
+                                <li class="menu-has-children"><a href="">Les Offres</a>
+                                    <ul>
+                                        <li><a href={{ path('ajouter_homepage') }}>Ajouter une offre</a></li>
+                                        <li><a href={{ path('read_homepage') }}>Consulter vos offres</a></li>
+                                        <li><a href="">Consulter toutes les offres</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-has-children"><a href="">Les Formations</a>
+                                    <ul>
+                                        <li><a href="elements.html">Ajouter une formation</a></li>
+                                        <li><a href="search.html">Consulter vos formations</a></li>
+                                        <li><a href="single.html">Consulter toutes les formations</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-has-children"><a href="">Crowdfundings</a>
+                                    <ul>
+                                        <li><a href="elements.html">Ajouter un projet</a></li>
+                                        <li><a href="search.html">Consulter vos projets</a></li>
+                                        <li><a href="single.html">Consulter toutes les projets</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="menu-has-children"><a href="">Pages</a>
+                                    <ul>
+                                        <li><a href="elements.html">elements</a></li>
+                                        <li><a href="search.html">search</a></li>
+                                        <li><a href="single.html">single</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="ticker-btn" href="#">Signup</a></li>
+                                <li><a class="ticker-btn" href={{ path('login') }}">Login</a></li>
+                            </ul>
+                        </nav><!-- #nav-menu-container -->
+                    </div>
+                </div>
+            </header><!-- #header -->
+        {% endblock %}
+
+        {% block banner %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block footer %}
+            <footer class="footer-area section-gap">
+                        <p class="footer-text text-white" align="center">
+                           Copyright All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="" target="_blank">Shadowteam</a>
+                        </p>
+            </footer>
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+            <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('js/easing.min.js') }}"></script>
+            <script src="{{ asset('js/hoverIntent.js') }}"></script>
+            <script src="{{ asset('js/superfish.min.js') }}"></script>
+            <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+            <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+            <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+            <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+            <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+            <script src="{{ asset('js/mail-script.js') }}"></script>
+            <script src="{{ asset('js/main.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+        {% endblock %}
+    </body>
+</html>

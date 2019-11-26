@@ -1,0 +1,16 @@
+offre:
+    resource: "@OffreBundle/Resources/config/routing.yml"
+    prefix:   /offre
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+index:
+    path:     /index
+    defaults: { _controller: AppBundle:Default:index }
+
+login:
+    path:     /login
+    defaults: { _controller: AppBundle:Default:login }
+
