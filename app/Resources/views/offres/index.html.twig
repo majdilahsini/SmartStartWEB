@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Offres list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Datepublication</th>
+                <th>Niveauetude</th>
+                <th>Salaire</th>
+                <th>Photo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offre in offres %}
+            <tr>
+                <td><a href="{{ path('offres_show', { 'id': offre.id }) }}">{{ offre.id }}</a></td>
+                <td>{{ offre.titre }}</td>
+                <td>{% if offre.datePublication %}{{ offre.datePublication|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ offre.niveauEtude }}</td>
+                <td>{{ offre.salaire }}</td>
+                <td>{{ offre.photo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('offres_show', { 'id': offre.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('offres_edit', { 'id': offre.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('offres_new') }}">Create a new offre</a>
+        </li>
+    </ul>
+{% endblock %}

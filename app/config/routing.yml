@@ -1,0 +1,23 @@
+offre_offres:
+    resource: "@OffreBundle/Controller/OffresController.php"
+    type:     annotation
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+offre:
+    resource: "@OffreBundle/Resources/config/routing.yml"
+    prefix:   /offre
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+index:
+    path:     /index
+    defaults: { _controller: AppBundle:Default:index }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+

@@ -1,0 +1,66 @@
+{% extends '@User/Default/entreprisehome.html.twig' %}
+
+        {% block banner %}
+            <section class="banner-area relative" id="home">
+                <div class="overlay overlay-bg"></div>
+                <div class="container">
+                    <div class="row d-flex align-items-center justify-content-center">
+                        <div class="about-content col-lg-12">
+                            <h1 class="text-white">
+                                Liste des Offres
+                            </h1>
+                            <p class="text-white link-nav"><a href="../Default/index.html.twig">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="category.html"> Liste des Offre</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endblock %}
+
+        {% block content %}
+<section class="post-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center d-flex">
+            <div class="col-lg-8 post-list">
+                {% for offre in offres %}
+                <div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="{{ asset('img/post.png') }}" alt="">
+                        <ul class="tags">
+                            <li>
+                                <a href="#">{{offre.skill1.name}}</a>
+                            </li>
+                            <li>
+                                <a href="#">{{offre.skill2.name}}</a>
+                            </li>
+                            <li>
+                                <a href="#">{{offre.skill3.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a href="single.html"><h4>{{offre.titre}}</h4></a>
+                                <h6>15/20-2015</h6>
+                            </div>
+                            <ul class="btns">
+                                <li color="red"><a href="">Modifier</a></li>
+                                <li><a href={{ path('supprimer_offre', {'id':offre.id}) }}>Supprimer</a></li>
+                            </ul>
+                        </div>
+                        <p>
+                            test
+                        </p>
+                        <h5>Type de poste: {{ offre.typePost.name }}</h5>
+                        <p class="address"><span class="lnr lnr-map"></span> Niveau d'étude: bac +{{ offre.niveauEtude }}</p>
+                        <p class="address"><span class="lnr lnr-database"></span> {{offre.salaire}}TND</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+        {% endblock %}
+
