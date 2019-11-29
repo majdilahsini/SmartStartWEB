@@ -1,0 +1,76 @@
+{#{% extends 'base.html.twig' %}#}
+
+{% block body %}
+    <h1>Formation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Ref</th>
+                <td>{{ formation.ref }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ formation.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ formation.description }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ formation.duree }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{% if formation.dateDebut %}{{ formation.dateDebut|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{% if formation.dateFin %}{{ formation.dateFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ formation.prix }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ formation.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ formation.email }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ formation.contact }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ formation.image }}</td>
+            </tr>
+            <tr>
+                <th>Nombres</th>
+                <td>{{ formation.nombres }}</td>
+            </tr>
+            <tr>
+                <th>Etatformation</th>
+                <td>{{ formation.etatFormation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('formations_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('formations_edit', { 'ref': formation.ref }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
