@@ -1,0 +1,3 @@
+project_ajout:
+    resource: "@FormationBundle/Resources/config/routing/formations.yml"
+    prefix:   /formation
