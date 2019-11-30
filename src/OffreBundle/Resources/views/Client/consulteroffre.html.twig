@@ -1,0 +1,187 @@
+{% extends '@User/Default/userhome.html.twig' %}
+
+                {% block stylesheets %}
+                    <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+                    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+                    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+                    <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+                    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+                    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+                    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+                    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+                    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+                    <link rel="stylesheet" href="{{ asset('css/main2.css') }}">
+                    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+                    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+                {% endblock %}
+
+        {% block banner %}
+            <section class="banner-area relative" id="home">
+                <div class="overlay overlay-bg"></div>
+                <div class="container">
+                    <div class="row d-flex align-items-center justify-content-center">
+                        <div class="about-content col-lg-12">
+                            <h1 class="text-white">
+                                Liste des Offres
+                            </h1>
+                            <p class="text-white link-nav"><a href="../Default/index.html.twig">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="category.html"> Liste des Offre</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endblock %}
+
+        {% block content %}
+            <section class="profile-detail">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="basic-information">
+                                <div class="col-md-3 col-sm-3">
+                                    <img src="img/microsoft.png" alt="" class="img-responsive">
+                                </div>
+                                <div class="col-md-9 col-sm-9">
+                                    <div class="profile-content">
+                                        <h2>{{ offre.titre }}<span>{{ offre.entreprise.fullname }}</span></h2>
+                                        <p>Publié le :{{ offre.datePublication | date ("m/d/Y") }}</p>
+                                        <ul class="information">
+                                            <li><span>Type de Poste:</span>{{ offre.typePost.name }}</li>
+                                            <li><span>Domaine:</span>{{ offre.domaine.nom }}</li>
+                                            <li><span>Niveau d'étude:</span>{{ offre.niveauEtude ~ " Ans"}}</li>
+                                            <li><span>Salaire:</span>{{ offre.salaire ~ " tnd"}}</li>
+                                            <li><span>Compétences:</span>{{ offre.Skill1.name ~ ", " ~  offre.Skill2.name ~ ", " ~offre.Skill3.name}}</li>
+                                            <li><span>Langue:</span>{{ offre.langueRef.nom}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <ul class="social">
+                                    <li><a href="" class="facebook"><i class="fa fa-facebook"></i>Facebook</a></li>
+                                    <li><a href="" class="google"><i class="fa fa-google-plus"></i>Google Plus</a></li>
+                                    <li><a href="" class="twitter"><i class="fa fa-twitter"></i>Twitter</a></li>
+                                    <li><a href="" class="linkedin"><i class="fa fa-linkedin"></i>Linked In</a></li>
+                                    <li><a href="" class="instagram"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                </ul>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-leaf fa-fw"></i> Compabilité de votre profil avec cette offre:
+                                    </div>
+                                    <!-- /.panel-heading -->
+                                    <div class="panel-body">
+                                        <br>
+                                        {% if Skills is not empty or langues is not empty %}
+                                        <p> Vos compétences aquis</p>
+
+                                        <ul class="information">
+
+                                            {% for skill in Skills %}
+                                                {% for s in skill %}
+                                                    <li style="color:#007A03" > {{ s.name }}</li>
+                                                {% endfor %}
+                                            {% endfor %}
+
+                                            {% for langue in langues %}
+                                                    {% for l in langue %}
+                                            <li> {{ l.nom }}</li>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                        </ul>
+                                        {% else %}
+                                        <div class="panel-body2">
+                                            <ul>
+                                                <li style="color: #da0833"> Vous n'avez pas encore mis à jour vos compétences. Il est récommander d'ajouter des compétences avant de postuler à une offre!</li>
+                                            </ul>
+                                        </div>
+                                        {% endif %}
+
+                                         {% if  score < 92 %}
+
+                                    </div>
+                                        <div class="panel-body2">
+                                         <p> Ce que tu ne posséde pas</p>
+                                            <ul>
+                                            {% set count1 = 0 %}
+                                            {% set count2 = 0 %}
+                                            {% set count3 = 0 %}
+
+                                            {% for skill in Skills %}
+                                                {% for s in skill %}
+                                                    {% if s.name ==  offre.skill1.name %}
+                                                        {% set count1 = count1 + 1 %}
+                                                    {% endif %}
+                                                    {% if s.name ==  offre.skill2.name %}
+                                                        {% set count2 = count2 + 1 %}
+                                                    {% endif %}
+                                                    {% if s.name ==  offre.skill3.name %}
+                                                        {% set count3 = count3 + 1 %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endfor %}
+
+                                                <ul class="information">
+                                            {% if count1 == 0 %}
+                                                <li style="color: #da0833"> {{ offre.skill1.name }} </li>
+                                            {% endif %}
+
+                                            {% if count2 == 0 %}
+                                                <li style="color: #da0833"> {{ offre.skill2.name }}</li>
+                                            {% endif %}
+
+                                            {% if count3 == 0 %}
+                                                <li style="color: #da0833">{{ offre.skill3.name }}</li>
+                                            {% endif %}
+
+                                             {% set count4 = 0 %}
+                                                {% for langue in langues %}
+                                                    {% for l in langue %}
+                                                            {% if l.nom == offre.langueRef.nom %}
+                                                            {% set count4 = count4 + 1 %}
+                                                            {% endif %}
+                                                    {% endfor %}
+                                                {% endfor %}
+
+                                             {% if count4 == 0 %}
+                                                 <li style="color: #da0833">{{ offre.langueRef.nom }}</li>
+                                             {% endif %}
+                                                </ul>
+                                            </ul>
+                                        </div>
+                                </div>
+                                {% endif %}
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-leaf fa-fw"></i> Calcule de votre Score:
+                                    </div>
+                                </div>
+
+                                <div class="panel-body2 ali" align="center">
+                                    <div id="div_chart"></div>
+
+                                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                                    <script type="text/javascript">
+                                        {{ gc_draw(piechart, 'div_chart') }}
+                                    </script>
+                                </div>
+                                {% if score > 80 %}
+                                <p style="color: #007A03">Félicitations ! Votre profil est très proche de celui que nous recherchons. Dépêchez-vous et postulez pour le poste</p>
+                                {% else %}
+                                <p>Félicitations ! Votre profil est très proche de</p>
+                                {% endif %}
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-leaf fa-fw"></i> Actions
+                                    </div>
+                                    <form>
+                                        <div class="form-submit">
+                                            <input style="text-align: center" value="Voir les Formations" class="submit" id="reset" name="reset" />
+                                            <a href="{{ path('postuler_offre', {'id':offre.id , 'match':score}) }}"> <input style="text-align: center" value="Postuler!" class="submit" id="submit" name="submit" /></a>
+                                        </div>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endblock %}
+

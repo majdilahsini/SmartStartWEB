@@ -3,6 +3,8 @@
 namespace OffreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 
 /**
  * ClubRepository
@@ -19,6 +21,43 @@ class OffreRepository extends \Doctrine\ORM\EntityRepository
 
             return $query = $q->getResult();
         }
+
+        public function getUserSkills($id) {
+            $q = $this->getEntityManager()
+                ->createQuery("select IDENTITY(o.skill1), IDENTITY(o.skill2), IDENTITY(o.skill3) from OffreBundle:UserSkills o where o.user= :id")
+                ->setParameter('id', $id);
+
+            try {
+                return $query = $q->getSingleResult();
+            } catch (NoResultException $e) {
+            } catch (NonUniqueResultException $e) {
+            }
+        }
+
+        public function getOffreSkills($id) {
+            $q = $this->getEntityManager()
+                ->createQuery("select IDENTITY(o.skill1), IDENTITY(o.skill2), IDENTITY(o.skill3) from OffreBundle:Offres o where o.id= :id")
+                ->setParameter('id', $id);
+
+            try {
+                return $query = $q->getSingleResult();
+            } catch (NoResultException $e) {
+            } catch (NonUniqueResultException $e) {
+            }
+        }
+
+        public function getUserLangue($id) {
+            $q = $this->getEntityManager()
+                ->createQuery("select IDENTITY(o.langue1Ref), IDENTITY(o.langue2Ref) from OffreBundle:UserLangues o where o.userId= :id")
+                ->setParameter('id', $id);
+
+            try {
+                return $query = $q->getSingleResult();
+            } catch (NoResultException $e) {
+            } catch (NonUniqueResultException $e) {
+            }
+        }
+
 
 
 

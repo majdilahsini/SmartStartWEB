@@ -29,3 +29,11 @@ modifier_offre:
 supprimer_offre:
     path:     /supprimeroffre/{id}
     defaults: { _controller: OffreBundle:Offres:delete }
+
+consulter_offre:
+    path:     /consulteroffre/{id}
+    defaults: { _controller: OffreBundle:Offres:consulterOffre }
+
+postuler_offre:
+    path:     /consulteroffre/{id}/{match}
+    defaults: { _controller: OffreBundle:Applications:postuler }

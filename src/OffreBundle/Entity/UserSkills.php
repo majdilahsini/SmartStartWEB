@@ -13,34 +13,46 @@ use Doctrine\ORM\Mapping as ORM;
 class UserSkills
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="user_id", type="integer", nullable=false)
+     * @var \UserBundle\Entity\Users
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
      */
-    private $userId;
+    private $user;
 
     /**
-     * @var integer
+     * @var \Skills
      *
-     * @ORM\Column(name="skill1_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Skills")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="skill1_id", referencedColumnName="id")
+     * })
      */
-    private $skill1Id;
+    private $skill1;
 
     /**
-     * @var integer
+     * @var \Skills
      *
-     * @ORM\Column(name="skill2_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Skills")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="skill2_id", referencedColumnName="id")
+     * })
      */
-    private $skill2Id;
+    private $skill2;
 
     /**
-     * @var integer
+     * @var \Skills
      *
-     * @ORM\Column(name="skill3_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Skills")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="skill3_id", referencedColumnName="id")
+     * })
      */
-    private $skill3Id;
+    private $skill3;
+
+
 
 
 }

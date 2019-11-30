@@ -2,7 +2,11 @@
 
 namespace OffreBundle\Controller;
 
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\BarChart;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
+use OffreBundle\Entity\Langues;
 use OffreBundle\Entity\Offres;
+use OffreBundle\Entity\Skills;
 use OffreBundle\Entity\Users;
 use OffreBundle\Form\OffresType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -136,4 +140,77 @@ class OffresController extends Controller
             ->getForm()
         ;
     }
+
+    public function consulterOffreAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $offre= $em->getRepository(Offres::class)->find($id);
+
+
+        $user_skills = $em->getRepository(Offres::class)->getUserSkills($this->getUser()->getId());
+        $offre_skills = $em->getRepository(Offres::class)->getOffreSkills($id);
+
+        $user_langues = $em->getRepository(Offres::class)->getUserLangue($this->getUser()->getId());
+        $offre_langue = $offre->getLangueRef()->getRef();
+
+        $aquiredskills = [];
+        $aquiredlangues = [];
+
+        if (isset($offre_skills))
+            $offre_skills = array_unique($offre_skills);
+        $count = 0;
+        if (isset($user_skills)) {
+            $user_skills = array_unique($user_skills);
+            foreach ($user_skills as $i) {
+                $skill = $em->getRepository(Skills::class)->findBy(array('id' => $i));
+                array_push($aquiredskills, $skill);
+                foreach ($offre_skills as $j) {
+                    if ($i == $j)
+                        $count++;
+                }
+            }
+        }
+        $count2 = 0;
+        if (isset($user_langues)) {
+            $user_langues = array_unique($user_langues);
+            foreach ($user_langues as $i) {
+                $langue = $em->getRepository(Langues::class)->findBy(array('ref' => $i));
+                array_push($aquiredlangues, $langue);
+                if ($i == $offre_langue)
+                    $count2++;
+            }
+        }
+
+
+        $note_competences = ($count*4.87 + $count2) / (sizeof($offre_skills) *5 + 1) * 100;
+        $pieChart = new BarChart();
+        $pieChart->getData()->setArrayToDataTable(
+            [['Section', '%'],
+                ['Offre',  100],
+                ['Votre Profil', $note_competences]
+            ]
+        );
+        $pieChart->getOptions()->setHeight(275);
+        $pieChart->getOptions()->setWidth(900);
+
+        if ($note_competences > 80)
+            $pieChart->getOptions()->setColors(['#007A03']);
+        else
+            $pieChart->getOptions()->setColors(['#da0833']);
+        $pieChart->getOptions()->getLegend()->setPosition('none');
+        $pieChart->getOptions()->getHAxis()->setMinValue(0);
+
+
+
+
+        return $this->render('@Offre/Client/consulteroffre.html.twig', array(
+            'offre' => $offre,
+            'Skills' => $aquiredskills,
+            'langues' => $aquiredlangues,
+            'user_skills' => $aquiredlangues,
+            'piechart' => $pieChart,
+            'score' => $note_competences));
+
+    }
+
 }
