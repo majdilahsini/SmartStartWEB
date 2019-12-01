@@ -35,5 +35,5 @@ consulter_offre:
     defaults: { _controller: OffreBundle:Offres:consulterOffre }
 
 postuler_offre:
-    path:     /consulteroffre/{id}/{match}
+    path:     /postuleroffre/{id}/{match}
     defaults: { _controller: OffreBundle:Applications:postuler }
