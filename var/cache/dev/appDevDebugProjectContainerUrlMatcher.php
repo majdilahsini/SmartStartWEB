@@ -107,60 +107,22 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/re')) {
-            if (0 === strpos($pathinfo, '/reclamation')) {
-                // reclamation_index
-                if ('/reclamation' === $trimmedPathinfo) {
-                    $ret = array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::indexAction',  '_route' => 'reclamation_index',);
-                    if ('/' === substr($pathinfo, -1)) {
-                        // no-op
-                    } elseif ('GET' !== $canonicalMethod) {
-                        goto not_reclamation_index;
-                    } else {
-                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'reclamation_index'));
-                    }
-
-                    return $ret;
-                }
-                not_reclamation_index:
-
-                // reclamation_indexuser
-                if ('/reclamation/indexuser' === $pathinfo) {
-                    return array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::indexuserAction',  '_route' => 'reclamation_indexuser',);
-                }
-
-                // reclamation_all
-                if ('/reclamation/recall' === $pathinfo) {
-                    return array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::rdvallAction',  '_route' => 'reclamation_all',);
-                }
-
-                // reclamation_subject
-                if (0 === strpos($pathinfo, '/reclamation/subjectjax') && preg_match('#^/reclamation/subjectjax/(?P<nom>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_subject']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::subjectjaxAction',));
-                }
-
-                // reclamation_new
-                if ('/reclamation/new' === $pathinfo) {
-                    return array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::newAction',  '_route' => 'reclamation_new',);
-                }
-
-                // reclamation_show
-                if (preg_match('#^/reclamation/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_show']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::showAction',));
-                }
-
-                // reclamation_edit
-                if (preg_match('#^/reclamation/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_edit']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::editAction',));
-                }
-
-                // reclamation_delete
-                if (preg_match('#^/reclamation/(?P<id>[^/]++)/delete$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_delete']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::deleteAction',));
-                }
-
+        // user_homepage
+        if ('' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_homepage',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_user_homepage;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'user_homepage'));
             }
 
+            return $ret;
+        }
+        not_user_homepage:
+
+        if (0 === strpos($pathinfo, '/re')) {
             // redirect_login
             if ('/redirect' === $pathinfo) {
                 return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::redirectAction',  '_route' => 'redirect_login',);
@@ -281,22 +243,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // user_homepage
-        if ('' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_homepage',);
-            if ('/' === substr($pathinfo, -1)) {
-                // no-op
-            } elseif ('GET' !== $canonicalMethod) {
-                goto not_user_homepage;
-            } else {
-                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'user_homepage'));
-            }
-
-            return $ret;
-        }
-        not_user_homepage:
-
-        if (0 === strpos($pathinfo, '/offre')) {
+        elseif (0 === strpos($pathinfo, '/offre')) {
             if (0 === strpos($pathinfo, '/offre/offres')) {
                 // offres_index
                 if ('/offre/offres' === $trimmedPathinfo) {
@@ -414,6 +361,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // supprimer_offre
             if (0 === strpos($pathinfo, '/offre/supprimeroffre') && preg_match('#^/offre/supprimeroffre/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'supprimer_offre']), array (  '_controller' => 'OffreBundle\\Controller\\OffresController::deleteAction',));
+            }
+
+            // consulter_offre
+            if (0 === strpos($pathinfo, '/offre/consulteroffre') && preg_match('#^/offre/consulteroffre/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'consulter_offre']), array (  '_controller' => 'OffreBundle\\Controller\\OffresController::consulterOffreAction',));
+            }
+
+            // postuler_offre
+            if (0 === strpos($pathinfo, '/offre/postuleroffre') && preg_match('#^/offre/postuleroffre/(?P<id>[^/]++)/(?P<match>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'postuler_offre']), array (  '_controller' => 'OffreBundle\\Controller\\ApplicationsController::postulerAction',));
             }
 
         }

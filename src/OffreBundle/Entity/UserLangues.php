@@ -22,18 +22,25 @@ class UserLangues
     private $userId;
 
     /**
-     * @var integer
+     * @var \Langues
      *
-     * @ORM\Column(name="langue1_ref", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Langues")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="langue1_ref", referencedColumnName="ref")
+     * })
      */
     private $langue1Ref;
 
     /**
-     * @var integer
+     * @var \Langues
      *
-     * @ORM\Column(name="langue2_ref", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Langues")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="langue2_ref", referencedColumnName="ref")
+     * })
      */
     private $langue2Ref;
+
 
 
 }

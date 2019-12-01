@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Skills
  *
  * @ORM\Table(name="skills")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="OffreBundle\Repository\SkillRepository")
  */
 class Skills
 {
@@ -31,11 +31,14 @@ class Skills
     /**
      * Skills constructor.
      * @param int $id
+     * @param string $name
      */
-    public function __construct($id)
+    public function __construct($id, $name)
     {
         $this->id = $id;
+        $this->name = $name;
     }
+
 
     /**
      * @return int

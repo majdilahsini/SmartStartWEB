@@ -54,6 +54,57 @@
         ]
     },
     {
+        "name": "cmen/google-charts-bundle",
+        "version": "3.2.0",
+        "version_normalized": "3.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cmen/CMENGoogleChartsBundle.git",
+            "reference": "350b39ddd3f35f77c184cabe9cb6c8eb616bd16b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cmen/CMENGoogleChartsBundle/zipball/350b39ddd3f35f77c184cabe9cb6c8eb616bd16b",
+            "reference": "350b39ddd3f35f77c184cabe9cb6c8eb616bd16b",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0",
+            "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0 || ^5.0",
+            "twig/twig": "^1.42 || ^2.12 || ^3.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.16",
+            "phpunit/phpunit": "^5.7"
+        },
+        "time": "2019-11-26T16:27:17+00:00",
+        "type": "symfony-bundle",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "CMEN\\GoogleChartsBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Christophe Meneses"
+            }
+        ],
+        "description": "This Bundle provides a Twig extension and PHP objects to display Google charts in your Symfony application.",
+        "keywords": [
+            "chart",
+            "charts",
+            "google",
+            "graph",
+            "graphs",
+            "map"
+        ]
+    },
+    {
         "name": "composer/ca-bundle",
         "version": "1.2.4",
         "version_normalized": "1.2.4.0",

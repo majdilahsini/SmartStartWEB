@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.root_dir">C:\wamp64\www\SmartStartWEB\app</parameter>
-    <parameter key="kernel.project_dir">C:\wamp64\www\SmartStartWEB</parameter>
+    <parameter key="kernel.root_dir">C:\wamp64\www\pidev\app</parameter>
+    <parameter key="kernel.project_dir">C:\wamp64\www\pidev</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">C:\wamp64\www\SmartStartWEB\var\cache\dev</parameter>
-    <parameter key="kernel.logs_dir">C:\wamp64\www\SmartStartWEB\var\logs</parameter>
+    <parameter key="kernel.cache_dir">C:\wamp64\www\pidev\var\cache\dev</parameter>
+    <parameter key="kernel.logs_dir">C:\wamp64\www\pidev\var\logs</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
@@ -20,8 +20,7 @@
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="OffreBundle">OffreBundle\OffreBundle</parameter>
       <parameter key="UserBundle">UserBundle\UserBundle</parameter>
-      <parameter key="ReclamationBundle">ReclamationBundle\ReclamationBundle</parameter>
-      <parameter key="Reclamation1Bundle">Reclamation1Bundle\Reclamation1Bundle</parameter>
+      <parameter key="CMENGoogleChartsBundle">CMEN\GoogleChartsBundle\CMENGoogleChartsBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -31,92 +30,87 @@
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\FrameworkBundle</parameter>
       </parameter>
       <parameter key="SecurityBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SecurityBundle</parameter>
       </parameter>
       <parameter key="TwigBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\TwigBundle</parameter>
       </parameter>
       <parameter key="MonologBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\symfony\monolog-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\symfony\monolog-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\MonologBundle</parameter>
       </parameter>
       <parameter key="SwiftmailerBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\symfony\swiftmailer-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\symfony\swiftmailer-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SwiftmailerBundle</parameter>
       </parameter>
       <parameter key="DoctrineBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\doctrine\doctrine-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\doctrine\doctrine-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\DoctrineBundle</parameter>
       </parameter>
       <parameter key="SensioFrameworkExtraBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\sensio\framework-extra-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\sensio\framework-extra-bundle</parameter>
         <parameter key="namespace">Sensio\Bundle\FrameworkExtraBundle</parameter>
       </parameter>
       <parameter key="AppBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\src\AppBundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\src\AppBundle</parameter>
         <parameter key="namespace">AppBundle</parameter>
       </parameter>
       <parameter key="FOSUserBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\friendsofsymfony\user-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\friendsofsymfony\user-bundle</parameter>
         <parameter key="namespace">FOS\UserBundle</parameter>
       </parameter>
       <parameter key="OffreBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\src\OffreBundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\src\OffreBundle</parameter>
         <parameter key="namespace">OffreBundle</parameter>
       </parameter>
       <parameter key="UserBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\src\UserBundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\src\UserBundle</parameter>
         <parameter key="namespace">UserBundle</parameter>
       </parameter>
-      <parameter key="ReclamationBundle" type="collection">
+      <parameter key="CMENGoogleChartsBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\src\ReclamationBundle</parameter>
-        <parameter key="namespace">ReclamationBundle</parameter>
-      </parameter>
-      <parameter key="Reclamation1Bundle" type="collection">
-        <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\src\Reclamation1Bundle</parameter>
-        <parameter key="namespace">Reclamation1Bundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\cmen\google-charts-bundle</parameter>
+        <parameter key="namespace">CMEN\GoogleChartsBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\DebugBundle</parameter>
       </parameter>
       <parameter key="WebProfilerBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebProfilerBundle</parameter>
       </parameter>
       <parameter key="SensioDistributionBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\sensio\distribution-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\sensio\distribution-bundle</parameter>
         <parameter key="namespace">Sensio\Bundle\DistributionBundle</parameter>
       </parameter>
       <parameter key="SensioGeneratorBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\sensio\generator-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\sensio\generator-bundle</parameter>
         <parameter key="namespace">Sensio\Bundle\GeneratorBundle</parameter>
       </parameter>
       <parameter key="WebServerBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\WebServerBundle</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\WebServerBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebServerBundle</parameter>
       </parameter>
     </parameter>
@@ -150,20 +144,20 @@
       <parameter key="gc_probability">1</parameter>
       <parameter key="use_strict_mode">true</parameter>
     </parameter>
-    <parameter key="session.save_path">C:\wamp64\www\SmartStartWEB/var/sessions/dev</parameter>
+    <parameter key="session.save_path">C:\wamp64\www\pidev/var/sessions/dev</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
     <parameter key="asset.request_context.base_path"></parameter>
     <parameter key="asset.request_context.secure">false</parameter>
     <parameter key="validator.mapping.cache.prefix"></parameter>
-    <parameter key="validator.mapping.cache.file">C:\wamp64\www\SmartStartWEB\var\cache\dev/validation.php</parameter>
+    <parameter key="validator.mapping.cache.file">C:\wamp64\www\pidev\var\cache\dev/validation.php</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:C:\wamp64\www\SmartStartWEB\var\cache\dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:C:\wamp64\www\pidev\var\cache\dev/profiler</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.container.dump">C:\wamp64\www\SmartStartWEB\var\cache\dev/appDevDebugProjectContainer.xml</parameter>
+    <parameter key="debug.container.dump">C:\wamp64\www\pidev\var\cache\dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="router.options.generator_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\PhpGeneratorDumper</parameter>
@@ -175,7 +169,7 @@
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">C:\wamp64\www\SmartStartWEB/app/config/routing_dev.yml</parameter>
+    <parameter key="router.resource">C:\wamp64\www\pidev/app/config/routing_dev.yml</parameter>
     <parameter key="router.cache_class_prefix">appDevDebugProjectContainer</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
@@ -201,7 +195,7 @@
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
     </parameter>
-    <parameter key="twig.default_path">C:\wamp64\www\SmartStartWEB/templates</parameter>
+    <parameter key="twig.default_path">C:\wamp64\www\pidev/templates</parameter>
     <parameter key="monolog.use_microseconds">true</parameter>
     <parameter key="monolog.swift_mailer.handlers" type="collection"/>
     <parameter key="monolog.handlers_to_channels" type="collection">
@@ -245,7 +239,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.local_domain">null</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">C:\wamp64\www\SmartStartWEB\var\cache\dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">C:\wamp64\www\pidev\var\cache\dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -364,7 +358,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">C:\wamp64\www\SmartStartWEB\var\cache\dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">C:\wamp64\www\pidev\var\cache\dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="fos_user.backend_type_orm">true</parameter>
     <parameter key="fos_user.security.interactive_login_listener.class">FOS\UserBundle\EventListener\LastLoginListener</parameter>
@@ -408,6 +402,8 @@
       <parameter>ResetPassword</parameter>
       <parameter>Default</parameter>
     </parameter>
+    <parameter key="cmen_google_charts.version">current</parameter>
+    <parameter key="cmen_google_charts.language"></parameter>
     <parameter key="web_profiler.debug_toolbar.position">bottom</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
@@ -681,9 +677,9 @@
     <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem" public="true"/>
     <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator">
       <argument type="service" id="kernel"/>
-      <argument>C:\wamp64\www\SmartStartWEB\app/Resources</argument>
+      <argument>C:\wamp64\www\pidev\app/Resources</argument>
       <argument type="collection">
-        <argument>C:\wamp64\www\SmartStartWEB\app</argument>
+        <argument>C:\wamp64\www\pidev\app</argument>
       </argument>
     </service>
     <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
@@ -929,7 +925,7 @@
       <argument></argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -958,7 +954,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/pools</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -1019,14 +1015,14 @@
       <argument type="service" id="translator.selector"/>
     </service>
     <service id="translator.selector" class="Symfony\Component\Translation\MessageSelector" public="false"/>
-    <service id="2_ServiceLocator~rdm0tkk" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="2_ServiceLocator~zxn1zop" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="session" type="service" id="session" on-invalid="ignore"/>
       </argument>
     </service>
-    <service id="1_NativeFileSessionHandler~rdm0tkk" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
-      <argument>C:\wamp64\www\SmartStartWEB/var/sessions/dev</argument>
+    <service id="1_NativeFileSessionHandler~zxn1zop" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
+      <argument>C:\wamp64\www\pidev/var/sessions/dev</argument>
     </service>
     <service id="session" class="Symfony\Component\HttpFoundation\Session\Session" public="true">
       <argument type="service" id="session.storage.native"/>
@@ -1049,12 +1045,12 @@
     <service id="session.flash_bag" class="Symfony\Component\HttpFoundation\Session\Flash\FlashBag" public="false"/>
     <service id="session.attribute_bag" class="Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag" public="false"/>
     <service id="session.storage.mock_file" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage" public="false">
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/sessions</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session.handler.native_file" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler" public="false">
-      <argument type="service" id="1_NativeFileSessionHandler~rdm0tkk"/>
+      <argument type="service" id="1_NativeFileSessionHandler~zxn1zop"/>
     </service>
     <service id="session.handler.write_check" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\WriteCheckSessionHandler" public="false">
       <deprecated>The "%service_id%" service is deprecated since Symfony 3.4 and will be removed in 4.0. Use the `session.lazy_write` ini setting instead.</deprecated>
@@ -1064,7 +1060,7 @@
       <tag name="container.hot_path"/>
       <tag name="container.hot_path"/>
       <tag name="container.hot_path"/>
-      <argument type="service" id="2_ServiceLocator~rdm0tkk"/>
+      <argument type="service" id="2_ServiceLocator~zxn1zop"/>
     </service>
     <service id="session.save_listener" class="Symfony\Component\HttpKernel\EventListener\SaveSessionListener">
       <tag name="kernel.event_subscriber"/>
@@ -1080,7 +1076,7 @@
       <argument type="service" id="request_stack" on-invalid="ignore"/>
     </service>
     <service id="form.resolved_type_factory" class="Symfony\Component\Form\Extension\DataCollector\Proxy\ResolvedTypeFactoryDataCollectorProxy">
-      <argument type="service" id="1_ResolvedFormTypeFactory~jh6xgak"/>
+      <argument type="service" id="1_ResolvedFormTypeFactory~fte9u6i"/>
       <argument type="service" id="data_collector.form"/>
     </service>
     <service id="form.registry" class="Symfony\Component\Form\FormRegistry">
@@ -1306,13 +1302,13 @@
       <argument type="service" id="assets.empty_version_strategy"/>
       <argument type="service" id="assets.context"/>
     </service>
-    <service id="2_ApcCache~abl.qko" class="Doctrine\Common\Cache\ApcCache" public="false">
+    <service id="2_ApcCache~39zjjvl" class="Doctrine\Common\Cache\ApcCache" public="false">
       <call method="setNamespace">
         <argument></argument>
       </call>
     </service>
-    <service id="1_PhpArrayAdapter~abl.qko" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/validation.php</argument>
+    <service id="1_PhpArrayAdapter~39zjjvl" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+      <argument>C:\wamp64\www\pidev\var\cache\dev/validation.php</argument>
       <argument type="service" id="cache.validator"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
@@ -1328,8 +1324,8 @@
       </call>
       <call method="addXmlMappings">
         <argument type="collection">
-          <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/config/validation.xml</argument>
-          <argument>C:\wamp64\www\SmartStartWEB\vendor\friendsofsymfony\user-bundle/Resources/config/validation.xml</argument>
+          <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/config/validation.xml</argument>
+          <argument>C:\wamp64\www\pidev\vendor\friendsofsymfony\user-bundle/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1345,21 +1341,21 @@
         </argument>
       </call>
       <call method="addXmlMapping">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\friendsofsymfony\user-bundle\DependencyInjection\Compiler/../../Resources/config/storage-validation/orm.xml</argument>
+        <argument>C:\wamp64\www\pidev\vendor\friendsofsymfony\user-bundle\DependencyInjection\Compiler/../../Resources/config/storage-validation/orm.xml</argument>
       </call>
       <factory class="Symfony\Component\Validator\Validation" method="createValidatorBuilder"/>
     </service>
     <service id="validator.mapping.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\ValidatorCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="validator.builder"/>
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/validation.php</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/validation.php</argument>
       <argument type="service" id="cache.validator"/>
     </service>
     <service id="validator.mapping.cache.symfony" class="Symfony\Component\Validator\Mapping\Cache\Psr6Cache" public="false">
-      <argument type="service" id="1_PhpArrayAdapter~abl.qko"/>
+      <argument type="service" id="1_PhpArrayAdapter~39zjjvl"/>
     </service>
     <service id="validator.mapping.cache.doctrine.apc" class="Symfony\Component\Validator\Mapping\Cache\DoctrineCache" public="false">
-      <argument type="service" id="2_ApcCache~abl.qko"/>
+      <argument type="service" id="2_ApcCache~39zjjvl"/>
       <deprecated>The "%service_id%" service is deprecated since Symfony 3.4 and will be removed in 4.0. Use a Psr6 cache like "validator.mapping.cache.symfony" instead.</deprecated>
     </service>
     <service id="validator.validator_factory" class="Symfony\Component\Validator\ContainerConstraintValidatorFactory" public="false">
@@ -1437,7 +1433,7 @@
       </call>
     </service>
     <service id="profiler.storage" class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-      <argument>file:C:\wamp64\www\SmartStartWEB\var\cache\dev/profiler</argument>
+      <argument>file:C:\wamp64\www\pidev\var\cache\dev/profiler</argument>
     </service>
     <service id="profiler_listener" class="Symfony\Component\HttpKernel\EventListener\ProfilerListener">
       <tag name="kernel.event_subscriber"/>
@@ -1474,7 +1470,7 @@
       <tag name="data_collector" template="@WebProfiler/Collector/logger.html.twig" id="logger" priority="300"/>
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service" id="monolog.logger.profiler" on-invalid="ignore"/>
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/appDevDebugProjectContainer</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/appDevDebugProjectContainer</argument>
     </service>
     <service id="data_collector.time" class="Symfony\Component\HttpKernel\DataCollector\TimeDataCollector" public="false">
       <tag name="data_collector" template="@WebProfiler/Collector/time.html.twig" id="time" priority="330"/>
@@ -1512,7 +1508,7 @@
         <argument type="service" id="cache.annotations"/>
       </call>
     </service>
-    <service id="1_ResolvedFormTypeFactory~jh6xgak" class="Symfony\Component\Form\ResolvedFormTypeFactory" public="false"/>
+    <service id="1_ResolvedFormTypeFactory~fte9u6i" class="Symfony\Component\Form\ResolvedFormTypeFactory" public="false"/>
     <service id="form.type_extension.form.data_collector" class="Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension" public="false">
       <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
       <argument type="service" id="data_collector.form"/>
@@ -1563,7 +1559,7 @@
     <service id="debug.file_link_formatter" class="Symfony\Component\HttpKernel\Debug\FileLinkFormatter" public="false">
       <argument>null</argument>
       <argument type="service" id="request_stack" on-invalid="ignore"/>
-      <argument>C:\wamp64\www\SmartStartWEB</argument>
+      <argument>C:\wamp64\www\pidev</argument>
       <argument type="service" id="debug.file_link_formatter.url_format"/>
     </service>
     <service id="debug.stopwatch" class="Symfony\Component\Stopwatch\Stopwatch">
@@ -1731,14 +1727,6 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -2120,9 +2108,9 @@
     </service>
     <service id="router.default" class="Symfony\Bundle\FrameworkBundle\Routing\Router" public="false">
       <argument type="service" id="service_container"/>
-      <argument>C:\wamp64\www\SmartStartWEB/app/config/routing_dev.yml</argument>
+      <argument>C:\wamp64\www\pidev/app/config/routing_dev.yml</argument>
       <argument type="collection">
-        <argument key="cache_dir">C:\wamp64\www\SmartStartWEB\var\cache\dev</argument>
+        <argument key="cache_dir">C:\wamp64\www\pidev\var\cache\dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
@@ -2161,7 +2149,7 @@
       <argument type="service" id="request_stack"/>
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger.request" on-invalid="ignore"/>
-      <argument>C:\wamp64\www\SmartStartWEB</argument>
+      <argument>C:\wamp64\www\pidev</argument>
       <argument>true</argument>
     </service>
     <service id="Symfony\Bundle\FrameworkBundle\Controller\RedirectController" class="Symfony\Bundle\FrameworkBundle\Controller\RedirectController" public="true">
@@ -2187,12 +2175,12 @@
       <argument type="service" id="file_locator"/>
       <argument type="service" id="routing.loader.annotation"/>
     </service>
-    <service id="2_PhpArrayAdapter~7ujdahl" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/annotations.php</argument>
+    <service id="2_PhpArrayAdapter~klw.wge" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+      <argument>C:\wamp64\www\pidev\var\cache\dev/annotations.php</argument>
       <argument type="service" id="cache.annotations"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
-    <service id="1_ArrayCache~7ujdahl" class="Doctrine\Common\Cache\ArrayCache" public="false"/>
+    <service id="1_ArrayCache~klw.wge" class="Doctrine\Common\Cache\ArrayCache" public="false"/>
     <service id="annotations.reader" class="Doctrine\Common\Annotations\AnnotationReader" public="false">
       <call method="addGlobalIgnoredName">
         <argument>required</argument>
@@ -2207,7 +2195,7 @@
     <service id="annotations.cached_reader" class="Doctrine\Common\Annotations\CachedReader" public="false">
       <tag name="annotations.cached_reader"/>
       <argument type="service" id="annotations.reader"/>
-      <argument type="service" id="1_ArrayCache~7ujdahl"/>
+      <argument type="service" id="1_ArrayCache~klw.wge"/>
       <argument>true</argument>
       <property name="cacheProviderBackup" type="service" id="annotations.cache"/>
     </service>
@@ -2217,20 +2205,20 @@
     <service id="annotations.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\AnnotationsCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="annotations.reader"/>
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/annotations.php</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/annotations.php</argument>
       <argument type="service" id="cache.annotations"/>
       <argument>#^Symfony\\(?:Component\\HttpKernel\\|Bundle\\FrameworkBundle\\Controller\\(?!.*Controller$))#</argument>
       <argument>true</argument>
     </service>
     <service id="annotations.cache" class="Symfony\Component\Cache\DoctrineProvider" public="false">
-      <argument type="service" id="2_PhpArrayAdapter~7ujdahl"/>
+      <argument type="service" id="2_PhpArrayAdapter~klw.wge"/>
     </service>
     <service id="property_accessor" class="Symfony\Component\PropertyAccess\PropertyAccessor">
       <argument>false</argument>
       <argument>false</argument>
       <argument type="service" id="cache.property_access" on-invalid="ignore"/>
     </service>
-    <service id="1_ServiceLocator~isnn2mo" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="1_ServiceLocator~jmwk6cy" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="security.authorization_checker" type="service" id="security.authorization_checker"/>
@@ -2247,7 +2235,7 @@
       <tag name="kernel.reset" method="setToken"/>
     </service>
     <service id="security.helper" class="Symfony\Component\Security\Core\Security" public="false">
-      <argument type="service" id="1_ServiceLocator~isnn2mo"/>
+      <argument type="service" id="1_ServiceLocator~jmwk6cy"/>
     </service>
     <service id="security.user_value_resolver" class="Symfony\Bundle\SecurityBundle\SecurityUserValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="40"/>
@@ -2912,7 +2900,7 @@
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
         <argument key="autoescape">name</argument>
-        <argument key="cache">C:\wamp64\www\SmartStartWEB\var\cache\dev/twig</argument>
+        <argument key="cache">C:\wamp64\www\pidev\var\cache\dev/twig</argument>
         <argument key="charset">UTF-8</argument>
       </argument>
       <call method="addExtension">
@@ -2961,6 +2949,9 @@
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
       <call method="addExtension">
+        <argument type="service" id="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="twig.extension.webprofiler"/>
       </call>
       <call method="addGlobal">
@@ -2992,16 +2983,16 @@
       <argument type="service" id="service_locator.c7_qahl.twig.cache_warmer"/>
       <argument>null</argument>
       <argument type="collection">
-        <argument key="C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form">null</argument>
+        <argument key="C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form">null</argument>
       </argument>
     </service>
     <service id="twig.template_iterator" class="Symfony\Bundle\TwigBundle\TemplateIterator" public="false">
       <argument type="service" id="kernel"/>
-      <argument>C:\wamp64\www\SmartStartWEB\app</argument>
+      <argument>C:\wamp64\www\pidev\app</argument>
       <argument type="collection">
-        <argument key="C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form">null</argument>
+        <argument key="C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form">null</argument>
       </argument>
-      <argument>C:\wamp64\www\SmartStartWEB/templates</argument>
+      <argument>C:\wamp64\www\pidev/templates</argument>
     </service>
     <service id="twig.template_cache_warmer" class="Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
@@ -3012,108 +3003,92 @@
     <service id="twig.loader.native_filesystem" class="Twig\Loader\FilesystemLoader" public="false">
       <tag name="twig.loader"/>
       <argument type="collection"/>
-      <argument>C:\wamp64\www\SmartStartWEB</argument>
+      <argument>C:\wamp64\www\pidev</argument>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
         <argument>!Framework</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
         <argument>!Security</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
         <argument>!Twig</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
         <argument>Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
         <argument>!Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\doctrine\doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\doctrine\doctrine-bundle/Resources/views</argument>
         <argument>!Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
         <argument>!FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\src\OffreBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\src\OffreBundle/Resources/views</argument>
         <argument>Offre</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\src\OffreBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\src\OffreBundle/Resources/views</argument>
         <argument>!Offre</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\src\UserBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\src\UserBundle/Resources/views</argument>
         <argument>User</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\src\UserBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\src\UserBundle/Resources/views</argument>
         <argument>!User</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\src\ReclamationBundle/Resources/views</argument>
-        <argument>Reclamation</argument>
-      </call>
-      <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\src\ReclamationBundle/Resources/views</argument>
-        <argument>!Reclamation</argument>
-      </call>
-      <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\src\Reclamation1Bundle/Resources/views</argument>
-        <argument>Reclamation1</argument>
-      </call>
-      <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\src\Reclamation1Bundle/Resources/views</argument>
-        <argument>!Reclamation1</argument>
-      </call>
-      <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
         <argument>!Debug</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
         <argument>!WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\app/Resources/views</argument>
+        <argument>C:\wamp64\www\pidev\app/Resources/views</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\SmartStartWEB\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form</argument>
+        <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form</argument>
       </call>
     </service>
     <service id="twig.loader.chain" class="Twig\Loader\ChainLoader" public="false"/>
@@ -3139,7 +3114,7 @@
     <service id="twig.extension.code" class="Symfony\Bridge\Twig\Extension\CodeExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="debug.file_link_formatter" on-invalid="ignore"/>
-      <argument>C:\wamp64\www\SmartStartWEB\app</argument>
+      <argument>C:\wamp64\www\pidev\app</argument>
       <argument>UTF-8</argument>
     </service>
     <service id="twig.extension.routing" class="Symfony\Bridge\Twig\Extension\RoutingExtension" public="false">
@@ -3222,7 +3197,7 @@
     <service id="twig.command.debug" class="Symfony\Bridge\Twig\Command\DebugCommand" public="false">
       <tag name="console.command" command="debug:twig"/>
       <argument type="service" id="twig"/>
-      <argument>C:\wamp64\www\SmartStartWEB</argument>
+      <argument>C:\wamp64\www\pidev</argument>
       <call method="setName">
         <argument>debug:twig</argument>
       </call>
@@ -3275,7 +3250,7 @@
     <service id="monolog.processor.psr_log_message" class="Monolog\Processor\PsrLogMessageProcessor" public="false"/>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
       <tag name="kernel.reset" method="reset"/>
-      <argument>C:\wamp64\www\SmartStartWEB\var\logs/dev.log</argument>
+      <argument>C:\wamp64\www\pidev\var\logs/dev.log</argument>
       <argument>100</argument>
       <argument>true</argument>
       <argument>null</argument>
@@ -3298,9 +3273,9 @@
       <argument>100</argument>
       <argument>true</argument>
     </service>
-    <service id="3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~hrcqqxe" class="Swift_Transport_Esmtp_Auth_PlainAuthenticator" public="false"/>
-    <service id="2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~hrcqqxe" class="Swift_Transport_Esmtp_Auth_LoginAuthenticator" public="false"/>
-    <service id="1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~hrcqqxe" class="Swift_Transport_Esmtp_Auth_CramMd5Authenticator" public="false"/>
+    <service id="3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~ti58rjo" class="Swift_Transport_Esmtp_Auth_PlainAuthenticator" public="false"/>
+    <service id="2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~ti58rjo" class="Swift_Transport_Esmtp_Auth_LoginAuthenticator" public="false"/>
+    <service id="1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~ti58rjo" class="Swift_Transport_Esmtp_Auth_CramMd5Authenticator" public="false"/>
     <service id="swiftmailer.mailer.abstract" class="Swift_Mailer" public="true" abstract="true">
       <argument type="service" id="swiftmailer.mailer.default.transport.spool"/>
     </service>
@@ -3317,9 +3292,9 @@
     </service>
     <service id="swiftmailer.transport.authhandler.abstract" class="Swift_Transport_Esmtp_AuthHandler" public="false" abstract="true">
       <argument type="collection">
-        <argument type="service" id="1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~hrcqqxe"/>
-        <argument type="service" id="2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~hrcqqxe"/>
-        <argument type="service" id="3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~hrcqqxe"/>
+        <argument type="service" id="1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~ti58rjo"/>
+        <argument type="service" id="2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~ti58rjo"/>
+        <argument type="service" id="3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~ti58rjo"/>
       </argument>
     </service>
     <service id="swiftmailer.transport.eventdispatcher.abstract" class="Swift_Events_SimpleEventDispatcher" public="false" abstract="true"/>
@@ -3331,7 +3306,7 @@
     <service id="swiftmailer.transport.smtp.abstract" class="Swift_Transport_EsmtpTransport" public="false" abstract="true"/>
     <service id="swiftmailer.transport.spool.abstract" class="Swift_Transport_SpoolTransport" public="false" abstract="true"/>
     <service id="swiftmailer.spool.file.abstract" class="Swift_FileSpool" public="false" abstract="true">
-      <argument>C:\wamp64\www\SmartStartWEB\app/../data/swiftmailer/spool</argument>
+      <argument>C:\wamp64\www\pidev\app/../data/swiftmailer/spool</argument>
     </service>
     <service id="swiftmailer.spool.memory.abstract" class="Swift_MemorySpool" public="false" abstract="true"/>
     <service id="swiftmailer.email_sender.listener" class="Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener">
@@ -3346,9 +3321,9 @@
     <service id="swiftmailer.mailer.default.transport.eventdispatcher" class="Swift_Events_SimpleEventDispatcher" public="false"/>
     <service id="swiftmailer.mailer.default.transport.authhandler" class="Swift_Transport_Esmtp_AuthHandler" public="false">
       <argument type="collection">
-        <argument type="service" id="1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~hrcqqxe"/>
-        <argument type="service" id="2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~hrcqqxe"/>
-        <argument type="service" id="3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~hrcqqxe"/>
+        <argument type="service" id="1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~ti58rjo"/>
+        <argument type="service" id="2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~ti58rjo"/>
+        <argument type="service" id="3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~ti58rjo"/>
       </argument>
       <call method="setUsername">
         <argument>null</argument>
@@ -3686,8 +3661,6 @@
         <argument type="collection">
           <argument key="OffreBundle">OffreBundle\Entity</argument>
           <argument key="UserBundle">UserBundle\Entity</argument>
-          <argument key="ReclamationBundle">ReclamationBundle\Entity</argument>
-          <argument key="Reclamation1Bundle">Reclamation1Bundle\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCacheImpl">
@@ -3703,7 +3676,7 @@
         <argument type="service" id="doctrine.orm.default_metadata_driver"/>
       </call>
       <call method="setProxyDir">
-        <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/doctrine/orm/Proxies</argument>
+        <argument>C:\wamp64\www\pidev\var\cache\dev/doctrine/orm/Proxies</argument>
       </call>
       <call method="setProxyNamespace">
         <argument>Proxies</argument>
@@ -3733,14 +3706,12 @@
     <service id="doctrine.orm.default_annotation_metadata_driver" class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
-        <argument>C:\wamp64\www\SmartStartWEB\src\OffreBundle\Entity</argument>
-        <argument>C:\wamp64\www\SmartStartWEB\src\ReclamationBundle\Entity</argument>
-        <argument>C:\wamp64\www\SmartStartWEB\src\Reclamation1Bundle\Entity</argument>
+        <argument>C:\wamp64\www\pidev\src\OffreBundle\Entity</argument>
       </argument>
     </service>
     <service id="doctrine.orm.default_yml_metadata_driver" class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
       <argument type="collection">
-        <argument key="C:\wamp64\www\SmartStartWEB\src\UserBundle\Resources\config\doctrine">UserBundle\Entity</argument>
+        <argument key="C:\wamp64\www\pidev\src\UserBundle\Resources\config\doctrine">UserBundle\Entity</argument>
       </argument>
       <call method="setGlobalBasename">
         <argument>mapping</argument>
@@ -3752,14 +3723,6 @@
         <argument>OffreBundle\Entity</argument>
       </call>
       <call method="addDriver">
-        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
-        <argument>ReclamationBundle\Entity</argument>
-      </call>
-      <call method="addDriver">
-        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
-        <argument>Reclamation1Bundle\Entity</argument>
-      </call>
-      <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_yml_metadata_driver"/>
         <argument>UserBundle\Entity</argument>
       </call>
@@ -3769,7 +3732,7 @@
             <argument type="service">
               <service class="Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator">
                 <argument type="collection">
-                  <argument key="C:\wamp64\www\SmartStartWEB\vendor\friendsofsymfony\user-bundle\Resources\config\doctrine-mapping">FOS\UserBundle\Model</argument>
+                  <argument key="C:\wamp64\www\pidev\vendor\friendsofsymfony\user-bundle\Resources\config\doctrine-mapping">FOS\UserBundle\Model</argument>
                 </argument>
                 <argument>.orm.xml</argument>
               </service>
@@ -3781,17 +3744,17 @@
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache" public="true">
       <call method="setNamespace">
-        <argument>sf_orm_default_fa3986a6cae374594d22113f101287b202e6abed22d650ea2c2ee214cd62b851</argument>
+        <argument>sf_orm_default_a60a4f341fdd6f89a23057a6c57fb225b8ab5c9446dd0112354e4bd308316192</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_result_cache" class="Doctrine\Common\Cache\ArrayCache" public="true">
       <call method="setNamespace">
-        <argument>sf_orm_default_fa3986a6cae374594d22113f101287b202e6abed22d650ea2c2ee214cd62b851</argument>
+        <argument>sf_orm_default_a60a4f341fdd6f89a23057a6c57fb225b8ab5c9446dd0112354e4bd308316192</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_query_cache" class="Doctrine\Common\Cache\ArrayCache" public="true">
       <call method="setNamespace">
-        <argument>sf_orm_default_fa3986a6cae374594d22113f101287b202e6abed22d650ea2c2ee214cd62b851</argument>
+        <argument>sf_orm_default_a60a4f341fdd6f89a23057a6c57fb225b8ab5c9446dd0112354e4bd308316192</argument>
       </call>
     </service>
     <service id="doctrine.orm.default_entity_listener_resolver" class="Doctrine\Bundle\DoctrineBundle\Mapping\ContainerAwareEntityListenerResolver">
@@ -4112,6 +4075,25 @@
         <argument type="service" id="service_container"/>
       </call>
     </service>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput" public="false"/>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput" public="false">
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\DataOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\DataOutput" public="false">
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput" public="false"/>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput" public="false">
+      <argument>current</argument>
+      <argument></argument>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput"/>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\DataOutput"/>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension" class="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput"/>
+    </service>
     <service id="twig.extension.dump" class="Symfony\Bridge\Twig\Extension\DumpExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="var_dumper.cloner"/>
@@ -4156,7 +4138,7 @@
         </argument>
       </call>
     </service>
-    <service id="2_HtmlDumper~q1imtyh" class="Symfony\Component\VarDumper\Dumper\HtmlDumper" public="false">
+    <service id="2_HtmlDumper~7vb3phl" class="Symfony\Component\VarDumper\Dumper\HtmlDumper" public="false">
       <argument>null</argument>
       <argument>UTF-8</argument>
       <argument>1</argument>
@@ -4167,7 +4149,7 @@
         </argument>
       </call>
     </service>
-    <service id="1_NonceGenerator~q1imtyh" class="Symfony\Bundle\WebProfilerBundle\Csp\NonceGenerator" public="false"/>
+    <service id="1_NonceGenerator~7vb3phl" class="Symfony\Bundle\WebProfilerBundle\Csp\NonceGenerator" public="false"/>
     <service id="web_profiler.controller.profiler" class="Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController" public="true">
       <argument type="service" id="router.default" on-invalid="null"/>
       <argument type="service" id="profiler" on-invalid="null"/>
@@ -4175,7 +4157,7 @@
       <argument>%data_collector.templates%</argument>
       <argument>bottom</argument>
       <argument type="service" id="web_profiler.csp.handler"/>
-      <argument>C:\wamp64\www\SmartStartWEB</argument>
+      <argument>C:\wamp64\www\pidev</argument>
     </service>
     <service id="web_profiler.controller.router" class="Symfony\Bundle\WebProfilerBundle\Controller\RouterController" public="true">
       <argument type="service" id="profiler" on-invalid="null"/>
@@ -4189,11 +4171,11 @@
       <argument type="service" id="debug.file_link_formatter"/>
     </service>
     <service id="web_profiler.csp.handler" class="Symfony\Bundle\WebProfilerBundle\Csp\ContentSecurityPolicyHandler" public="false">
-      <argument type="service" id="1_NonceGenerator~q1imtyh"/>
+      <argument type="service" id="1_NonceGenerator~7vb3phl"/>
     </service>
     <service id="twig.extension.webprofiler" class="Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension" public="false">
       <tag name="twig.extension"/>
-      <argument type="service" id="2_HtmlDumper~q1imtyh"/>
+      <argument type="service" id="2_HtmlDumper~7vb3phl"/>
     </service>
     <service id="debug.file_link_formatter.url_format" class="string" public="false">
       <argument type="service" id="router.default"/>
@@ -4222,7 +4204,7 @@
     </service>
     <service id="web_server.command.server_run" class="Symfony\Bundle\WebServerBundle\Command\ServerRunCommand" public="false">
       <tag name="console.command" command="server:run"/>
-      <argument>C:\wamp64\www\SmartStartWEB/public</argument>
+      <argument>C:\wamp64\www\pidev/public</argument>
       <argument>dev</argument>
       <call method="setName">
         <argument>server:run</argument>
@@ -4230,7 +4212,7 @@
     </service>
     <service id="web_server.command.server_start" class="Symfony\Bundle\WebServerBundle\Command\ServerStartCommand" public="false">
       <tag name="console.command" command="server:start"/>
-      <argument>C:\wamp64\www\SmartStartWEB/public</argument>
+      <argument>C:\wamp64\www\pidev/public</argument>
       <argument>dev</argument>
       <call method="setName">
         <argument>server:start</argument>
@@ -4586,42 +4568,42 @@
       </argument>
     </service>
     <service id="cache.app.recorder_inner" class="Symfony\Component\Cache\Adapter\FilesystemAdapter" public="false">
-      <argument>S2HUEENsU0</argument>
+      <argument>TIUgFIVP+o</argument>
       <argument>0</argument>
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/pools</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
     </service>
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>-SCuxC7fns</argument>
+      <argument>Ymf58m-6kB</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>pqhxrYQjwk</argument>
+      <argument>SeHuVoFBrN</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>YZmn+Owonc</argument>
+      <argument>As0igyKMbJ</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>2cZ0LngAuq</argument>
+      <argument>kx6W8aLEr4</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\SmartStartWEB\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\pidev\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -4739,8 +4721,8 @@
     <service id="fos_user.session" alias="session" public="false"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
-    <service id="service_locator._fpuy7b" alias="2_ServiceLocator~rdm0tkk" public="false"/>
-    <service id="service_locator.ml7rum7" alias="1_ServiceLocator~isnn2mo" public="false"/>
+    <service id="service_locator._fpuy7b" alias="2_ServiceLocator~zxn1zop" public="false"/>
+    <service id="service_locator.ml7rum7" alias="1_ServiceLocator~jmwk6cy" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
     <service id="controller_resolver" alias="debug.controller_resolver" public="false"/>

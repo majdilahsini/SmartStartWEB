@@ -1,5 +1,22 @@
 {% extends '@User/Default/entreprisehome.html.twig' %}
 
+
+        {% block stylesheets %}
+
+            <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+            <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+
+        {% endblock %}
+
         {% block banner %}
             <section class="banner-area relative" id="home">
                 <div class="overlay overlay-bg"></div>
@@ -16,13 +33,11 @@
             </section>
         {% endblock %}
 
+
         {% block content %}
 
-            {{ form_start(form)  }}
-            <input type="submit" value="ajouter">
-            {{ form_end(form) }}
 
-        {% endblock %}
+         {% endblock %}
 
         {% block javascripts %}
             <script src="../../js/vendor/jquery-2.2.4.min.js"></script>
@@ -40,4 +55,5 @@
             <script src="../../js/parallax.min.js"></script>
             <script src="../../js/mail-script.js"></script>
             <script src="../../js/main.js"></script>
+
         {% endblock %}

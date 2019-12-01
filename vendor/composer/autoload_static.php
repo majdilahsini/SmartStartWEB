@@ -107,6 +107,7 @@ class ComposerStaticInit8c0e9bc2837acd230b00d753e9b8dfe7
         array (
             'Composer\\CaBundle\\' => 18,
             'Clue\\StreamFilter\\' => 18,
+            'CMEN\\GoogleChartsBundle\\' => 24,
         ),
     );
 
@@ -320,6 +321,10 @@ class ComposerStaticInit8c0e9bc2837acd230b00d753e9b8dfe7
         'Clue\\StreamFilter\\' => 
         array (
             0 => __DIR__ . '/..' . '/clue/stream-filter/src',
+        ),
+        'CMEN\\GoogleChartsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cmen/google-charts-bundle',
         ),
     );
 
