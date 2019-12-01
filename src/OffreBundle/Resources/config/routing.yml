@@ -37,3 +37,11 @@ consulter_offre:
 postuler_offre:
     path:     /postuleroffre/{id}/{match}
     defaults: { _controller: OffreBundle:Applications:postuler }
+
+mes_condidatures:
+    path:     /mescandidatures
+    defaults: { _controller: OffreBundle:Offres:mescandidatures}
+
+supprimer_application:
+    path:     /supprimer/{id}
+    defaults: { _controller: OffreBundle:Applications:delete}

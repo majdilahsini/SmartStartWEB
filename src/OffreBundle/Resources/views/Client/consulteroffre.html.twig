@@ -34,6 +34,7 @@
         {% block content %}
             <section class="profile-detail">
                 <div class="container">
+
                     <div class="col-md-12">
                         <div class="row">
                             <div class="basic-information">
@@ -51,6 +52,7 @@
                                             <li><span>Salaire:</span>{{ offre.salaire ~ " tnd"}}</li>
                                             <li><span>Compétences:</span>{{ offre.Skill1.name ~ ", " ~  offre.Skill2.name ~ ", " ~offre.Skill3.name}}</li>
                                             <li><span>Langue:</span>{{ offre.langueRef.nom}}</li>
+                                            <li><span>Candidatures:</span>{{ count }}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -164,18 +166,30 @@
                                 </div>
                                 {% if score > 80 %}
                                 <p style="color: #007A03">Félicitations ! Votre profil est très proche de celui que nous recherchons. Dépêchez-vous et postulez.</p>
-                                {% else %}
-                                <p>Félicitations ! Votre profil est très proche de</p>
-                                {% endif %}
+                                   {% endif %}
 
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
+
+
+                                <div class="panel panel-default" >
+                                    <div class="panel-heading " style="margin-bottom: 15px">
                                         <i class="fa fa-leaf fa-fw"></i> Actions
                                     </div>
                                     <form>
                                         <div class="form-submit">
+
+
+                                                {% if score < 90 and sicondidater == 0 %}
+
                                             <input style="text-align: center" value="Voir les Formations" class="submit" id="reset" name="reset" />
                                             <a href="{{ path('postuler_offre', {'id':offre.id , 'match':score}) }}"> <input style="text-align: center" value="Postuler!" class="submit" id="submit" name="submit" /></a>
+                                                {% elseif score > 90 and sicondidater == 0 %}
+                                            <a href="{{ path('postuler_offre', {'id':offre.id , 'match':score}) }}"> <input style="text-align: center" value="Postuler!" class="submit" id="submit" name="submit" /></a>
+                                                {% elseif sicondidater != 0 %}
+
+                                            <a href="{{ path('supprimer_application', {'id':offre.id}) }}"> <input style="text-align: center; background-color: #da0833" value="Annuler la Condidature" class="submit" id="submit" name="submit" /></a>
+                                                {% endif %}
+
+
                                         </div>
                                     </form>
                             </div>

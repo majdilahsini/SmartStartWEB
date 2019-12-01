@@ -34,8 +34,11 @@ class OffresController extends Controller
             ));
         }
         else if ($authChecker->isGranted('ROLE_USER')) {
+
+            $applications = $em->getRepository('OffreBundle:Applications')->findBy(array('user' => $this->getUser()));
             return $this->render('@Offre/Client/read.html.twig', array(
                 'offres' => $offres,
+                'applications' => $applications
             ));
     }
 
@@ -60,18 +63,26 @@ class OffresController extends Controller
      */
     public function newAction(Request $request)
     {
-        $offre = new Offres();
-        $user = $this->getUser();
 
-        $form = $this->createForm(OffresType::class, $offre);
-        $form = $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $offre->setEntreprise($user);
-            $em->persist($offre);
-            $em->flush();
+        $authChecker = $this->container->get('security.authorization_checker');
+        if ($authChecker->isGranted('ROLE_ENTREPRISE')) {
+            $offre = new Offres();
+            $user = $this->getUser();
+
+            $form = $this->createForm(OffresType::class, $offre);
+            $form = $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $offre->setEntreprise($user);
+                $em->persist($offre);
+                $em->flush();
+            }
+            return $this->render('@Offre/Entreprise/ajouter.html.twig', array('form' => $form->createView()));
+        } else {
+            return $this->redirectToRoute('index');
         }
-        return $this->render('@Offre/Entreprise/ajouter.html.twig', array('form' => $form->createView()));
+
+
     }
 
     /**
@@ -94,6 +105,8 @@ class OffresController extends Controller
      */
     public function editAction(Request $request, Offres $offre)
     {
+
+
         $deleteForm = $this->createDeleteForm($offre);
         $editForm = $this->createForm('OffreBundle\Form\OffresType', $offre);
         $editForm->handleRequest($request);
@@ -117,11 +130,16 @@ class OffresController extends Controller
      */
     public function deleteAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $offre= $em->getRepository(Offres::class)->find($id);
-        $em->remove($offre);
-        $em->flush();
-        return $this->redirectToRoute('offres_index');
+        $authChecker = $this->container->get('security.authorization_checker');
+        if ($authChecker->isGranted('ROLE_ENTREPRISE')) {
+            $em = $this->getDoctrine()->getManager();
+            $offre = $em->getRepository(Offres::class)->find($id);
+            $em->remove($offre);
+            $em->flush();
+            return $this->redirectToRoute('offres_index');
+        } else
+            return $this->redirectToRoute('index');
+
 
     }
 
@@ -143,6 +161,8 @@ class OffresController extends Controller
 
     public function consulterOffreAction($id)
     {
+
+
         $em = $this->getDoctrine()->getManager();
         $offre= $em->getRepository(Offres::class)->find($id);
 
@@ -195,12 +215,15 @@ class OffresController extends Controller
 
         if ($note_competences > 80)
             $pieChart->getOptions()->setColors(['#007A03']);
-        else
+        elseif ($note_competences < 40)
+
             $pieChart->getOptions()->setColors(['#da0833']);
         $pieChart->getOptions()->getLegend()->setPosition('none');
         $pieChart->getOptions()->getHAxis()->setMinValue(0);
 
+        $count = $em->getRepository(Offres::class)->getNbrCandidatures($id);
 
+        $count2 = $em->getRepository(Offres::class)->checkifpostuler($id, $this->getUser()->getId());
 
 
         return $this->render('@Offre/Client/consulteroffre.html.twig', array(
@@ -209,7 +232,24 @@ class OffresController extends Controller
             'langues' => $aquiredlangues,
             'user_skills' => $aquiredlangues,
             'piechart' => $pieChart,
-            'score' => $note_competences));
+            'score' => $note_competences,
+            'count' => $count,
+            'sicondidater' => $count2
+        ));
+
+    }
+
+    public function mescandidaturesAction () {
+
+        $em = $this->getDoctrine()->getManager();
+        $offres= $em->getRepository(Offres::class)->getMesCandidatures($this->getUser()->getId());
+        $applications = [];
+
+        return $this->render('@Offre/Client/read.html.twig', array(
+            'offres' => $offres,
+            'applications' => $applications,
+            'Message' => "Vos Condidatures"
+        ));
 
     }
 

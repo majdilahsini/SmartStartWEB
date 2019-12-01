@@ -348,19 +348,35 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             }
 
-            // mes_offre
-            if ('/offre/mesoffres' === $pathinfo) {
-                return array (  '_controller' => 'OffreBundle\\Controller\\OffresController::mesOffresAction',  '_route' => 'mes_offre',);
+            elseif (0 === strpos($pathinfo, '/offre/m')) {
+                // mes_offre
+                if ('/offre/mesoffres' === $pathinfo) {
+                    return array (  '_controller' => 'OffreBundle\\Controller\\OffresController::mesOffresAction',  '_route' => 'mes_offre',);
+                }
+
+                // mes_condidatures
+                if ('/offre/mescandidatures' === $pathinfo) {
+                    return array (  '_controller' => 'OffreBundle\\Controller\\OffresController::mescandidaturesAction',  '_route' => 'mes_condidatures',);
+                }
+
+                // modifier_offre
+                if (0 === strpos($pathinfo, '/offre/modifieroffre') && preg_match('#^/offre/modifieroffre/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'modifier_offre']), array (  '_controller' => 'OffreBundle\\Controller\\OffresController::editAction',));
+                }
+
             }
 
-            // modifier_offre
-            if (0 === strpos($pathinfo, '/offre/modifieroffre') && preg_match('#^/offre/modifieroffre/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'modifier_offre']), array (  '_controller' => 'OffreBundle\\Controller\\OffresController::editAction',));
-            }
+            elseif (0 === strpos($pathinfo, '/offre/supprimer')) {
+                // supprimer_offre
+                if (0 === strpos($pathinfo, '/offre/supprimeroffre') && preg_match('#^/offre/supprimeroffre/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'supprimer_offre']), array (  '_controller' => 'OffreBundle\\Controller\\OffresController::deleteAction',));
+                }
 
-            // supprimer_offre
-            if (0 === strpos($pathinfo, '/offre/supprimeroffre') && preg_match('#^/offre/supprimeroffre/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'supprimer_offre']), array (  '_controller' => 'OffreBundle\\Controller\\OffresController::deleteAction',));
+                // supprimer_application
+                if (preg_match('#^/offre/supprimer/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'supprimer_application']), array (  '_controller' => 'OffreBundle\\Controller\\ApplicationsController::deleteAction',));
+                }
+
             }
 
             // consulter_offre

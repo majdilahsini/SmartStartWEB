@@ -20,10 +20,26 @@ class ApplicationsController extends Controller
         $application->setOffre($offre);
         $application->setMatchs($match);
 
+
         $em->merge($application);
         $em->flush();
 
-    return $this->render('@Offre/Default/index.html.twig');
+
+        return $this->redirectToRoute('read_offre');
+
+
+    }
+
+    public function deleteAction($id)
+    {
+
+            $offre = new Offres();
+            $offre->setId($id);
+            $em = $this->getDoctrine()->getManager();
+            $application = $em->getRepository(Applications::class)->findOneBy(array('offre'=> $offre));
+            $em->remove($application);
+            $em->flush();
+            return $this->redirectToRoute('offres_index');
 
     }
 
