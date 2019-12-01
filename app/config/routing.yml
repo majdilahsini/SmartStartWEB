@@ -1,3 +1,17 @@
+reclamation1_reclamation:
+    resource: "@Reclamation1Bundle/Controller/ReclamationController.php"
+    type:     annotation
+
+reclamation:
+    resource: "@Reclamation1Bundle/Resources/config/routing.yml"
+    prefix : /reclamation
+
+reclamation1:
+    resource: "@Reclamation1Bundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+
 offre_offres:
     resource: "@OffreBundle/Controller/OffresController.php"
     type:     annotation

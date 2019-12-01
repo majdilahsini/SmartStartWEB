@@ -14,13 +14,14 @@
                                <li class="menu-active"><a href={{ path('index') }}>Les Formations</a></li>
                                <li class="menu-active"><a href={{ path('index') }}>Crowdfundings</a></li>
                                <li class="menu-active"><a href={{ path('index') }}>Forum</a></li>
-                               <li class="menu-has-children"><a href="">Mon Espace</a>
+                               <li class="menu-has-children"><a href=""><p>username : {{ app.user.username }}</p></a>
                                    <ul>
                                        <li><a href="">Mon Profil</a></li>
                                        <li><a href=""Mes Candidatures</a></li>
                                        <li><a href="">Mes Formations</a></li>
                                        <li><a href="">Mes Entretiens</a></li>
                                        <li><a href="">Mes Crowdfundings</a></li>
+                                       <li><a href={{ path('reclamation_index') }}>ajouter reclamation</a></li>
                                        <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
                                    </ul>
                                </li>

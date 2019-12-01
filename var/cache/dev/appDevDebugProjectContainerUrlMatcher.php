@@ -107,105 +107,60 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/formation')) {
-            // formations_index
-            if ('/formation' === $trimmedPathinfo) {
-                $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::indexAction',  '_route' => 'formations_index',);
-                if ('/' === substr($pathinfo, -1)) {
-                    // no-op
-                } elseif ('GET' !== $canonicalMethod) {
-                    goto not_formations_index;
-                } else {
-                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'formations_index'));
+        elseif (0 === strpos($pathinfo, '/re')) {
+            if (0 === strpos($pathinfo, '/reclamation')) {
+                // reclamation_index
+                if ('/reclamation' === $trimmedPathinfo) {
+                    $ret = array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::indexAction',  '_route' => 'reclamation_index',);
+                    if ('/' === substr($pathinfo, -1)) {
+                        // no-op
+                    } elseif ('GET' !== $canonicalMethod) {
+                        goto not_reclamation_index;
+                    } else {
+                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'reclamation_index'));
+                    }
+
+                    return $ret;
+                }
+                not_reclamation_index:
+
+                // reclamation_indexuser
+                if ('/reclamation/indexuser' === $pathinfo) {
+                    return array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::indexuserAction',  '_route' => 'reclamation_indexuser',);
                 }
 
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_formations_index;
+                // reclamation_all
+                if ('/reclamation/recall' === $pathinfo) {
+                    return array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::rdvallAction',  '_route' => 'reclamation_all',);
                 }
 
-                return $ret;
-            }
-            not_formations_index:
-
-            // formations_index_all
-            if ('/formation/all' === $pathinfo) {
-                $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::indexallAction',  '_route' => 'formations_index_all',);
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_formations_index_all;
+                // reclamation_subject
+                if (0 === strpos($pathinfo, '/reclamation/subjectjax') && preg_match('#^/reclamation/subjectjax/(?P<nom>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_subject']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::subjectjaxAction',));
                 }
 
-                return $ret;
-            }
-            not_formations_index_all:
-
-            // formations_show
-            if (preg_match('#^/formation/(?P<ref>[^/]++)/show$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_show']), array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::showAction',));
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_formations_show;
+                // reclamation_new
+                if ('/reclamation/new' === $pathinfo) {
+                    return array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::newAction',  '_route' => 'reclamation_new',);
                 }
 
-                return $ret;
-            }
-            not_formations_show:
-
-            // formations_new
-            if ('/formation/new' === $pathinfo) {
-                $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::newAction',  '_route' => 'formations_new',);
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_formations_new;
+                // reclamation_show
+                if (preg_match('#^/reclamation/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_show']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::showAction',));
                 }
 
-                return $ret;
-            }
-            not_formations_new:
-
-            // formations_edit
-            if (preg_match('#^/formation/(?P<ref>[^/]++)/edit$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_edit']), array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::editAction',));
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_formations_edit;
+                // reclamation_edit
+                if (preg_match('#^/reclamation/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_edit']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::editAction',));
                 }
 
-                return $ret;
-            }
-            not_formations_edit:
-
-            // formations_delete
-            if (preg_match('#^/formation/(?P<ref>[^/]++)/delete$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_delete']), array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::deleteAction',));
-                if (!in_array($requestMethod, ['DELETE'])) {
-                    $allow = array_merge($allow, ['DELETE']);
-                    goto not_formations_delete;
+                // reclamation_delete
+                if (preg_match('#^/reclamation/(?P<id>[^/]++)/delete$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_delete']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::deleteAction',));
                 }
 
-                return $ret;
-            }
-            not_formations_delete:
-
-        }
-
-        // user_homepage
-        if ('' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_homepage',);
-            if ('/' === substr($pathinfo, -1)) {
-                // no-op
-            } elseif ('GET' !== $canonicalMethod) {
-                goto not_user_homepage;
-            } else {
-                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'user_homepage'));
             }
 
-            return $ret;
-        }
-        not_user_homepage:
-
-        if (0 === strpos($pathinfo, '/re')) {
             // redirect_login
             if ('/redirect' === $pathinfo) {
                 return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::redirectAction',  '_route' => 'redirect_login',);
@@ -326,7 +281,22 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/offre')) {
+        // user_homepage
+        if ('' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_homepage',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_user_homepage;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'user_homepage'));
+            }
+
+            return $ret;
+        }
+        not_user_homepage:
+
+        if (0 === strpos($pathinfo, '/offre')) {
             if (0 === strpos($pathinfo, '/offre/offres')) {
                 // offres_index
                 if ('/offre/offres' === $trimmedPathinfo) {
