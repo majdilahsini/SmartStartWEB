@@ -1,0 +1,46 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/semantic.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/icon.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/font-awesome.min.css')}}"/>
+
+
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="{{ asset('/js/bootstrap3-typeahead.min.js')}}"></script>
+    <script src="{{ asset('/js/jquery-2.2.3.min.js')}}"></script>
+    <script src="{{ asset('/js/reclamationall.js')}}"></script>
+    <script src="{{ asset('/js/subjectrechercheajax.js')}}"></script>
+    <script src="{{ asset('/js/jquery-3.1.1.min.js')}}"></script>
+    <script src="{{ asset('/js/semantic.min.js')}}"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+{% endblock %}
+{% block body %}
+    <h1>Reclamations list</h1>
+    <button id="bt">ss</button>
+    <input  type="text" id="subject"  >
+    <table >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subject</th>
+                <th>Object</th>
+                <th>User</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reclamation_new') }}">Create a new reclamation</a>
+        </li>
+    </ul>
+{% endblock %}
