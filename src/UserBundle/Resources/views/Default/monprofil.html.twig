@@ -1,0 +1,73 @@
+{% extends '@User/Default/userhome.html.twig' %}
+
+        {% block banner %}
+            <section class="banner-area relative" id="home">
+                <div class="overlay overlay-bg"></div>
+                <div class="container">
+                    <div class="row d-flex align-items-center justify-content-center">
+                        <div class="about-content col-lg-12">
+                            <h1 class="text-white">
+                                Liste des Offres
+                            </h1>
+                            <p class="text-white link-nav"><a href="../Default/index.html.twig">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="category.html"> Liste des Offre</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endblock %}
+
+        {% block content %}
+
+            <section class="profile-detail">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="basic-information">
+                                <div class="col-md-3 col-sm-3">
+                                    <img src="img/user.jpg" alt="" class="img-responsive">
+                                </div>
+                                <div class="col-md-9 col-sm-9">
+                                    <div class="profile-content">
+                                        <h2>{{ user.fullname }}<span>{{ user.email }}</span></h2>
+                                        <ul class="information">
+                                            <li><span>Name:</span>{{ user.fullname }}</li>
+                                            <li><span>Email:</span>{{ user.email }}</li>
+                                            <li><span>Mobile:</span>{{ user.tel }}</li>
+                                            <li><span>Company:</span>{{ user.adresse }}</li>
+                                            <li><span>Compétences</span>
+                                                    <span class="service-tag">Web Design</span>
+                                                    <span class="service-tag">Graphics</span>
+                                                    <span class="service-tag">Development</span>
+                                            </li>
+                                            <li><span>Langues</span>
+                                                <span class="service-tag">Français</span>
+                                                <span class="service-tag">Arabe</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                    <div style="margin-top: 20px" class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <i class="fa fa-cog fa-fw"></i> Actions
+                                        </div>
+
+                                        <form>
+                                            <div class="form-submit">
+                                        <a href=""> <input style="margin-top: 10px; text-align: center" value="Modifier" class="submit" id="submit" name="submit" /></a>
+
+                                            </div>
+                                        </form>
+                                    <!-- /.panel-heading -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        {% endblock %}
+
