@@ -66,7 +66,7 @@
                     {% endfor %}
 
             {% if test == 1 %}
-            <div class="company-list" style="background-color: #F8FFFD">
+            <div class="company-list" style="background-color: #F3FFFA">
                 {% else %}
 
                 <div class="company-list">
@@ -100,7 +100,11 @@
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2">
-                        <a href={{ path('consulter_offre', {'id':offre.id}) }}><button type="submit" class="btn view-job" style="align-self: center" name="View Job">Consulter</button></a>
+                        {% if test == 1 %}
+                        <a href={{ path('consulter_offre', {'id':offre.id}) }}><button style="background-color: #267747;" type="submit" class="btn view-job" style="align-self: center" name="View Job">Consulter</button></a>
+                        {% else %}
+                            <a href={{ path('consulter_offre', {'id':offre.id}) }}><button type="submit" class="btn view-job" style="align-self: center" name="View Job">Consulter</button></a>
+                        {% endif %}
                     </div>
                 </div>
 
