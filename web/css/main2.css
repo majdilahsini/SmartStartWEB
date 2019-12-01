@@ -635,7 +635,7 @@ padding:14px 25px;
 }
 .btn.view-job{
 border:none;
-background:#007ffe;
+background:#da0833;
 border-radius:1px;
 padding:1em 2em;
 display:block;
@@ -643,6 +643,18 @@ margin-top:25px;
 width:100%;
 color:#ffffff;
 }
+
+.btn.modifier{
+    border:none;
+    background:#007ffe;
+    border-radius:1px;
+    padding:1em 2em;
+    display:block;
+    margin-top:25px;
+    width:100%;
+    color:#ffffff;
+}
+
 .top-pad{
 padding-top:3em;
 }

@@ -107,89 +107,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/formation')) {
-            // formations_index
-            if ('/formation' === $trimmedPathinfo) {
-                $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::indexAction',  '_route' => 'formations_index',);
-                if ('/' === substr($pathinfo, -1)) {
-                    // no-op
-                } elseif ('GET' !== $canonicalMethod) {
-                    goto not_formations_index;
-                } else {
-                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'formations_index'));
-                }
-
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_formations_index;
-                }
-
-                return $ret;
-            }
-            not_formations_index:
-
-            // formations_index_all
-            if ('/formation/all' === $pathinfo) {
-                $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::indexallAction',  '_route' => 'formations_index_all',);
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_formations_index_all;
-                }
-
-                return $ret;
-            }
-            not_formations_index_all:
-
-            // formations_show
-            if (preg_match('#^/formation/(?P<ref>[^/]++)/show$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_show']), array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::showAction',));
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_formations_show;
-                }
-
-                return $ret;
-            }
-            not_formations_show:
-
-            // formations_new
-            if ('/formation/new' === $pathinfo) {
-                $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::newAction',  '_route' => 'formations_new',);
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_formations_new;
-                }
-
-                return $ret;
-            }
-            not_formations_new:
-
-            // formations_edit
-            if (preg_match('#^/formation/(?P<ref>[^/]++)/edit$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_edit']), array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::editAction',));
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_formations_edit;
-                }
-
-                return $ret;
-            }
-            not_formations_edit:
-
-            // formations_delete
-            if (preg_match('#^/formation/(?P<ref>[^/]++)/delete$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_delete']), array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::deleteAction',));
-                if (!in_array($requestMethod, ['DELETE'])) {
-                    $allow = array_merge($allow, ['DELETE']);
-                    goto not_formations_delete;
-                }
-
-                return $ret;
-            }
-            not_formations_delete:
-
-        }
-
         // user_homepage
         if ('' === $trimmedPathinfo) {
             $ret = array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_homepage',);
@@ -444,6 +361,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // supprimer_offre
             if (0 === strpos($pathinfo, '/offre/supprimeroffre') && preg_match('#^/offre/supprimeroffre/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'supprimer_offre']), array (  '_controller' => 'OffreBundle\\Controller\\OffresController::deleteAction',));
+            }
+
+            // consulter_offre
+            if (0 === strpos($pathinfo, '/offre/consulteroffre') && preg_match('#^/offre/consulteroffre/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'consulter_offre']), array (  '_controller' => 'OffreBundle\\Controller\\OffresController::consulterOffreAction',));
+            }
+
+            // postuler_offre
+            if (0 === strpos($pathinfo, '/offre/postuleroffre') && preg_match('#^/offre/postuleroffre/(?P<id>[^/]++)/(?P<match>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'postuler_offre']), array (  '_controller' => 'OffreBundle\\Controller\\ApplicationsController::postulerAction',));
             }
 
         }
