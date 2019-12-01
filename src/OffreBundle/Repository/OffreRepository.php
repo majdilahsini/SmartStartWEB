@@ -89,7 +89,6 @@ class OffreRepository extends \Doctrine\ORM\EntityRepository
                 ->createQuery("select count(c) from OffreBundle:Applications c where IDENTITY(c.user) = :idu and IDENTITY(c.offre) = :id")
                 ->setParameters(array('idu' => $user_id, 'id' => $id));
 
-
             try {
                 return $query = $q->getSingleScalarResult();
             } catch (NoResultException $e) {

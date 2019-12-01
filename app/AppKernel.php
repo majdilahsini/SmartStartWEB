@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new OffreBundle\OffreBundle(),
             new UserBundle\UserBundle(),
+            new Reclamation1Bundle\Reclamation1Bundle(),
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
         ];
 

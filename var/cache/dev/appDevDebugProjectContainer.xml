@@ -20,6 +20,7 @@
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="OffreBundle">OffreBundle\OffreBundle</parameter>
       <parameter key="UserBundle">UserBundle\UserBundle</parameter>
+      <parameter key="Reclamation1Bundle">Reclamation1Bundle\Reclamation1Bundle</parameter>
       <parameter key="CMENGoogleChartsBundle">CMEN\GoogleChartsBundle\CMENGoogleChartsBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
@@ -82,6 +83,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">C:\wamp64\www\pidev\src\UserBundle</parameter>
         <parameter key="namespace">UserBundle</parameter>
+      </parameter>
+      <parameter key="Reclamation1Bundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">C:\wamp64\www\pidev\src\Reclamation1Bundle</parameter>
+        <parameter key="namespace">Reclamation1Bundle</parameter>
       </parameter>
       <parameter key="CMENGoogleChartsBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -3069,6 +3075,14 @@
         <argument>!User</argument>
       </call>
       <call method="addPath">
+        <argument>C:\wamp64\www\pidev\src\Reclamation1Bundle/Resources/views</argument>
+        <argument>Reclamation1</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp64\www\pidev\src\Reclamation1Bundle/Resources/views</argument>
+        <argument>!Reclamation1</argument>
+      </call>
+      <call method="addPath">
         <argument>C:\wamp64\www\pidev\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
@@ -3661,6 +3675,7 @@
         <argument type="collection">
           <argument key="OffreBundle">OffreBundle\Entity</argument>
           <argument key="UserBundle">UserBundle\Entity</argument>
+          <argument key="Reclamation1Bundle">Reclamation1Bundle\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCacheImpl">
@@ -3707,6 +3722,7 @@
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
         <argument>C:\wamp64\www\pidev\src\OffreBundle\Entity</argument>
+        <argument>C:\wamp64\www\pidev\src\Reclamation1Bundle\Entity</argument>
       </argument>
     </service>
     <service id="doctrine.orm.default_yml_metadata_driver" class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
@@ -3721,6 +3737,10 @@
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
         <argument>OffreBundle\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+        <argument>Reclamation1Bundle\Entity</argument>
       </call>
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_yml_metadata_driver"/>
