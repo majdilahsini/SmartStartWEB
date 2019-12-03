@@ -658,12 +658,11 @@ color:#ffffff;
 
 .btn.consulter-c{
     border:none;
-    background:#da0833;
+    background:#3154FF;
     border-radius:1px;
     display:block;
     margin-top:5px;
     width:100%;
-    height: 30%;
     color:#ffffff;
 
 }
@@ -675,8 +674,21 @@ color:#ffffff;
     display:block;
     margin-top:5px;
     width:100%;
-    height: 30%;
     color:#ffffff;
+}
+
+#demoFont {
+
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 76px/1 "advent-pro", Helvetica, sans-serif;
+
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+
 }
 
 .top-pad{
@@ -1192,3 +1204,67 @@ width:20%;
 	padding: 0 20px;
 }
 }
+
+.label-smartstart {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+
+.input-smartstart {
+    box-sizing: border-box;
+    border: 1px solid #ebebeb;
+    padding: 4px 4px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Poppins'; }
+
+.submit-smartstart{
+    width: 150px;
+    height: 50px;
+    display: inline-block;
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    background: #DA0833;
+    color: #fff;
+    margin-right: 25px; }
+
+.combobox-smartstart {
+    position: relative;
+    display: inline-block;
+    width: 96%;
+    height: 110%;
+    background: 0 0;
+    position: relative;
+
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px
+
+    z-index: 2;
+    color: #000;
+}
+
+
+
+
+

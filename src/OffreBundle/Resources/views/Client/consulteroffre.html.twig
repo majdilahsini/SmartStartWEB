@@ -1,4 +1,7 @@
-{% extends '@User/Default/userhome.html.twig' %}
+
+{% extends role == 0
+    ? '@User/Default/userhome.html.twig'
+    : '@User/Default/entreprisehome.html.twig' %}
 
                 {% block stylesheets %}
                     <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
@@ -64,6 +67,7 @@
                                     <li><a href="" class="instagram"><i class="fa fa-instagram"></i>Instagram</a></li>
                                 </ul>
 
+                                {% if role == 0 %}
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <i class="fa fa-leaf fa-fw"></i> Compabilité de votre profil avec cette offre:
@@ -169,13 +173,15 @@
                                    {% endif %}
 
 
-
+                                {% endif %}
                                 <div class="panel panel-default" >
                                     <div class="panel-heading " style="margin-bottom: 15px">
                                         <i class="fa fa-leaf fa-fw"></i> Actions
                                     </div>
                                     <form>
                                         <div class="form-submit">
+
+                                            {% if role == 0 %}
 
 
                                                 {% if score < 90 and sicondidater == 0 %}
@@ -185,11 +191,24 @@
                                                 {% elseif score > 90 and sicondidater == 0 %}
                                             <a href="{{ path('postuler_offre', {'id':offre.id , 'match':score}) }}"> <input style="text-align: center" value="Postuler!" class="submit" id="submit" name="submit" /></a>
                                                 {% elseif sicondidater != 0 %}
-
+                                                    {% for a in application %}
+                                                    {% if a.etat == 0 %}
                                             <a href="{{ path('supprimer_application', {'id':offre.id}) }}"> <input style="text-align: center; background-color: #da0833" value="Annuler la Condidature" class="submit" id="submit" name="submit" /></a>
+                                                    {% elseif a.etat ==1 %}
+                                                        <p align="left"> Vous êtres accepté !</p>
+                                                     {% else %}
+                                                        <p align="left"> Vous étes réfuser !</p>
+                                                     {% endif %}
+                                                    {% endfor %}
                                                 {% endif %}
 
-
+                                            {% else %}
+                                            <p align="left"> Cette offre a {{ count }} candidature(s)</p>
+                                                {% if count != 0 %}
+                                            <a href="{{ path('candidatures_offre', {'id':offre.id , 'match':score}) }}"> <input style="text-align: center" value="Consulter les Candidatures!" class="submit" id="submit" name="submit" /></a>
+                                                {% endif %}
+                                                <a href="{{ path('modifier_offre', {'id':offre.id }) }}"> <input style="text-align: center" value="Modifier" class="submit" id="submit" name="submit" /></a>
+                                                {% endif %}
                                         </div>
                                     </form>
                             </div>

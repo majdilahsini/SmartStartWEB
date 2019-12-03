@@ -4,6 +4,7 @@ namespace OffreBundle\Controller;
 
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\BarChart;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
+use OffreBundle\Entity\Applications;
 use OffreBundle\Entity\Langues;
 use OffreBundle\Entity\Offres;
 use OffreBundle\Entity\Skills;
@@ -74,8 +75,13 @@ class OffresController extends Controller
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $offre->setEntreprise($user);
+                $dateTime = \DateTime::createFromFormat("d/m/Y", date("d/m/Y"));
+                $offre->setDatePublication($dateTime);
+                $offre->setPhoto("");
                 $em->persist($offre);
                 $em->flush();
+
+                return $this->redirectToRoute('mes_offre');
             }
             return $this->render('@Offre/Entreprise/ajouter.html.twig', array('form' => $form->createView()));
         } else {
@@ -103,25 +109,24 @@ class OffresController extends Controller
      * Displays a form to edit an existing offre entity.
      *
      */
-    public function editAction(Request $request, Offres $offre)
+    public function editAction(Request $request, $id)
     {
 
 
-        $deleteForm = $this->createDeleteForm($offre);
-        $editForm = $this->createForm('OffreBundle\Form\OffresType', $offre);
+        $em = $this->getDoctrine()->getManager();
+        $offre = $em->getRepository(Offres::class)->find($id);
+        $editForm = $this->createForm(OffresType::class, $offre);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em->persist($offre);
+            $em->flush();
+        return $this->redirectToRoute('mes_offre');
 
-            return $this->redirectToRoute('offres_edit', array('id' => $offre->getId()));
         }
 
-        return $this->render('offres/edit.html.twig', array(
-            'offre' => $offre,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render('@Offre/Entreprise/modifier.html.twig', array('form' => $editForm->createView()));
+
     }
 
     /**
@@ -134,9 +139,12 @@ class OffresController extends Controller
         if ($authChecker->isGranted('ROLE_ENTREPRISE')) {
             $em = $this->getDoctrine()->getManager();
             $offre = $em->getRepository(Offres::class)->find($id);
+            $application = $em->getRepository(Applications::class)->findBy(array('offre'=>$id));
+            foreach($application as $app)
+                $em->remove($app);
             $em->remove($offre);
             $em->flush();
-            return $this->redirectToRoute('offres_index');
+            return $this->redirectToRoute('read_offre');
         } else
             return $this->redirectToRoute('index');
 
@@ -224,6 +232,17 @@ class OffresController extends Controller
         $count = $em->getRepository(Offres::class)->getNbrCandidatures($id);
 
         $count2 = $em->getRepository(Offres::class)->checkifpostuler($id, $this->getUser()->getId());
+        $application = $em->getRepository(Applications::class)->findBy(array('offre'=> $id, 'user'=>$this->getUser()->getId()));
+
+        $role = -1;
+        $authChecker = $this->container->get('security.authorization_checker');
+        if ($authChecker->isGranted('ROLE_ENTREPRISE')) {
+            $role = 1;
+        } else {
+            $role = 0;
+        }
+
+
 
 
         return $this->render('@Offre/Client/consulteroffre.html.twig', array(
@@ -234,7 +253,9 @@ class OffresController extends Controller
             'piechart' => $pieChart,
             'score' => $note_competences,
             'count' => $count,
-            'sicondidater' => $count2
+            'sicondidater' => $count2,
+            'role' => $role,
+            'application' => $application
         ));
 
     }
@@ -243,7 +264,8 @@ class OffresController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $offres= $em->getRepository(Offres::class)->getMesCandidatures($this->getUser()->getId());
-        $applications = [];
+        $applications = $em->getRepository(Applications::class)->findBy(array('user'=>$this->getUser()->getId()));
+
 
         return $this->render('@Offre/Client/read.html.twig', array(
             'offres' => $offres,

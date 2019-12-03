@@ -97,6 +97,20 @@ class OffreRepository extends \Doctrine\ORM\EntityRepository
 
         }
 
+    public function getOffreUsers($id) {
+
+        $q = $this->getEntityManager()
+            ->createQuery("select o from UserBundle:Users o where o.id in (select IDENTITY(u.user) from OffreBundle:Applications u where IDENTITY(u.offre)= :id)")
+            ->setParameter('id', $id);
+
+
+        try {
+            return $quer = $q->getResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+
 
 
 
