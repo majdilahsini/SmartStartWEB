@@ -36,5 +36,62 @@ class Role
     private $number;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set rolename
+     *
+     * @param string $rolename
+     *
+     * @return Role
+     */
+    public function setRolename($rolename)
+    {
+        $this->rolename = $rolename;
+    
+        return $this;
+    }
+
+    /**
+     * Get rolename
+     *
+     * @return string
+     */
+    public function getRolename()
+    {
+        return $this->rolename;
+    }
+
+    /**
+     * Set number
+     *
+     * @param integer $number
+     *
+     * @return Role
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    
+        return $this;
+    }
+
+    /**
+     * Get number
+     *
+     * @return integer
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+}

@@ -18,6 +18,7 @@
         "cmen/google-charts-bundle": "^3.2",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "friendsofsymfony/ckeditor-bundle": "^1.2",
         "friendsofsymfony/user-bundle": "~2.0",
         "hwi/oauth-bundle": "^0.6.3",
         "incenteev/composer-parameter-handler": "^2.0",
@@ -29,7 +30,8 @@
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.6.4",
         "symfony/symfony": "3.4.*",
-        "twig/twig": "^1.0||^2.0"
+        "twig/twig": "^1.0||^2.0",
+        "twilio/sdk": "^5.39"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

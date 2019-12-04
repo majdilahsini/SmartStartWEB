@@ -364,5 +364,14 @@ class Users
         return (string) $this->username;
     }
 
-}
 
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+}

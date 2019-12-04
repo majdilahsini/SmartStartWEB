@@ -29,5 +29,38 @@ class Langues
     private $nom;
 
 
-}
 
+    /**
+     * Get ref
+     *
+     * @return integer
+     */
+    public function getRef()
+    {
+        return $this->ref;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Langues
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+}

@@ -36,5 +36,62 @@ class UserLangues
     private $langue2Ref;
 
 
-}
 
+    /**
+     * Get userId
+     *
+     * @return integer
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set langue1Ref
+     *
+     * @param integer $langue1Ref
+     *
+     * @return UserLangues
+     */
+    public function setLangue1Ref($langue1Ref)
+    {
+        $this->langue1Ref = $langue1Ref;
+    
+        return $this;
+    }
+
+    /**
+     * Get langue1Ref
+     *
+     * @return integer
+     */
+    public function getLangue1Ref()
+    {
+        return $this->langue1Ref;
+    }
+
+    /**
+     * Set langue2Ref
+     *
+     * @param integer $langue2Ref
+     *
+     * @return UserLangues
+     */
+    public function setLangue2Ref($langue2Ref)
+    {
+        $this->langue2Ref = $langue2Ref;
+    
+        return $this;
+    }
+
+    /**
+     * Get langue2Ref
+     *
+     * @return integer
+     */
+    public function getLangue2Ref()
+    {
+        return $this->langue2Ref;
+    }
+}

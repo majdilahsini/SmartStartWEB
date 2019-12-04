@@ -57,5 +57,134 @@ class UserEducations
     private $etablissement;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     *
+     * @return UserEducations
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set diplome
+     *
+     * @param string $diplome
+     *
+     * @return UserEducations
+     */
+    public function setDiplome($diplome)
+    {
+        $this->diplome = $diplome;
+    
+        return $this;
+    }
+
+    /**
+     * Get diplome
+     *
+     * @return string
+     */
+    public function getDiplome()
+    {
+        return $this->diplome;
+    }
+
+    /**
+     * Set dateDebut
+     *
+     * @param \DateTime $dateDebut
+     *
+     * @return UserEducations
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateDebut
+     *
+     * @return \DateTime
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     *
+     * @return UserEducations
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return \DateTime
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * Set etablissement
+     *
+     * @param string $etablissement
+     *
+     * @return UserEducations
+     */
+    public function setEtablissement($etablissement)
+    {
+        $this->etablissement = $etablissement;
+    
+        return $this;
+    }
+
+    /**
+     * Get etablissement
+     *
+     * @return string
+     */
+    public function getEtablissement()
+    {
+        return $this->etablissement;
+    }
+}

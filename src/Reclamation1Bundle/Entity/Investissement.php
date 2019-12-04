@@ -50,5 +50,110 @@ class Investissement
     private $idInvesstisseur;
 
 
-}
 
+    /**
+     * Get idInvestissement
+     *
+     * @return integer
+     */
+    public function getIdInvestissement()
+    {
+        return $this->idInvestissement;
+    }
+
+    /**
+     * Set montant
+     *
+     * @param integer $montant
+     *
+     * @return Investissement
+     */
+    public function setMontant($montant)
+    {
+        $this->montant = $montant;
+    
+        return $this;
+    }
+
+    /**
+     * Get montant
+     *
+     * @return integer
+     */
+    public function getMontant()
+    {
+        return $this->montant;
+    }
+
+    /**
+     * Set numcartebancaire
+     *
+     * @param integer $numcartebancaire
+     *
+     * @return Investissement
+     */
+    public function setNumcartebancaire($numcartebancaire)
+    {
+        $this->numcartebancaire = $numcartebancaire;
+    
+        return $this;
+    }
+
+    /**
+     * Get numcartebancaire
+     *
+     * @return integer
+     */
+    public function getNumcartebancaire()
+    {
+        return $this->numcartebancaire;
+    }
+
+    /**
+     * Set idProjet
+     *
+     * @param integer $idProjet
+     *
+     * @return Investissement
+     */
+    public function setIdProjet($idProjet)
+    {
+        $this->idProjet = $idProjet;
+    
+        return $this;
+    }
+
+    /**
+     * Get idProjet
+     *
+     * @return integer
+     */
+    public function getIdProjet()
+    {
+        return $this->idProjet;
+    }
+
+    /**
+     * Set idInvesstisseur
+     *
+     * @param integer $idInvesstisseur
+     *
+     * @return Investissement
+     */
+    public function setIdInvesstisseur($idInvesstisseur)
+    {
+        $this->idInvesstisseur = $idInvesstisseur;
+    
+        return $this;
+    }
+
+    /**
+     * Get idInvesstisseur
+     *
+     * @return integer
+     */
+    public function getIdInvesstisseur()
+    {
+        return $this->idInvesstisseur;
+    }
+}

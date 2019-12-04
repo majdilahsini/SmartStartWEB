@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var entitySelector = $("#tb").html('');
+
     $.ajax({
         type: "GET",
         // url: "{{ path('rappelrdv_ajax') }}",
@@ -16,10 +17,9 @@ $(document).ready(function() {
                             entitySelector.append('<tr><td>'+value['id']+'</td><td>'+
                                 value['Subject']+'</td><td>'+
                                 value['Object']+'</td><td>'+value['id_user']+
-                                '</td><td> <ul><li><a class="ui inverted primary button" href=\"/reclamation/'+value['id']+'/edit\">'+'Modifier'
+                                '</td><td> <ul><li><a class="ui inverted blue button" href=\"/reclamation/'+value['id']+'/sendsms\">'+'sms'
                                 +' </li></a>' +'</br><li><a class="ui inverted red button" href=\"/reclamation/'+value['id']+'/delete\">'+'Supprimer'
                                 +'</li></ul></a></tr>'
-
 
 
 

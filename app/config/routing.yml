@@ -1,3 +1,23 @@
+certificat_certificats:
+    resource: "@CertificatBundle/Controller/CertificatsController.php"
+    type:     annotation
+
+certificats:
+    resource: "@CertificatBundle/Resources/config/routing.yml"
+    prefix:   /certificats
+
+
+certificat:
+    resource: "@CertificatBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+
+message:
+    resource: "@MessageBundle/Resources/config/routing.yml"
+    prefix:   /message
+
+
 reclamation1_reclamation:
     resource: "@Reclamation1Bundle/Controller/ReclamationController.php"
     type:     annotation
@@ -14,6 +34,7 @@ reclamation1:
 offre_offres:
     resource: "@OffreBundle/Controller/OffresController.php"
     type:     annotation
+
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"

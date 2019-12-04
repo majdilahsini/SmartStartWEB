@@ -17,6 +17,7 @@
                                 <li><a href={{ path('read_offre') }}>Consulter toutes les offres</a></li>
                             </ul>
                         </li>
+                        <li class="menu-has-children"><a href="{{ path('reclamation_new') }}"><p>Envoyer Reclamation</p></a>
                         <li class="menu-has-children"><a href="">Les Formations</a>
                             <ul>
                                 <li><a href="elements.html">Ajouter une formation</a></li>
@@ -32,7 +33,7 @@
                             </ul>
                         </li>
 
-                        <li class="menu-has-children"><a href="">Mon Espace</a>
+                        <li class="menu-has-children"><a href=""><p>connected as : {{ app.user.username }}</p></a>
                             <ul>
                                 <li><a href="">Mon Profil</a></li>
                                 <li><a href="">Mes Offres</a></li>
