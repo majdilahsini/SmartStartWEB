@@ -1,0 +1,107 @@
+{% extends '@User/Default/userhome.html.twig' %}
+
+        {% block banner %}
+            <section class="banner-area relative" id="home">
+                <div class="overlay overlay-bg"></div>
+                <div class="container">
+                    <div class="row d-flex align-items-center justify-content-center">
+                        <div class="about-content col-lg-12">
+                            <h1 class="text-white">
+                                Liste des Offres
+                            </h1>
+                            <p class="text-white link-nav"><a href="../Default/index.html.twig">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="category.html"> Liste des Offre</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endblock %}
+
+        {% block content %}
+
+<section class="jobs">
+    <div class="container">
+
+        <div class="companies">
+
+            {% if offres is empty %}
+                {% if app.request.pathinfo == "/offre/listoffre" %}
+                    <p> Il n'y a aucune offre pour le moment.</p>
+                {% else %}
+                    <p> Vous n'avez pas de candidatures</p>
+                {% endif %}
+            {% endif %}
+
+
+            {% for offre in offres %}
+
+
+
+                {% set test = -1 %}
+
+                {% for application in applications %}
+                    {% if offre.id == application.offre.id %}
+                        {% if app.request.pathinfo == "/offre/listoffre" %}
+                            {% set test = 4 %}
+                        {% elseif app.request.pathinfo == "/offre/mescandidatures" %}
+                            {% set test = application.etat %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+            {% if test == 4 %}
+            <div class="company-list" style="background-color: #F3FFFA">
+             {% elseif test == 0 %}
+                <div class="company-list" style="background-color: #FFFECA">
+                    {% elseif test == 1 %}
+                    <div class="company-list" style="background-color: #CAFFDC">
+                        {% elseif test == 2 %}
+                        <div class="company-list" style="background-color: #FFCACA">
+              {% else %}
+                  <div class="company-list">
+                {% endif %}
+
+                <div class="row">
+                    <div class="col-md-2 col-sm-2">
+                        <div class="company-logo" align="center" style="position: absolute;   left: 50%;  top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+                            <img src="{{asset('img/megaphone_rose_250_2.jpg')}}" class="img-responsive" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="company-content">
+                            <h3>{{ offre.titre }}</h3>
+                            <p>
+                      <span class="company-name">
+                      <i class="fa fa-bookmark-o"></i>{{ offre.datePublication | date("d/m/Y") }}</span>
+
+                      <span class="company-name">
+                      <i class="fa fa-briefcase"></i>{{ offre.entreprise.fullname }}</span>
+
+                      <span class="company-name">
+                      <i class="fa fa-dashcube"></i>{{ offre.typePost.name }}</span>
+
+                      <span class="package"><i class="fa fa-money">
+                      </i>{{ offre.salaire }} TND</span>
+
+                      <span class="package"><i class="fa fa-trophy">
+                      </i>BAC +{{ offre.niveauEtude }} </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        {% if test == 1 %}
+                        <a href={{ path('consulter_offre', {'id':offre.id}) }}><button style="background-color: #267747;" type="submit" class="btn view-job" style="align-self: center" name="View Job">Consulter</button></a>
+                        {% else %}
+                            <a href={{ path('consulter_offre', {'id':offre.id}) }}><button type="submit" class="btn view-job" style="align-self: center" name="View Job">Consulter</button></a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+        {% endblock %}
+

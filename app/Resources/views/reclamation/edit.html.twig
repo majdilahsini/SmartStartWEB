@@ -1,0 +1,55 @@
+{% extends '@User/Default/userhome.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/semantic.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/icon.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="{{ asset('/js/bootstrap3-typeahead.min.js')}}"></script>
+    <script src="{{ asset('/js/jquery-2.2.3.min.js')}}"></script>
+    <script src="{{ asset('/js/reclamationall.js')}}"></script>
+    <script src="{{ asset('/js/subjectrechercheajax.js')}}"></script>
+    <script src="{{ asset('/js/jquery-3.1.1.min.js')}}"></script>
+    <script src="{{ asset('/js/semantic.min.js')}}"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+    <center>
+    <h1>Reclamation edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('reclamation_indexuser') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </center>
+{% endblock %}

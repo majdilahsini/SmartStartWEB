@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Offre</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offre.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ offre.titre }}</td>
+            </tr>
+            <tr>
+                <th>Datepublication</th>
+                <td>{% if offre.datePublication %}{{ offre.datePublication|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Niveauetude</th>
+                <td>{{ offre.niveauEtude }}</td>
+            </tr>
+            <tr>
+                <th>Salaire</th>
+                <td>{{ offre.salaire }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ offre.photo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('offres_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('offres_edit', { 'id': offre.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

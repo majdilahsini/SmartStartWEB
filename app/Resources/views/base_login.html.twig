@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+{% block head %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href={{ asset('bootstrap/css/bootstrap.min.css')}}>
+    <link rel="stylesheet" href={{ asset('fonts/ionicons.min.css')}}>
+    <link rel="stylesheet" href={{ asset('css/Login-Form-Dark.css')}}>
+    <link rel="stylesheet" href={{ asset('css/styles.css')}}>
+</head>
+{% endblock %}
+{% block body %}
+<body>
+
+<div class="login-dark";>
+
+    <form method="post">
+        <h2 class="sr-only">Login Form</h2>
+        <img class="img" src={{asset('img/logo.jpg')}} style="width:245px;height:113px;">
+        <p class="text">Votre carrière professionnelle démare ici.</p>
+        <div class="form-group"><input class="form-control" placeholder="Username"></div>
+        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+        <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a></form>
+
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+{% endblock %}
+</html>

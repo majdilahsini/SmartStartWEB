@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block banner %}
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-center">
+            <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+                <form>
+                    <img class="img-responsive" alt="logo" src="img/logo.png">
+                    <input type="text" class="form-control input-lg" placeholder="User Name">
+                    <input type="password" class="form-control input-lg" placeholder="Password">
+                    <label><a href="">Forget Password?</a></label><br>
+                    <button type="submit" class="btn2 btn-primary2">Login</button>
+                    <p>Have't Any Account <a href="">Create An Account</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="features-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="single-feature">
+                    <h4>Searching</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-feature">
+                    <h4>Applying</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-feature">
+                    <h4>Security</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-feature">
+                    <h4>Notifications</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
