@@ -1,4 +1,6 @@
-{% extends '@User/Default/userhome.html.twig' %}
+{% extends role == 0
+    ? '@User/Default/userhome.html.twig'
+    : '@User/Default/entreprisehome.html.twig' %}
 
         {% block banner %}
             <section class="banner-area relative" id="home">
