@@ -23,39 +23,16 @@
         <div class="heading">
 
         </div>
-        <div class="row top-pad">
 
-                <div class="col-md-2 col-sm-3">
-                    <p>Search By:</p>
-                </div>
-
-                <div class="col-md-10 col-sm-9 pull-right">
-                    <ul class="filter-list">
-                        <li>
-                            <input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox" checked="">
-                            <label for="checkbox-1" class="part-time checkbox-custom-label">Part Time</label>
-                        </li>
-
-                        <li>
-                            <input id="checkbox-2" class="checkbox-custom" name="checkbox-2" type="checkbox">
-                            <label for="checkbox-2" class="full-time checkbox-custom-label">Full Time</label>
-                        </li>
-
-                        <li>
-                            <input id="checkbox-3" class="checkbox-custom" name="checkbox-3" type="checkbox">
-                            <label for="checkbox-3" class="freelancing checkbox-custom-label">Freelancing</label>
-                        </li>
-
-                        <li>
-                            <input id="checkbox-4" class="checkbox-custom" name="checkbox-4" type="checkbox">
-                            <label for="checkbox-4" class="internship checkbox-custom-label">Internship</label>
-                        </li>
-
-                    </ul>
-                </div>
-
-        </div>
         <div class="companies">
+            {% if offres is empty %}
+                {% if app.request.pathinfo == "/offre/mesoffres" %}
+                    <p> Vous n'avez pas d'offre.</p>
+                {% else %}
+                    <p> Il n'y a aucune offre pour le moment</p>
+                {% endif %}
+            {% endif %}
+
             {% for offre in offres %}
 
 
