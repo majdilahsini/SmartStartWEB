@@ -1,3 +1,11 @@
+interviews:
+    resource: "@InterviewsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+entretien:
+    resource: "@EntretienBundle/Resources/config/routing.yml"
+    prefix:   /
+
 offre_offres:
     resource: "@OffreBundle/Controller/OffresController.php"
     type:     annotation

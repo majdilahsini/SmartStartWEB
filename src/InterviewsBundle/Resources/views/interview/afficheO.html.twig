@@ -1,0 +1,52 @@
+{% extends '@User/Default/entreprisehome.html.twig' %}
+{% block banner %}
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Listes des inscription au offres
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+    {% block content %}
+<div class="album py-5 bg-light">
+        <h2>Selectionner le condidat </h2>
+        <a href="{{ path('afficherInterview') }}" class="btn btn-outline-info">Retour</a>
+    <div  class="container">
+
+    <div class="row"  >
+
+        {% for formation in list %}
+
+            <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header">{{ formation.username }}</div>
+            <div class="card-body">
+                <h4 class="card-title">Poste:</h4>
+                <p class="card-text">{{ formation.poste }}</p>
+                <h4 class="card-title">lettre motivation</h4>
+                <p class="card-text">{{ formation.lettre_motivation }}</p>
+                    <div class="container">
+
+                        <a href="{{ path('ajouter_interview', { 'offre_id': formation.offre_id }) }}" ><button type="button" class="btn btn-sm btn-outline-info" >Accepter</button>
+                        </a>
+                        <a href="{{ path('refuserDemandeinterview', { 'offre_id': formation.offre_id }) }}" ><button type="button" class="btn btn-sm btn-outline-danger" >Refuser</button>
+                        </a>
+
+                    </div>
+
+            </div>
+            </div>
+    {% endfor %}
+        <br>
+        </div>
+
+    </div>
+
+
+</div>
+    {% endblock %}

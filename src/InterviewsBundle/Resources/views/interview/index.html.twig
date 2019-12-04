@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Interviews list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Refent</th>
+                <th>Dateent</th>
+                <th>Heureent</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for interview in interviews %}
+            <tr>
+                <td><a href="{{ path('interview_show', { 'refEnt': interview.refEnt }) }}">{{ interview.refEnt }}</a></td>
+                <td>{% if interview.dateEnt %}{{ interview.dateEnt|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ interview.heureEnt }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('interview_show', { 'refEnt': interview.refEnt }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('interview_edit', { 'refEnt': interview.refEnt }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('interview_new') }}">Create a new interview</a>
+        </li>
+    </ul>
+{% endblock %}
