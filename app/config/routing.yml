@@ -1,8 +1,3 @@
-
-
-
-
-
 reclamation1_reclamation:
     resource: "@Reclamation1Bundle/Controller/ReclamationController.php"
     type:     annotation
