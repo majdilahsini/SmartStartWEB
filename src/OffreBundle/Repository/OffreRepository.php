@@ -48,7 +48,7 @@ class OffreRepository extends \Doctrine\ORM\EntityRepository
 
         public function getUserLangue($id) {
             $q = $this->getEntityManager()
-                ->createQuery("select IDENTITY(o.langue1Ref), IDENTITY(o.langue2Ref) from OffreBundle:UserLangues o where o.userId= :id")
+                ->createQuery("select IDENTITY(o.langue1Ref), IDENTITY(o.langue2Ref) from OffreBundle:UserLangues o where o.user= :id")
                 ->setParameter('id', $id);
 
             try {

@@ -224,8 +224,8 @@ class OffresController extends Controller
         if ($note_competences > 80)
             $pieChart->getOptions()->setColors(['#007A03']);
         elseif ($note_competences < 40)
-
             $pieChart->getOptions()->setColors(['#da0833']);
+
         $pieChart->getOptions()->getLegend()->setPosition('none');
         $pieChart->getOptions()->getHAxis()->setMinValue(0);
 

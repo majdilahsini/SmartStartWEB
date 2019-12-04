@@ -296,12 +296,20 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_user_homepage:
 
-        // mon_profil
-        if ('/monprofil' === $pathinfo) {
-            return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::monprofilAction',  '_route' => 'mon_profil',);
+        if (0 === strpos($pathinfo, '/monprofil')) {
+            // mon_profil
+            if ('/monprofil' === $pathinfo) {
+                return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::monprofilAction',  '_route' => 'mon_profil',);
+            }
+
+            // modifier_profil
+            if (preg_match('#^/monprofil/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'modifier_profil']), array (  '_controller' => 'UserBundle\\Controller\\DefaultController::modifierprofilAction',));
+            }
+
         }
 
-        if (0 === strpos($pathinfo, '/offre')) {
+        elseif (0 === strpos($pathinfo, '/offre')) {
             if (0 === strpos($pathinfo, '/offre/offres')) {
                 // offres_index
                 if ('/offre/offres' === $trimmedPathinfo) {

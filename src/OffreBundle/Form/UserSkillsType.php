@@ -14,19 +14,15 @@ class UserSkillsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-                ->add('skill1',EntityType::class,
-                    array('class' => 'OffreBundle:Skills',
-                          'choice_label'=>'name',
-                          'multiple'=>false))
-                ->add('skill2',EntityType::class,
-                    array('class' => 'OffreBundle:Skills',
-                        'choice_label'=>'name',
-                        'multiple'=>false))
-                ->add('skill3',EntityType::class,
-                    array('class' => 'OffreBundle:Skills',
-                        'choice_label'=>'name',
-                        'multiple'=>false));
+        $builder->add('skill1',EntityType::class, array('class' => 'OffreBundle:Skills',
+                    'choice_label'=>'name',
+                    'multiple'=>false))
+                ->add('skill2',EntityType::class, array('class' => 'OffreBundle:Skills',
+                    'choice_label'=>'name',
+                    'multiple'=>false))
+                ->add('skill3',EntityType::class, array('class' => 'OffreBundle:Skills',
+                    'choice_label'=>'name',
+                    'multiple'=>false));
     }/**
      * {@inheritdoc}
      */

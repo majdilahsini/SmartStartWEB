@@ -21,6 +21,7 @@ class UsersType extends AbstractType
                                     array('label' =>'Type ',
                                         'choices' => array( 'Utilisateur Normale' => 'ROLE_USER', 'Entreprise' => 'ROLE_ENTREPRISE'),
                                         'required' => true, 'multiple' => true));
+
             }/**
      * {@inheritdoc}
      */
