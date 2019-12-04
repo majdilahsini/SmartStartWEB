@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserSkills
  *
- * @ORM\Table(name="user_skills", indexes={@ORM\Index(name="fk_skills", columns={"skill1_id"})})
+ * @ORM\Table(name="user_skills")})
  * @ORM\Entity
  */
 class UserSkills
@@ -51,6 +51,72 @@ class UserSkills
      * })
      */
     private $skill3;
+
+    /**
+     * @return \Skills
+     */
+    public function getSkill1()
+    {
+        return $this->skill1;
+    }
+
+    /**
+     * @param \Skills $skill1
+     */
+    public function setSkill1($skill1)
+    {
+        $this->skill1 = $skill1;
+    }
+
+    /**
+     * @return \Skills
+     */
+    public function getSkill2()
+    {
+        return $this->skill2;
+    }
+
+    /**
+     * @param \Skills $skill2
+     */
+    public function setSkill2($skill2)
+    {
+        $this->skill2 = $skill2;
+    }
+
+    /**
+     * @return \Skills
+     */
+    public function getSkill3()
+    {
+        return $this->skill3;
+    }
+
+    /**
+     * @param \Skills $skill3
+     */
+    public function setSkill3($skill3)
+    {
+        $this->skill3 = $skill3;
+    }
+
+    /**
+     * @return \UserBundle\Entity\Users
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param \UserBundle\Entity\Users $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+
 
 
 

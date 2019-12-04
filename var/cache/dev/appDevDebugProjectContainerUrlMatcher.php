@@ -359,7 +359,20 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_user_homepage:
 
-        if (0 === strpos($pathinfo, '/offre')) {
+        if (0 === strpos($pathinfo, '/monprofil')) {
+            // mon_profil
+            if ('/monprofil' === $pathinfo) {
+                return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::monprofilAction',  '_route' => 'mon_profil',);
+            }
+
+            // modifier_profil
+            if (preg_match('#^/monprofil/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'modifier_profil']), array (  '_controller' => 'UserBundle\\Controller\\DefaultController::modifierprofilAction',));
+            }
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/offre')) {
             if (0 === strpos($pathinfo, '/offre/offres')) {
                 // offres_index
                 if ('/offre/offres' === $trimmedPathinfo) {
@@ -451,6 +464,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'OffreBundle\\Controller\\OffresController::newAction',  '_route' => 'ajouter_offre',);
             }
 
+            // accepter_candidature
+            if (0 === strpos($pathinfo, '/offre/acceptercandidature') && preg_match('#^/offre/acceptercandidature/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'accepter_candidature']), array (  '_controller' => 'OffreBundle\\Controller\\ApplicationsController::accepterAction',));
+            }
+
             if (0 === strpos($pathinfo, '/offre/listoffre')) {
                 // read_offre
                 if ('/offre/listoffre' === $pathinfo) {
@@ -500,9 +518,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'consulter_offre']), array (  '_controller' => 'OffreBundle\\Controller\\OffresController::consulterOffreAction',));
             }
 
+            // candidatures_offre
+            if (0 === strpos($pathinfo, '/offre/candidatures') && preg_match('#^/offre/candidatures/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'candidatures_offre']), array (  '_controller' => 'OffreBundle\\Controller\\ApplicationsController::affichercandidaturesAction',));
+            }
+
             // postuler_offre
             if (0 === strpos($pathinfo, '/offre/postuleroffre') && preg_match('#^/offre/postuleroffre/(?P<id>[^/]++)/(?P<match>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'postuler_offre']), array (  '_controller' => 'OffreBundle\\Controller\\ApplicationsController::postulerAction',));
+            }
+
+            // refuser_candidature
+            if (0 === strpos($pathinfo, '/offre/refusercandidature') && preg_match('#^/offre/refusercandidature/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'refuser_candidature']), array (  '_controller' => 'OffreBundle\\Controller\\ApplicationsController::refuserAction',));
             }
 
         }

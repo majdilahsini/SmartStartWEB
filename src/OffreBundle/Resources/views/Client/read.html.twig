@@ -58,19 +58,31 @@
         <div class="companies">
             {% for offre in offres %}
 
-                {% set test = 0 %}
+
+
+                {% set test = -1 %}
+
                 {% for application in applications %}
                     {% if offre.id == application.offre.id %}
-                            {% set test = 1 %}
-                      {% endif %}
-                    {% endfor %}
-
-            {% if test == 1 %}
-            <div class="company-list" style="background-color: #F8FFFD">
-                {% else %}
-
-                <div class="company-list">
+                        {% if app.request.pathinfo == "/offre/listoffre" %}
+                            {% set test = 4 %}
+                        {% elseif app.request.pathinfo == "/offre/mescandidatures" %}
+                            {% set test = application.etat %}
+                        {% endif %}
                     {% endif %}
+                {% endfor %}
+
+            {% if test == 4 %}
+            <div class="company-list" style="background-color: #F3FFFA">
+             {% elseif test == 0 %}
+                <div class="company-list" style="background-color: #FFFECA">
+                    {% elseif test == 1 %}
+                    <div class="company-list" style="background-color: #CAFFDC">
+                        {% elseif test == 2 %}
+                        <div class="company-list" style="background-color: #FFCACA">
+              {% else %}
+                  <div class="company-list">
+                {% endif %}
 
                 <div class="row">
                     <div class="col-md-2 col-sm-2">
@@ -100,7 +112,11 @@
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2">
-                        <a href={{ path('consulter_offre', {'id':offre.id}) }}><button type="submit" class="btn view-job" style="align-self: center" name="View Job">Consulter</button></a>
+                        {% if test == 1 %}
+                        <a href={{ path('consulter_offre', {'id':offre.id}) }}><button style="background-color: #267747;" type="submit" class="btn view-job" style="align-self: center" name="View Job">Consulter</button></a>
+                        {% else %}
+                            <a href={{ path('consulter_offre', {'id':offre.id}) }}><button type="submit" class="btn view-job" style="align-self: center" name="View Job">Consulter</button></a>
+                        {% endif %}
                     </div>
                 </div>
 

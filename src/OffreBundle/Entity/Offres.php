@@ -26,7 +26,8 @@ class Offres
      *
      * @ORM\Column(name="titre", type="string", length=100, nullable=false)
      */
-    private $titre;
+
+     private $titre;
 
     /**
      * @var \DateTime
@@ -36,9 +37,9 @@ class Offres
     private $datePublication;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="niveau_etude", type="string", length=20, nullable=false)
+     * @ORM\Column(name="niveau_etude", type="integer", length=20, nullable=false)
      */
     private $niveauEtude;
 
