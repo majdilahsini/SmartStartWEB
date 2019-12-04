@@ -64,10 +64,10 @@ class UserLangues extends \OffreBundle\Entity\UserLangues implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'userId', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'langue1Ref', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'langue2Ref'];
+            return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'user', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'langue1Ref', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'langue2Ref'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'userId', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'langue1Ref', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'langue2Ref'];
+        return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'user', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'langue1Ref', '' . "\0" . 'OffreBundle\\Entity\\UserLangues' . "\0" . 'langue2Ref'];
     }
 
     /**
@@ -173,4 +173,70 @@ class UserLangues extends \OffreBundle\Entity\UserLangues implements \Doctrine\O
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getUser()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
+
+        return parent::getUser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUser($user)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', [$user]);
+
+        return parent::setUser($user);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLangue1Ref()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLangue1Ref', []);
+
+        return parent::getLangue1Ref();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLangue1Ref($langue1Ref)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLangue1Ref', [$langue1Ref]);
+
+        return parent::setLangue1Ref($langue1Ref);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLangue2Ref()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLangue2Ref', []);
+
+        return parent::getLangue2Ref();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLangue2Ref($langue2Ref)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLangue2Ref', [$langue2Ref]);
+
+        return parent::setLangue2Ref($langue2Ref);
+    }
+
 }
