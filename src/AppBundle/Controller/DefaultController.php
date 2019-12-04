@@ -14,15 +14,18 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $authChecker = $this->container->get('security.authorization_checker');
-        if ($authChecker->isGranted('ROLE_ENTREPRISE')) {
+        if ($authChecker->isGranted('ROLE_ADMIN'))
+            return $this->render('@User/Default/adminhome.html.twig');
+        else if ($authChecker->isGranted('ROLE_ENTREPRISE')) {
             return $this->render('@User/Default/entreprisehome.html.twig');
-        }
-        else if ($authChecker->isGranted('ROLE_USER'))
+        } else if ($authChecker->isGranted('ROLE_USER'))
             return $this->render('@User/Default/userhome.html.twig');
+
         else {
-        return $this->render('Default/index.html.twig');
+            return $this->render('Default/index.html.twig');
+        }
     }
-    }
+
 
     public function loginAction(Request $request)
     {
