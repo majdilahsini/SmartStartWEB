@@ -1,5 +1,24 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href={{ asset('assets/bootstrap/css/bootstrap.min.css')}}>
+    <link rel="stylesheet" href={{ asset('assets/fonts/ionicons.min.css')}}>
+    <link rel="stylesheet" href={{ asset('assets/css/Login-Form-Clean.css')}}>
+    <link rel="stylesheet" href={{ asset('assets/css/Login-Form-Dark.css')}}>
+    <link rel="stylesheet" href={{ asset('"assets/css/styles.css')}}>
+{% endblock %}
+
 {% block fos_user_content %}
+<div class="login-dark">
 {% include "@FOSUser/Registration/register_content.html.twig" %}
+</div>
 {% endblock fos_user_content %}
+
+{% block javascripts %}
+    <script src={{asset('assets/js/jquery.min.js')}}></script>
+    <script src={{asset('assets/bootstrap/js/bootstrap.min.js')}}></script>
+{% endblock %}
+
+
+
+

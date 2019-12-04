@@ -1,5 +1,23 @@
 {% extends '@User/Default/entreprisehome.html.twig' %}
 
+
+        {% block stylesheets %}
+
+            <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+            <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/main2.css') }}">
+
+        {% endblock %}
+
         {% block banner %}
             <section class="banner-area relative" id="home">
                 <div class="overlay overlay-bg"></div>
@@ -16,13 +34,67 @@
             </section>
         {% endblock %}
 
+
         {% block content %}
+    <section class="profile-detail" >
+        <div class="container" >
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="basic-information" align="center">
+                        <p style="font-weight: bold; font-size: 30px"> Ajouter une Offre:</p>
+                        {{ form_start(form, {'atr' : {'class' : 'serach-form-area'}}) }}
+                            <table style="width: 450px; border-collapse:separate; border-spacing: 0 15px">
+                                <tbody>
+                                <tr style="height: 22px; ">
+                                    <td style="width: 300px; height: 22px;">{{ form_label(form.titre, "Titre", {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 425.2px; height: 22px;">{{ form_widget(form.titre, {'attr' : {'class' :'input-smartstart'}})}}</td>
+                                </tr>
+                                <tr style="height: 22px;">
+                                    <td style="width: 300px; height: 22px;">{{ form_label(form.niveauEtude, 'Niveau d\'Etude', {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 200px; height: 22px;">{{ form_widget(form.niveauEtude, {'attr' : {'class' :'input-smartstart'}})}}</td>
+                                </tr>
+                                <tr style="height: 22px;">
+                                    <td style="width: 300px; height: 22px;">{{ form_label(form.salaire, 'Salaire', {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 200px; height: 22px;">{{ form_widget(form.salaire, {'attr' : {'class' :'input-smartstart'}})}}</td>
+                                </tr>
+                                <tr style="height: 22px;">
+                                    <td style="width: 3008px; height: 22px;">{{ form_label(form.domaine, 'Domaine', {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 425.2px; height: 22px;">{{ form_widget(form.domaine, {'attr' : {'class' :'combobox-smartstart'}})}}</td>
+                                </tr>
+                                <tr style="height: 22px;">
+                                    <td style="width: 300px; height: 22px;">{{ form_label(form.typePost, 'Type de Poste', {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 425.2px; height: 22px;">{{ form_widget(form.typePost, {'attr' : {'class' :'combobox-smartstart'}})}}</td>
+                                    </tr>
+                                <tr style="height: 22px;">
+                                    <td style="width: 300px; height: 22px;">{{ form_label(form.skill1, 'Compétence 1', {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 425.2px; height: 22px;">{{ form_widget(form.skill1, {'attr' : {'class' :'combobox-smartstart'}})}}</td>
+                                </tr>
+                                <tr style="height: 22px;">
+                                    <td style="width: 300px; height: 22px;">{{ form_label(form.skill2, 'Compétence 2', {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 425.2px; height: 22px;">{{ form_widget(form.skill2, {'attr' : {'class' :'combobox-smartstart'}})}}</td>
+                                </tr>
+                                <tr style="height: 22px;">
+                                    <td style="width: 300px; height: 22px;">{{ form_label(form.skill3, 'Compétence 3', {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 425.2px; height: 22px;">{{ form_widget(form.skill3, {'attr' : {'class' :'combobox-smartstart'}})}}</td>
+                                </tr>
+                                <tr style="height: 22px;">
+                                    <td style="width: 300px; height: 22px;">{{ form_label(form.langueRef, 'Langue', {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 425.2px; height: 22px;">{{ form_widget(form.langueRef, {'attr' : {'class' :'combobox-smartstart'}})}}</td>
+                                </tr>
+                                <tr style="height: 22.6px;">
+                                        <td style="width: 425.2px; height: 22.6px; padding-top: 50px" align="right">  <input class="submit-smartstart" type="submit" value="Confirmer" ></td>
+                                        <td style="width: 425.2px; height: 22.6px; padding-top: 50px"  align="left">  <input class="submit-smartstart" type="submit" value="Cancel" ></td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-            {{ form_start(form)  }}
-            <input type="submit" value="ajouter">
-            {{ form_end(form) }}
-
-        {% endblock %}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+         {% endblock %}
 
         {% block javascripts %}
             <script src="../../js/vendor/jquery-2.2.4.min.js"></script>
@@ -40,4 +112,5 @@
             <script src="../../js/parallax.min.js"></script>
             <script src="../../js/mail-script.js"></script>
             <script src="../../js/main.js"></script>
+
         {% endblock %}

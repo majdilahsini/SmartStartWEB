@@ -3,6 +3,8 @@
 namespace OffreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 
 /**
  * ClubRepository
@@ -19,6 +21,96 @@ class OffreRepository extends \Doctrine\ORM\EntityRepository
 
             return $query = $q->getResult();
         }
+
+        public function getUserSkills($id) {
+            $q = $this->getEntityManager()
+                ->createQuery("select IDENTITY(o.skill1), IDENTITY(o.skill2), IDENTITY(o.skill3) from OffreBundle:UserSkills o where o.user= :id")
+                ->setParameter('id', $id);
+
+            try {
+                return $query = $q->getSingleResult();
+            } catch (NoResultException $e) {
+            } catch (NonUniqueResultException $e) {
+            }
+        }
+
+        public function getOffreSkills($id) {
+            $q = $this->getEntityManager()
+                ->createQuery("select IDENTITY(o.skill1), IDENTITY(o.skill2), IDENTITY(o.skill3) from OffreBundle:Offres o where o.id= :id")
+                ->setParameter('id', $id);
+
+            try {
+                return $query = $q->getSingleResult();
+            } catch (NoResultException $e) {
+            } catch (NonUniqueResultException $e) {
+            }
+        }
+
+        public function getUserLangue($id) {
+            $q = $this->getEntityManager()
+                ->createQuery("select IDENTITY(o.langue1Ref), IDENTITY(o.langue2Ref) from OffreBundle:UserLangues o where o.user= :id")
+                ->setParameter('id', $id);
+
+            try {
+                return $query = $q->getSingleResult();
+            } catch (NoResultException $e) {
+            } catch (NonUniqueResultException $e) {
+            }
+        }
+
+        public function getNbrCandidatures($id) {
+            $q = $this->getEntityManager()
+                ->createQuery("select COUNT(o) from OffreBundle:Applications o where IDENTITY(o.offre)= :id")
+                ->setParameter('id', $id);
+
+            try {
+                return $query = $q->getSingleScalarResult();
+            } catch (NoResultException $e) {
+            } catch (NonUniqueResultException $e) {
+            }
+        }
+
+        public function getMesCandidatures($id) {
+
+            $q = $this->getEntityManager()
+                ->createQuery("select o from OffreBundle:Offres o where o.id in (select IDENTITY(u.offre) from OffreBundle:Applications u where IDENTITY(u.user)= :id)")
+                ->setParameter('id', $id);
+
+            try {
+                return $quer = $q ->getResult();
+            } catch (NoResultException $e) {
+            } catch (NonUniqueResultException $e) {
+            }
+        }
+
+        public function checkifpostuler($id, $user_id) {
+
+            $q = $this->getEntityManager()
+                ->createQuery("select count(c) from OffreBundle:Applications c where IDENTITY(c.user) = :idu and IDENTITY(c.offre) = :id")
+                ->setParameters(array('idu' => $user_id, 'id' => $id));
+
+            try {
+                return $query = $q->getSingleScalarResult();
+            } catch (NoResultException $e) {
+            } catch (NonUniqueResultException $e) {
+            }
+
+        }
+
+    public function getOffreUsers($id) {
+
+        $q = $this->getEntityManager()
+            ->createQuery("select o from UserBundle:Users o where o.id in (select IDENTITY(u.user) from OffreBundle:Applications u where IDENTITY(u.offre)= :id)")
+            ->setParameter('id', $id);
+
+
+        try {
+            return $quer = $q->getResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+
 
 
 

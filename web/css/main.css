@@ -1864,6 +1864,45 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
+.form-submit {
+  text-align: right; }
+
+.submit {
+  width: 150px;
+  height: 50px;
+  display: inline-block;
+  font-family: 'Poppins';
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px; }
+
+#submit {
+  background: #267747;
+  color: #fff;
+  margin-right: 25px; }
+
+.submit {
+  width: 100%; }
+#submit {
+  margin-bottom: 20px;
+  margin-right: 0px; }
+
+#reset {
+  background: #fff;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: #999;
+  border: 2px solid #ebebeb; }
+
+
 .form-select .nice-select {
   border: none;
   border-radius: 0px;

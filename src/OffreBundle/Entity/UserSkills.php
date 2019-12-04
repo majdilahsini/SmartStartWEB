@@ -7,40 +7,118 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserSkills
  *
- * @ORM\Table(name="user_skills", indexes={@ORM\Index(name="fk_skills", columns={"skill1_id"})})
+ * @ORM\Table(name="user_skills")})
  * @ORM\Entity
  */
 class UserSkills
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="user_id", type="integer", nullable=false)
+     * @var \UserBundle\Entity\Users
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
      */
-    private $userId;
+    private $user;
 
     /**
-     * @var integer
+     * @var \Skills
      *
-     * @ORM\Column(name="skill1_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Skills")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="skill1_id", referencedColumnName="id")
+     * })
      */
-    private $skill1Id;
+    private $skill1;
 
     /**
-     * @var integer
+     * @var \Skills
      *
-     * @ORM\Column(name="skill2_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Skills")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="skill2_id", referencedColumnName="id")
+     * })
      */
-    private $skill2Id;
+    private $skill2;
 
     /**
-     * @var integer
+     * @var \Skills
      *
-     * @ORM\Column(name="skill3_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Skills")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="skill3_id", referencedColumnName="id")
+     * })
      */
-    private $skill3Id;
+    private $skill3;
+
+    /**
+     * @return \Skills
+     */
+    public function getSkill1()
+    {
+        return $this->skill1;
+    }
+
+    /**
+     * @param \Skills $skill1
+     */
+    public function setSkill1($skill1)
+    {
+        $this->skill1 = $skill1;
+    }
+
+    /**
+     * @return \Skills
+     */
+    public function getSkill2()
+    {
+        return $this->skill2;
+    }
+
+    /**
+     * @param \Skills $skill2
+     */
+    public function setSkill2($skill2)
+    {
+        $this->skill2 = $skill2;
+    }
+
+    /**
+     * @return \Skills
+     */
+    public function getSkill3()
+    {
+        return $this->skill3;
+    }
+
+    /**
+     * @param \Skills $skill3
+     */
+    public function setSkill3($skill3)
+    {
+        $this->skill3 = $skill3;
+    }
+
+    /**
+     * @return \UserBundle\Entity\Users
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param \UserBundle\Entity\Users $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+
+
+
 
 
 }
