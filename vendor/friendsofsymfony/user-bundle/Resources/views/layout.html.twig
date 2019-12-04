@@ -4,16 +4,11 @@
         <meta charset="UTF-8" />
     </head>
     <body>
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            {% endif %}
-        </div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+
+
 
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashbag.all() %}
@@ -69,27 +64,7 @@
 </head>
 <body>
 {% block nav %}
-    <header id="header" id="home">
-        <div class="container">
-            <div class="row align-items-center justify-content-between d-flex">
-                <div id="logo">
-                    <a href={{ path('index') }}><img src="img/logo.png" alt="" title="" style="width:158px;height:30px;"/></a>
-                </div>
-                <nav id="nav-menu-container">
-                    <ul class="nav-menu">
-                        <li class="menu-active"><a href={{ path('index') }}>Home</a></li>
-                        <li class="menu-active"><a href={{ path('index') }}>Les Offres</a></li>
-                        <li class="menu-active"><a href={{ path('index') }}>Les Formations</a></li>
-                        <li class="menu-active"><a href={{ path('index') }}>Crowdfundings</a></li>
-                        <li class="menu-active"><a href={{ path('index') }}>Forum</a></li>
 
-                        <li><a class="ticker-btn" href="{{ path('fos_user_registration_register') }}">Signup</a></li>
-                        <li><a class="ticker-btn" href="{{ path('fos_user_security_login') }}">Login</a></li>
-                    </ul>
-                </nav><!-- #nav-menu-container -->
-            </div>
-        </div>
-    </header><!-- #header -->
 {% endblock %}
 
 {% block banner %}
@@ -99,11 +74,7 @@
 {% endblock %}
 
 {% block footer %}
-    <footer class="footer-area section-gap">
-        <p class="footer-text text-white" align="center">
-            Copyright All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="" target="_blank">Shadowteam</a>
-        </p>
-    </footer>
+
 {% endblock %}
 <center>
 <div>
