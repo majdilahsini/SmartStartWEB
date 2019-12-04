@@ -932,3 +932,4 @@ ea46bf,::1,GET,http://localhost/pidev/web/app_dev.php/img/fav.png,1575480560,419
 68baf6,::1,GET,http://localhost/pidev/web/app_dev.php/login,1575480561,,200
 1b42ab,::1,POST,http://localhost/pidev/web/app_dev.php/login_check,1575480565,,302
 b64b3a,::1,GET,http://localhost/pidev/web/app_dev.php/index,1575480565,,200
+6a757a,::1,GET,http://localhost/pidev/web/app_dev.php/index,1575481297,,200
