@@ -268,10 +268,16 @@ class Swift_Transport_StreamBuffer extends Swift_ByteStream_AbstractFilterableIn
         if (!empty($this->_params['sourceIp'])) {
             $options['socket']['bindto'] = $this->_params['sourceIp'].':0';
         }
+        $options = array_merge($options, array('ssl' => array('allow_self_signed' => true, 'verify_peer' => false)));
         if (isset($this->_params['stream_context_options'])) {
             $options = array_merge($options, $this->_params['stream_context_options']);
         }
+        $https['ssl']['verify_peer'] = FALSE;
+        $https['ssl']['verify_peer_name'] = FALSE;
+        $options['ssl']['verify_peer'] = FALSE;
+        $options['ssl']['verify_peer_name'] = FALSE;
         $streamContext = stream_context_create($options);
+
         $this->_stream = @stream_socket_client($host.':'.$this->_params['port'], $errno, $errstr, $timeout, STREAM_CLIENT_CONNECT, $streamContext);
         if (false === $this->_stream) {
             throw new Swift_TransportException(

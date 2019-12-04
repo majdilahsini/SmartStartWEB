@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
+    'Toiba\\FullCalendarBundle\\' => array($vendorDir . '/toiba/fullcalendar-bundle'),
     'Tests\\' => array($baseDir . '/tests'),
     'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
     'Symfony\\Polyfill\\Php70\\' => array($vendorDir . '/symfony/polyfill-php70'),
@@ -58,5 +59,6 @@ return array(
     'Doctrine\\Bundle\\DoctrineBundle\\' => array($vendorDir . '/doctrine/doctrine-bundle'),
     'Composer\\CaBundle\\' => array($vendorDir . '/composer/ca-bundle/src'),
     'Clue\\StreamFilter\\' => array($vendorDir . '/clue/stream-filter/src'),
+    'AncaRebeca\\FullCalendarBundle\\' => array($vendorDir . '/ancarebeca/full-calendar-bundle'),
     '' => array($baseDir . '/src'),
 );

@@ -1,0 +1,121 @@
+{% extends '@User/Default/entreprisehome.html.twig' %}
+{% block meta %}
+
+{% endblock %}
+            {% block stylesheets %}
+                <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+                <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+                <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+                <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+                <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+                <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+                <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+                <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+                <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+                <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+            {% endblock %}
+
+
+        {% block banner %}
+            <section class="banner-area relative" id="home">
+                <div class="overlay overlay-bg"></div>
+                <div class="container">
+                    <div class="row d-flex align-items-center justify-content-center">
+                        <div class="about-content col-lg-12">
+                            <h1 class="text-white">
+                                Créer projet
+                            </h1>
+                            <p class="text-white link-nav"><a href="index.html.twig">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="category.html"> Créer projet </a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endblock %}
+
+ {% block content %}
+ <
+
+
+     <div style="background-color: #CFD8DC">
+         <br>
+         <br>
+         <div class="container">
+
+             {{ form_start(form) }}
+             <div class="row align-items-center">
+                 <div  class="col-4" >
+
+
+                     <div class="contact-form">
+                         <div class="input-fields" >
+
+                             {{ form_row(form.nomProjet) }}
+                             {{ form_row(form.idCategorie) }}
+                             {{ form_row(form.votreFinance) }}
+                             {{ form_row(form.montant) }}
+                             {{ form_row(form.compteBancaire) }}
+                             {{ form_row(form.dateDebutProjet) }}
+                             {{ form_row(form.dateFinProjet) }}
+
+
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-4">
+                 </div>
+
+                 <div  class="col-4">
+                     <div class="contact-form">
+                         <div class="input-fields" >
+
+
+                             {{ form_row(form.adresseProjet) }}
+                             {{ form_row(form.telProjet) }}
+                             {{ form_row(form.nbreTeam) }}
+                             {{ form_row(form.descriptionProjet) }}
+                             {{ form_row(form.emailProjet) }}
+                             {{ form_row(form.image, {attr: { value : 'IT-Professional.jpg' } }) }}
+                             {{ form_widget(form) }}
+
+
+
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+         </div>
+         <center><input type="submit" value="Ajouter Projet"  class="btn" />
+
+             {{ form_end(form) }}
+
+             <ul>
+                 <li>
+                     <a href="{{ path('projet_index') }} " class="">Back to the list</a>
+                 </li>
+             </ul>
+         </center>
+     </div>
+
+ {% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+        <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/easing.min.js') }}"></script>
+        <script src="{{ asset('js/hoverIntent.js') }}"></script>
+        <script src="{{ asset('js/superfish.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+        <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+        <script src="{{ asset('js/mail-script.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }} " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    {% endblock %}
+
+
+
+
+

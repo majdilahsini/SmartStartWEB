@@ -1,56 +1,97 @@
 {% extends 'base.html.twig' %}
 
-{% block nav %}
-    <header id="header" id="home">
-        <div class="container">
-            <div class="row align-items-center justify-content-between d-flex">
-                <div id="logo">
-                    <a href={{ path('index') }}><img src="img/logo.png" alt="" title="" style="width:158px;height:30px;"/></a>
-                </div>
-                <nav id="nav-menu-container">
-                    <ul class="nav-menu">
-                        <li class="menu-active"><a href={{ path('index') }}>Home</a></li>
-                        <li class="menu-has-children"><a href="">Les Offres</a>
-                            <ul>
-                                <li><a href={{ path('ajouter_offre') }}>Ajouter une offre</a></li>
-                                <li><a href={{ path('mes_offre') }}>Consulter vos offres</a></li>
-                                <li><a href={{ path('read_offre') }}>Consulter toutes les offres</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-has-children"><a href="">Les Formations</a>
-                            <ul>
-                                <li><a href="elements.html">Ajouter une formation</a></li>
-                                <li><a href="search.html">Consulter vos formations</a></li>
-                                <li><a href="single.html">Consulter toutes les formations</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-has-children"><a href="">Crowdfundings</a>
-                            <ul>
-                                <li><a href="elements.html">Ajouter un projet</a></li>
-                                <li><a href="search.html">Consulter vos projets</a></li>
-                                <li><a href="single.html">Consulter toutes les projets</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="menu-has-children"><a href="">Mon Espace</a>
-                            <ul>
-                                <li><a href="">Mon Profil</a></li>
-                                <li><a href="">Mes Offres</a></li>
-                                <li><a href="">Mes Formations</a></li>
-                                <li><a href="">Mes Entretiens</a></li>
-                                <li><a href="">Mes Crowdfundings</a></li>
-                                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav><!-- #nav-menu-container -->
-            </div>
-        </div>
-    </header><!-- #header -->
-{% endblock %}
 
 {% block banner %}
+    <section class="features-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature">
+                        <h4>Searching</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature">
+                        <h4>Applying</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature">
+                        <h4>Security</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature">
+                        <h4>Notifications</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="banner-area relative" id="home">
+        {% block nav %}
+            <header id="header" id="home">
+                <div class="container">
+                    <div class="row align-items-center justify-content-between d-flex">
+                        <div id="logo">
+                            <a href={{ path('index') }}><img src="img/logo.png" alt="" title="" style="width:158px;height:30px;"/></a>
+                        </div>
+                        <nav id="nav-menu-container">
+                            <ul class="nav-menu">
+                                <li class="menu-active"><a href={{ path('index') }}>Home</a></li>
+                                <li class="menu-has-children"><a href="">Les Offres</a>
+                                    <ul>
+                                        <li><a href={{ path('ajouter_offre') }}>Ajouter une offre</a></li>
+                                        <li><a href={{ path('mes_offre') }}>Consulter vos offres</a></li>
+                                        <li><a href={{ path('read_offre') }}>Consulter toutes les offres</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-has-children"><a href="">Les Formations</a>
+                                    <ul>
+                                        <li><a href="elements.html">Ajouter une formation</a></li>
+                                        <li><a href="search.html">Consulter vos formations</a></li>
+                                        <li><a href="single.html">Consulter toutes les formations</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-has-children"><a href="">Crowdfundings</a>
+                                    <ul>
+                                        <li><a href="{{ path('projet_new') }}">Ajouter un projet</a></li>
+                                        <li><a href="{{ path('projet_index') }}">Consulter vos projets</a></li>
+                                        <li><a href="{{ path('projet_indexall') }}">Consulter toutes les projets</a></li>
+                                        <li><a href="{{ path('projet_show_invest') }}">Consulter Mes Invesstissement</a></li>
+
+                                        <li><a href="{{ path('projet_index') }}">Mes Projet Favorite Projet</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="menu-has-children"><a href="">Mon Espace</a>
+                                    <ul>
+                                        <li><a href="">Mon Profil</a></li>
+                                        <li><a href="">Mes Offres</a></li>
+                                        <li><a href="">Mes Formations</a></li>
+                                        <li><a href="">Mes Entretiens</a></li>
+                                        <li><a href="">Mes Crowdfundings</a></li>
+                                        <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav><!-- #nav-menu-container -->
+                    </div>
+                </div>
+            </header><!-- #header -->
+        {% endblock %}
         <div class="overlay overlay-bg"></div>
         <div class="container">
             <div class="row fullscreen d-flex align-items-center justify-content-center">
@@ -93,44 +134,6 @@
                         </div>
                     </form>
                     <!--<p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development</p>-->
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="features-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-feature">
-                        <h4>Searching</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-feature">
-                        <h4>Applying</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-feature">
-                        <h4>Security</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-feature">
-                        <h4>Notifications</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing.
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
