@@ -1,0 +1,9 @@
+project_projet:
+    resource: "@ProjectBundle/Resources/config/routing/projet.yml"
+    prefix:   /projet
+project_projet_user:
+    resource: "@ProjectBundle/Resources/config/routing/projetuser.yml"
+    prefix:   /projetuser
+project_homepage:
+    path:     /
+    defaults: { _controller: ProjectBundle:Default:index }

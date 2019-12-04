@@ -1,0 +1,65 @@
+projet_index:
+    path:     /
+    defaults: { _controller: "ProjectBundle:Projet:index" }
+    methods:  GET
+
+projet_show:
+    path:     /{idProjet}/show
+    defaults: { _controller: "ProjectBundle:Projet:show" }
+    methods:  [GET, POST]
+
+projet_new:
+    path:     /new
+    defaults: { _controller: "ProjectBundle:Projet:new" }
+    methods:  [GET, POST]
+projet_domaine:
+    path:     /{domaine}/domaine
+    defaults: { _controller: "ProjectBundle:Projet:domaine" }
+    methods:  [GET, POST]
+
+projet_edit:
+    path:     /{idProjet}/edit
+    defaults: { _controller: "ProjectBundle:Projet:edit" }
+    methods:  [GET, POST]
+
+projet_delete:
+    path:     /{idProjet}/delete
+    defaults: { _controller: "ProjectBundle:Projet:delete" }
+    methods:  DELETE
+projet_indexall:
+    path:     /indexall
+    defaults: { _controller: "ProjectBundle:Projet:indexall" }
+    methods:  GET
+projet_show_visiteur_projet:
+    path:     /{idProjet}/showvisiteur
+    defaults: { _controller: "ProjectBundle:Invesstir:showvisiteur" }
+    methods:  [GET, POST]
+projet_show_invest:
+    path:     /invest
+    defaults: { _controller: "ProjectBundle:Invesstir:affichInvestissement" }
+    methods:  GET
+projet_show_mesprojet_invest:
+    path:     /investmesprojet
+    defaults: { _controller: "ProjectBundle:Invesstir:affichInvestissementMesProjet" }
+    methods:  GET
+
+recherch_ajax:
+    path:     /recherch
+    defaults: { _controller: "ProjectBundle:Projet:search" }
+    methods:  [GET, POST]
+recherch_ajaxm:
+    path:     /recherchm
+    defaults: { _controller: "ProjectBundle:Projet:searchM" }
+    methods:  [GET, POST]
+filtre_ajax:
+    path:     /investajax
+    defaults: { _controller: "ProjectBundle:Projet:filtrePro" }
+    methods:  [GET, POST]
+projet_index_domaine:
+    path:     /{idEtat}/domainfiltre
+    defaults: { _controller: "ProjectBundle:Projet:filtredom" }
+    methods:  [GET, POST]
+projet_call:
+    path:     /{idProjet}/message
+    defaults: { _controller: "ProjectBundle:Projetuser:messageadmine" }
+    methods:  [GET, POST]
