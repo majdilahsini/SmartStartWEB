@@ -41,9 +41,7 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="basic-information">
-                                <div class="col-md-3 col-sm-3">
-                                    <img src="img/microsoft.png" alt="" class="img-responsive">
-                                </div>
+
                                 <div class="col-md-9 col-sm-9">
                                     <div class="profile-content">
                                         <h2>{{ offre.titre }}<span>{{ offre.entreprise.fullname }}</span></h2>
@@ -51,7 +49,7 @@
                                         <ul class="information">
                                             <li><span>Type de Poste:</span>{{ offre.typePost.name }}</li>
                                             <li><span>Domaine:</span>{{ offre.domaine.nom }}</li>
-                                            <li><span>Niveau d'étude:</span>{{ offre.niveauEtude ~ " Ans"}}</li>
+                                            <li><span>Niveau d'étude:</span>{{ "BAC +" ~offre.niveauEtude}}</li>
                                             <li><span>Salaire:</span>{{ offre.salaire ~ " tnd"}}</li>
                                             <li><span>Compétences:</span>{{ offre.Skill1.name ~ ", " ~  offre.Skill2.name ~ ", " ~offre.Skill3.name}}</li>
                                             <li><span>Langue:</span>{{ offre.langueRef.nom}}</li>

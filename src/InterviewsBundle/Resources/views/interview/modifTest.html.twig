@@ -1,0 +1,65 @@
+{% extends '@User/Default/entreprisehome.html.twig' %}
+
+  {% block stylesheets %}
+      <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+      <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/ajout_ent.css') }}">
+
+  {% endblock %}
+
+{% block banner %}
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Modifier Entretien
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <center>
+        <div class="wrapper">
+            <br>
+            <br>
+            <div class="container">
+        <h1>Entretiens edit</h1>
+
+        {{ form_start(edit_form, {'attr': {'novalidate': 'novalidate'} })  }}
+                <div class="contact-form">
+                    <div class="input-fields" >
+
+        {% if app.session.flashBag.has('ajoute') %}
+            <div class="alert alert-danger">
+                {% for msg in app.session.flashBag.get('ajoute') %}
+                    {{ msg }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" class="btn btn-primary"/>
+        <a href="{{ path('afficherInterview') }}" class="btn btn-outline-info">Retour</a>
+                    </div></div></div></div>
+        {{ form_end(edit_form) }}
+
+        <ul>
+
+
+        </ul>
+    </center>
+
+
+{% endblock %}

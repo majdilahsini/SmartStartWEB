@@ -23,6 +23,11 @@ class AppKernel extends Kernel
             new ProjectBundle\ProjectBundle(),
             new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
 
+            new FormationBundle\FormationBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
+
+origin/master
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

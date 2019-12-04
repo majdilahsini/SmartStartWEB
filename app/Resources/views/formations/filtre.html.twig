@@ -1,0 +1,131 @@
+{% extends '@User/Default/entreprisehome.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleajout.css') }}">
+{% endblock %}
+
+{% block banner %}
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Inscriptions A mes formations
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+    <br>
+    <div class="post-container" >
+        <div class="row">
+
+<br>
+            <section class="featured section-padding"  >
+                <div class="container">
+                    <div class="row">
+
+
+                        {% for formation in list %}
+                            {% if formation.etat_id  == 1 %}
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 ">
+                            <div class="card">
+                                <div class="featured-box container ">
+                                    <figure>
+                                        <br>
+                                        <div class="homes-tag featured container"><h6>{{ formation.Nom }}</h6></div>
+                                        <div class="homes-tag rent container"><i class="lni-heart"></i> {{ formation.nom_domaine }}</div>
+
+
+                                        <a><img src="{{ asset('images/' ~ formation.image) }}" height="150px"  class="container" alt=""></a>
+                                    </figure>
+                                    <div class="content-wrapper container">
+                                        <div class="feature-content">
+                                            <h4>{{ formation.fullname }}</h4>
+
+                                            <div class="meta-tag">
+                                                <div class="listing-review">
+                                                    <span class="review-avg"><label><h6>tel :</h6></label>{{ formation.tel }}</span><br>
+                                                    <span class="review-avg"><label><h6>specialite/service :</h6></label>{{ formation.specialite }}</span><br>
+
+                                                </div>
+                                                <div class="user-name">
+                                                    <a ><i class="lni-user"></i><label><h6>ecole/Entreprise :</h6></label>{{ formation.ecole }}</a>
+                                                </div>
+                                                <div class="listing-category">
+                                                    <a ><i class="lni-alarm-clock"></i><label><h6>lettre de motivation :</h6></label><br>{{ formation.lettre_motivation }} </a><br>
+                                                    <a ><i class="lni-alarm-clock"></i><label><h6>Date inscrit :</h6></label>{{ formation.Datecreation }} </a><br>
+                                                    <i class="lni-alarm-clock"></i><label><h6>Etat :</h6></label>{% if formation.etat_id == 1 %}
+                                                    en attente
+                                                {% elseif formation.etat_id  == 2 %}
+                                                    accepte
+                                                {% else %}
+                                                    refuse
+                                                    {% endif %}
+
+
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% if formation.etat_id ==1 %}
+                                        <center>   <div class="listing-bottom clearfix">
+                                            <div class="btn-group">
+
+                                                <a href="{{ path('etat_accepte', { 'id': formation.id }) }}"><button type="button" class="btn btn-sm btn-outline-info">Accepter</button></a>
+                                                <a href="{{ path('formation_smsfromadmin', { 'id': formation.id }) }}"><button type="button" class="btn btn-sm btn-outline-info">SMS</button></a>
+
+                                                <a href="{{ path('etat_refuse', { 'id': formation.id }) }}" ><button type="button" class="btn btn-sm btn-outline-danger">Refuser</button></a>
+    <br>
+                                            </div>
+                                        </div>
+                                            <br>
+                                        </center>
+                                             {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            </section>
+
+
+
+        </div>
+
+    </div>
+    <br><br>
+{% endblock %}
+ {% block javascripts %}
+     <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+     <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+     <script src="{{ asset('js/easing.min.js') }}"></script>
+     <script src="{{ asset('js/hoverIntent.js') }}"></script>
+     <script src="{{ asset('js/superfish.min.js') }}"></script>
+     <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+     <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+     <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+     <script src="{{ asset('js/mail-script.js') }}"></script>
+     <script src="{{ asset('js/main.js') }}"></script>
+     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }} " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+ {% endblock %}
