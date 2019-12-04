@@ -4,4 +4,12 @@ user_homepage:
 
 redirect_login:
     path: /redirect
-    defaults: { _controller: UserBundle:Default:redirect }
+    defaults: { _controller: UserBundle:Default:redirect}
+
+mon_profil:
+    path: /monprofil
+    defaults: { _controller: UserBundle:Default:monprofil}
+
+modifier_profil:
+    path: /monprofil/{id}
+    defaults: { _controller: UserBundle:Default:modifierprofil}

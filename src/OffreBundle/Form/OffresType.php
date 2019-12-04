@@ -15,10 +15,10 @@ class OffresType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('titre')
-                ->add('datePublication')
+                //->add('datePublication')
                 ->add('niveauEtude')
                 ->add('salaire')
-                ->add('photo')
+
                 /*->add('entreprise', EntityType::class, array('class' => 'OffreBundle:Users',
                                                         'choice_label'=>'fullname',
                                                         'multiple'=>false))*/

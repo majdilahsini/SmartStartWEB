@@ -29,3 +29,32 @@ modifier_offre:
 supprimer_offre:
     path:     /supprimeroffre/{id}
     defaults: { _controller: OffreBundle:Offres:delete }
+
+consulter_offre:
+    path:     /consulteroffre/{id}
+    defaults: { _controller: OffreBundle:Offres:consulterOffre }
+
+postuler_offre:
+    path:     /postuleroffre/{id}/{match}
+    defaults: { _controller: OffreBundle:Applications:postuler }
+
+mes_condidatures:
+    path:     /mescandidatures
+    defaults: { _controller: OffreBundle:Offres:mescandidatures}
+
+supprimer_application:
+    path:     /supprimer/{id}
+    defaults: { _controller: OffreBundle:Applications:delete}
+
+candidatures_offre:
+    path: /candidatures/{id}
+    defaults: { _controller: OffreBundle:Applications:affichercandidatures}
+
+accepter_candidature:
+    path: /acceptercandidature/{id}
+    defaults: { _controller: OffreBundle:Applications:accepter}
+
+refuser_candidature:
+    path: /refusercandidature/{id}
+    defaults: { _controller: OffreBundle:Applications:refuser}
+

@@ -17,50 +17,90 @@
         {% endblock %}
 
         {% block content %}
-<section class="post-area section-gap">
+
+<section class="jobs">
     <div class="container">
-        <div class="row justify-content-center d-flex">
-            <div class="col-lg-8 post-list">
-                {% for offre in offres %}
-                <div class="single-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="{{ asset('img/post.png') }}" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">{{offre.skill1.name}}</a>
-                            </li>
-                            <li>
-                                <a href="#">{{offre.skill2.name}}</a>
-                            </li>
-                            <li>
-                                <a href="#">{{offre.skill3.name}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="details">
-                        <div class="title d-flex flex-row justify-content-between">
-                            <div class="titles">
-                                <a href="single.html"><h4>{{offre.titre}}</h4></a>
-                                <h6>15/20-2015</h6>
-                            </div>
-                            <ul class="btns">
-                                <li color="red"><a href="">Modifier</a></li>
-                                <li><a href={{ path('supprimer_offre', {'id':offre.id}) }}>Supprimer</a></li>
-                            </ul>
-                        </div>
-                        <p>
-                            test
-                        </p>
-                        <h5>Type de poste: {{ offre.typePost.name }}</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> Niveau d'étude: bac +{{ offre.niveauEtude }}</p>
-                        <p class="address"><span class="lnr lnr-database"></span> {{offre.salaire}}TND</p>
-                    </div>
+        <div class="heading">
+
+        </div>
+        <div class="row top-pad">
+
+                <div class="col-md-2 col-sm-3">
+                    <p>Search By:</p>
                 </div>
-                {% endfor %}
+
+                <div class="col-md-10 col-sm-9 pull-right">
+                    <ul class="filter-list">
+                        <li>
+                            <input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox" checked="">
+                            <label for="checkbox-1" class="part-time checkbox-custom-label">Part Time</label>
+                        </li>
+
+                        <li>
+                            <input id="checkbox-2" class="checkbox-custom" name="checkbox-2" type="checkbox">
+                            <label for="checkbox-2" class="full-time checkbox-custom-label">Full Time</label>
+                        </li>
+
+                        <li>
+                            <input id="checkbox-3" class="checkbox-custom" name="checkbox-3" type="checkbox">
+                            <label for="checkbox-3" class="freelancing checkbox-custom-label">Freelancing</label>
+                        </li>
+
+                        <li>
+                            <input id="checkbox-4" class="checkbox-custom" name="checkbox-4" type="checkbox">
+                            <label for="checkbox-4" class="internship checkbox-custom-label">Internship</label>
+                        </li>
+
+                    </ul>
+                </div>
+
+        </div>
+        <div class="companies">
+            {% for offre in offres %}
+
+
+                <div class="company-list">
+                <div class="row">
+                    <div class="col-md-2 col-sm-2">
+                        <div class="company-logo" align="center" style="position: absolute;   left: 50%;  top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+                            <img src="{{asset('img/google.png')}}" class="img-responsive" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="company-content">
+                            <h3>{{ offre.titre }}</h3>
+                            <p>
+                      <span class="company-name">
+                      <i class="fa fa-bookmark-o"></i>{{ offre.datePublication | date("d/m/Y") }}</span>
+
+                      <span class="company-name">
+                      <i class="fa fa-briefcase"></i>{{ offre.entreprise.fullname }}</span>
+
+                      <span class="company-name">
+                      <i class="fa fa-dashcube"></i>{{ offre.typePost.name }}</span>
+
+                      <span class="package"><i class="fa fa-money">
+                      </i>{{ offre.salaire }} TND</span>
+
+                      <span class="package"><i class="fa fa-trophy">
+                      </i>BAC +{{ offre.niveauEtude }} </span>
+                            </p>
+                        </div>
+                    </div>
+                   {% if  app.request.pathinfo == "/offre/mesoffres" %}
+                    <div class="col-md-2 col-sm-2">
+                        <a href={{ path('supprimer_offre', {'id':offre.id}) }}><button type="submit" class="btn supprimer-offre" name="View Job">Supprimer</button></a>
+                        <a href={{ path('consulter_offre', {'id':offre.id}) }}><button type="submit" class="btn consulter-c" style="align-self: center" name="View Job">Consulter</button></a>
+                    </div>
+                    {% endif %}
+                </div>
 
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
+
+
         {% endblock %}
 

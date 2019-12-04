@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleajout.css') }}">
+
+{% endblock %}
+{% block nav %}
+    <header id="header" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-between d-flex">
+                <div id="logo">
+                    <a href={{ path('index') }}><img src="img/logo.png" alt="" title="" style="width:158px;height:30px;"/></a>
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li class="menu-active"><a href={{ path('index') }}>Home</a></li>
+                        <li class="menu-has-children"><a href="">Les Offres</a>
+                            <ul>
+                                <li><a href={{ path('ajouter_offre') }}>Ajouter une offre</a></li>
+                                <li><a href={{ path('mes_offre') }}>Consulter vos offres</a></li>
+                                <li><a href={{ path('read_offre') }}>Consulter toutes les offres</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-has-children"><a href="">Les Formations</a>
+                            <ul>
+                                <li><a href="elements.html">Ajouter une formation</a></li>
+                                <li><a href="search.html">Consulter vos formations</a></li>
+                                <li><a href="single.html">Consulter toutes les formations</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-has-children"><a href="">Crowdfundings</a>
+                            <ul>
+                                <li><a href="elements.html">Ajouter un projet</a></li>
+                                <li><a href="search.html">Consulter vos projets</a></li>
+                                <li><a href="single.html">Consulter toutes les projets</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-has-children"><a href="">Mon Espace</a>
+                            <ul>
+                                <li><a href="">Mon Profil</a></li>
+                                <li><a href="">Mes Offres</a></li>
+                                <li><a href="">Mes Formations</a></li>
+                                <li><a href="">Mes Entretiens</a></li>
+                                <li><a href="">Mes Crowdfundings</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav><!-- #nav-menu-container -->
+            </div>
+        </div>
+    </header><!-- #header -->
+{% endblock %}
+
+  {% block banner %}
+      <section class="banner-area relative" id="home">
+          <div class="overlay overlay-bg"></div>
+          <div class="container">
+              <div class="row d-flex align-items-center justify-content-center">
+                  <div class="about-content col-lg-12">
+                      <h1 class="text-white">
+                          Nouvelle Formation
+                      </h1>
+                      <p class="text-white link-nav"><a href="index.html.twig">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="category.html"> Liste des formations</a></p>
+                  </div>
+              </div>
+          </div>
+      </section>
+  {% endblock %}
+{% block content %}
+    <br></br>
+<div class="container">
+    {{ form_start(form) }}
+    <div class="row align-items-center">
+        <div class="col-4">
+            <div class="contact-form">
+                <div class="input-fields" >
+                    {{ form_widget(form.nom,{'attr':{'type':'text','placeholder':'Nom...','class':'input'}}) }} </br> </br>
+                    <strong>Domaine : *</strong>              {{ form_widget(form.domaine,{'attr':{'type':'text','placeholder':'Domaine...','class':'input'}}) }} </br> </br>
+                    {{ form_widget(form.description,{'attr':{'type':'text','placeholder':'Description...','class':'input'}}) }} </br> </br>
+                    {{ form_widget(form.duree,{'attr':{'type':'text','placeholder':'Duree...','class':'input'}}) }} </br> </br>
+                    <strong>dateDebut : * </strong> {{ form_widget(form.dateDebut,{'attr':{'type':'text','placeholder':'Datedebut...','class':'input'}})}} </br></br>
+                    <strong>dateFin : * </strong> {{ form_widget(form.dateFin,{'attr':{'type':'text','placeholder':'Domaine...','class':'input'}} )}} </br> </br>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+        </div>
+
+        <div class="col-4">
+            <div class="contact-form">
+                <div class="input-fields" >
+                    <strong>prix : * </strong> {{ form_widget(form.prix,{'attr':{'type':'text','placeholder':'00.0DT...','class':'input'}}) }} </br> </br>
+                    <strong>adresse : * </strong> {{ form_widget(form.adresse,{'attr':{'type':'text','class':'input'}}) }} </br> </br>
+                    <strong>email : * </strong> {{ form_widget(form.email,{'attr':{'type':'text','placeholder':'example@gmail.com','class':'input'}}) }} </br> </br>
+                    <strong>contact : * </strong> {{ form_widget(form.contact,{'attr':{'type':'text','placeholder':'','class':'input'}}) }} </br> </br>         *
+                    {#  <strong>image : * </strong> {{ form_widget(form.image) }} </br> </br>#}
+                    <strong>nombres : * </strong> {{ form_widget(form.nombres,{'attr':{'type':'text','placeholder':'','class':'input'}}) }} </br> </br>
+
+                    {#   <strong>entreprise : * </strong> {{ form_widget(form.entreprise) }} </br> </br> #}
+
+
+                    Upload image {{ form_widget(form.file) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<center>  <input type="submit" value="Ajouter Formation" class="btn"/></center>
+
+{{ form_end(form) }}
+    <br><br>
+{% endblock %}
+ {% block javascripts %}
+     <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+     <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+     <script src="{{ asset('js/easing.min.js') }}"></script>
+     <script src="{{ asset('js/hoverIntent.js') }}"></script>
+     <script src="{{ asset('js/superfish.min.js') }}"></script>
+     <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+     <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+     <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+     <script src="{{ asset('js/mail-script.js') }}"></script>
+     <script src="{{ asset('js/main.js') }}"></script>
+     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }} " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+ {% endblock %}
