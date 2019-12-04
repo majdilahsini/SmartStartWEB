@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Twilio\Exceptions\ConfigurationException;
+use Twilio\Rest\Client;
 
 /**
  * Reclamation controller.
@@ -35,6 +37,32 @@ class ReclamationController extends Controller
     }
 
     /**
+     * send sms reclamation entities.
+     *
+     * @Route("/{id}/sendsms", name="reclamation_smsfromadmin")
+     * @Method("GET")
+
+
+     */
+
+    public function sendsmsAction(Request $request, Reclamation $rec)
+    {
+        $sid    = "AC93d52324cba1b10f5ca7726421b05652";
+        $token  = "d8812d7a4a8864ccc9f7899a38f3abb3";
+        $twilio = new Client($sid, $token);
+
+        $message = $twilio->messages
+            ->create("+21696872895", // to
+                array(
+                    "body" => 'on est en train de verifier lissue de'.$rec->getObject(),
+                    "from" => "+17472290132"
+
+                )
+            );
+        return $this->redirectToRoute('reclamation_index');
+    }
+
+    /**
      * Lists all reclamation entities.
      *
      * @Route("/indexuser", name="reclamation_indexuser")
@@ -45,7 +73,7 @@ class ReclamationController extends Controller
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $reclamations = $em->getRepository('Reclamation1Bundle:Reclamation')->findby(array('idUser'=>$user->getid()));
-        return $this->render('reclamation/index.html.twig', array(
+        return $this->render('reclamation/indexuser.html.twig', array(
             'reclamations' => $reclamations,
         ));
     }
@@ -86,7 +114,39 @@ class ReclamationController extends Controller
 
 
 
+    /**
+     * Lists only subject reclamation entities.
+     *
+     * @Route("/recsubject/{dd}", name="reclamation_subject1")
+     * @Method("GET")
+     */
+    public function rdvaAction($dd)
+    {  $response = new JsonResponse();
 
+        $ma=array();
+
+        $em = $this->getDoctrine()->getManager();
+        $rappelrdvs =  $em->getRepository('Reclamation1Bundle:Reclamation')->findEntitiesBysubject($dd);
+        if(!$rappelrdvs) {
+            $ma['error']= "error";
+        } else {
+            $ma= $this->getRealEntitiesspec($rappelrdvs);
+        }
+
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        return $response->setData(array('reclamation'=>$ma));
+
+
+
+    }
+    public function getRealEntitiesspec($rappelrdvs){
+        foreach ($rappelrdvs as $rappelrdvs){
+            $realEntities[] = $rappelrdvs->getSubject();
+        }
+        return $realEntities;
+    }
 
 
     /**

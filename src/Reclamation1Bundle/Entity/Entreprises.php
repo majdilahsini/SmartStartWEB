@@ -64,5 +64,158 @@ class Entreprises
     private $tel;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Entreprises
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set secteurId
+     *
+     * @param integer $secteurId
+     *
+     * @return Entreprises
+     */
+    public function setSecteurId($secteurId)
+    {
+        $this->secteurId = $secteurId;
+    
+        return $this;
+    }
+
+    /**
+     * Get secteurId
+     *
+     * @return integer
+     */
+    public function getSecteurId()
+    {
+        return $this->secteurId;
+    }
+
+    /**
+     * Set taille
+     *
+     * @param integer $taille
+     *
+     * @return Entreprises
+     */
+    public function setTaille($taille)
+    {
+        $this->taille = $taille;
+    
+        return $this;
+    }
+
+    /**
+     * Get taille
+     *
+     * @return integer
+     */
+    public function getTaille()
+    {
+        return $this->taille;
+    }
+
+    /**
+     * Set categorieId
+     *
+     * @param integer $categorieId
+     *
+     * @return Entreprises
+     */
+    public function setCategorieId($categorieId)
+    {
+        $this->categorieId = $categorieId;
+    
+        return $this;
+    }
+
+    /**
+     * Get categorieId
+     *
+     * @return integer
+     */
+    public function getCategorieId()
+    {
+        return $this->categorieId;
+    }
+
+    /**
+     * Set addresse
+     *
+     * @param string $addresse
+     *
+     * @return Entreprises
+     */
+    public function setAddresse($addresse)
+    {
+        $this->addresse = $addresse;
+    
+        return $this;
+    }
+
+    /**
+     * Get addresse
+     *
+     * @return string
+     */
+    public function getAddresse()
+    {
+        return $this->addresse;
+    }
+
+    /**
+     * Set tel
+     *
+     * @param integer $tel
+     *
+     * @return Entreprises
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+    
+        return $this;
+    }
+
+    /**
+     * Get tel
+     *
+     * @return integer
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+}

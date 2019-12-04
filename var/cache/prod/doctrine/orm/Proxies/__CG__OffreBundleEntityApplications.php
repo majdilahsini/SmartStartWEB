@@ -64,10 +64,10 @@ class Applications extends \OffreBundle\Entity\Applications implements \Doctrine
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'id', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'matchs', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'user', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'offre'];
+            return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'id', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'matchs', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'user', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'offre', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'etat'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'id', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'matchs', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'user', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'offre'];
+        return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'id', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'matchs', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'user', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'offre', '' . "\0" . 'OffreBundle\\Entity\\Applications' . "\0" . 'etat'];
     }
 
     /**
@@ -173,4 +173,118 @@ class Applications extends \OffreBundle\Entity\Applications implements \Doctrine
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getMatchs()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMatchs', []);
+
+        return parent::getMatchs();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setMatchs($matchs)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMatchs', [$matchs]);
+
+        return parent::setMatchs($matchs);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUser()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
+
+        return parent::getUser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUser($user)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', [$user]);
+
+        return parent::setUser($user);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOffre()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOffre', []);
+
+        return parent::getOffre();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOffre($offre)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOffre', [$offre]);
+
+        return parent::setOffre($offre);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEtat()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEtat', []);
+
+        return parent::getEtat();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEtat($etat)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEtat', [$etat]);
+
+        return parent::setEtat($etat);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setId($id)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', [$id]);
+
+        return parent::setId($id);
+    }
+
 }

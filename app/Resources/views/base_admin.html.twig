@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{{asset('vendor2/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="{{asset('vendor2/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+{% block nav %}
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="index.html">SmartStart ADMIN</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Navbar Search -->
+
+
+    <!-- Navbar -->
+
+
+</nav>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+
+        <li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Tables</span></a>
+        </li>
+    </ul>
+    {% endblock %}
+    {% block content %}
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Overview</li>
+            </ol>
+
+            <!-- Icon Cards-->
+            <div class="row">
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card text-white bg-primary o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fas fa-fw fa-user"></i>
+                            </div>
+                            <div class="mr-5">26 New Messages!</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card text-white bg-warning o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fas fa-fw fa-briefcase"></i>
+                            </div>
+                            <div class="mr-5">11 New Tasks!</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card text-white bg-success o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fas fa-fw fa-pencil-square-o"></i>
+                            </div>
+                            <div class="mr-5">123 New Orders!</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card text-white bg-danger o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fas fa-fw fa-star-half-o"></i>
+                            </div>
+                            <div class="mr-5">13 New Tickets!</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Offres</a>
+                </li>
+                <li class="breadcrumb-item active">Statistiques</li>
+            </ol>
+
+            <!-- Icon Cards-->
+            <div class="row">
+
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card text-white bg-dark o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fas fa-fw fa-user"></i>
+                            </div>
+                            <div class="mr-5">26 New Messages!</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card text-white bg-secondary o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fas fa-fw fa-briefcase"></i>
+                            </div>
+                            <div class="mr-5">11 New Tasks!</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card text-white bg-primary o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fas fa-fw fa-pencil-square-o"></i>
+                            </div>
+                            <div class="mr-5">123 New Orders!</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card text-white bg-info o-hidden h-100">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fas fa-fw fa-star-half-o"></i>
+                            </div>
+                            <div class="mr-5">13 New Tickets!</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+</body>
+{% endblock %}
+</html>

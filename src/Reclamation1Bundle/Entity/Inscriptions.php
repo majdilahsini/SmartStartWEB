@@ -43,5 +43,86 @@ class Inscriptions
     private $lettreMotivation;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     *
+     * @return Inscriptions
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set formationRef
+     *
+     * @param integer $formationRef
+     *
+     * @return Inscriptions
+     */
+    public function setFormationRef($formationRef)
+    {
+        $this->formationRef = $formationRef;
+    
+        return $this;
+    }
+
+    /**
+     * Get formationRef
+     *
+     * @return integer
+     */
+    public function getFormationRef()
+    {
+        return $this->formationRef;
+    }
+
+    /**
+     * Set lettreMotivation
+     *
+     * @param string $lettreMotivation
+     *
+     * @return Inscriptions
+     */
+    public function setLettreMotivation($lettreMotivation)
+    {
+        $this->lettreMotivation = $lettreMotivation;
+    
+        return $this;
+    }
+
+    /**
+     * Get lettreMotivation
+     *
+     * @return string
+     */
+    public function getLettreMotivation()
+    {
+        return $this->lettreMotivation;
+    }
+}

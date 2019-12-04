@@ -43,5 +43,86 @@ class UserSkills
     private $skill3Id;
 
 
-}
 
+    /**
+     * Get userId
+     *
+     * @return integer
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set skill1Id
+     *
+     * @param integer $skill1Id
+     *
+     * @return UserSkills
+     */
+    public function setSkill1Id($skill1Id)
+    {
+        $this->skill1Id = $skill1Id;
+    
+        return $this;
+    }
+
+    /**
+     * Get skill1Id
+     *
+     * @return integer
+     */
+    public function getSkill1Id()
+    {
+        return $this->skill1Id;
+    }
+
+    /**
+     * Set skill2Id
+     *
+     * @param integer $skill2Id
+     *
+     * @return UserSkills
+     */
+    public function setSkill2Id($skill2Id)
+    {
+        $this->skill2Id = $skill2Id;
+    
+        return $this;
+    }
+
+    /**
+     * Get skill2Id
+     *
+     * @return integer
+     */
+    public function getSkill2Id()
+    {
+        return $this->skill2Id;
+    }
+
+    /**
+     * Set skill3Id
+     *
+     * @param integer $skill3Id
+     *
+     * @return UserSkills
+     */
+    public function setSkill3Id($skill3Id)
+    {
+        $this->skill3Id = $skill3Id;
+    
+        return $this;
+    }
+
+    /**
+     * Get skill3Id
+     *
+     * @return integer
+     */
+    public function getSkill3Id()
+    {
+        return $this->skill3Id;
+    }
+}

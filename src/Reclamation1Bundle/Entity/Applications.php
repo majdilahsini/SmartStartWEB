@@ -43,5 +43,86 @@ class Applications
     private $matchs;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set offreId
+     *
+     * @param integer $offreId
+     *
+     * @return Applications
+     */
+    public function setOffreId($offreId)
+    {
+        $this->offreId = $offreId;
+    
+        return $this;
+    }
+
+    /**
+     * Get offreId
+     *
+     * @return integer
+     */
+    public function getOffreId()
+    {
+        return $this->offreId;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     *
+     * @return Applications
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set matchs
+     *
+     * @param float $matchs
+     *
+     * @return Applications
+     */
+    public function setMatchs($matchs)
+    {
+        $this->matchs = $matchs;
+    
+        return $this;
+    }
+
+    /**
+     * Get matchs
+     *
+     * @return float
+     */
+    public function getMatchs()
+    {
+        return $this->matchs;
+    }
+}

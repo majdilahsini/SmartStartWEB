@@ -64,10 +64,10 @@ class UserSkills extends \OffreBundle\Entity\UserSkills implements \Doctrine\ORM
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'userId', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill1Id', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill2Id', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill3Id'];
+            return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'user', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill1', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill2', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill3'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'userId', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill1Id', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill2Id', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill3Id'];
+        return ['__isInitialized__', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'user', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill1', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill2', '' . "\0" . 'OffreBundle\\Entity\\UserSkills' . "\0" . 'skill3'];
     }
 
     /**
@@ -173,4 +173,92 @@ class UserSkills extends \OffreBundle\Entity\UserSkills implements \Doctrine\ORM
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getSkill1()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkill1', []);
+
+        return parent::getSkill1();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSkill1($skill1)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkill1', [$skill1]);
+
+        return parent::setSkill1($skill1);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSkill2()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkill2', []);
+
+        return parent::getSkill2();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSkill2($skill2)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkill2', [$skill2]);
+
+        return parent::setSkill2($skill2);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSkill3()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkill3', []);
+
+        return parent::getSkill3();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSkill3($skill3)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkill3', [$skill3]);
+
+        return parent::setSkill3($skill3);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUser()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
+
+        return parent::getUser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUser($user)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', [$user]);
+
+        return parent::setUser($user);
+    }
+
 }

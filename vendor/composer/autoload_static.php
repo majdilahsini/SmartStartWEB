@@ -97,6 +97,7 @@ class ComposerStaticInit8c0e9bc2837acd230b00d753e9b8dfe7
         array (
             'Fig\\Link\\' => 9,
             'FOS\\UserBundle\\' => 15,
+            'FOS\\CKEditorBundle\\' => 19,
         ),
         'D' => 
         array (
@@ -298,6 +299,10 @@ class ComposerStaticInit8c0e9bc2837acd230b00d753e9b8dfe7
         'FOS\\UserBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
+        ),
+        'FOS\\CKEditorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/ckeditor-bundle/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (

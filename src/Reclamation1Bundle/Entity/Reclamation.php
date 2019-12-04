@@ -3,12 +3,13 @@
 namespace Reclamation1Bundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reclamation
  *
+ * @ORM\Entity(repositoryClass="Reclamation1Bundle\Repository\Reclamation1Repository")
  * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="user11", columns={"id_user"})})
- * @ORM\Entity
  */
 class Reclamation
 {
@@ -112,4 +113,3 @@ class Reclamation
 
 
 }
-

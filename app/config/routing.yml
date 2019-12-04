@@ -1,3 +1,8 @@
+
+
+
+
+
 reclamation1_reclamation:
     resource: "@Reclamation1Bundle/Controller/ReclamationController.php"
     type:     annotation
@@ -14,6 +19,7 @@ reclamation1:
 offre_offres:
     resource: "@OffreBundle/Controller/OffresController.php"
     type:     annotation
+
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"

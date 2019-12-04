@@ -18,6 +18,7 @@
         "cmen/google-charts-bundle": "^3.2",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "friendsofsymfony/ckeditor-bundle": "^1.2",
         "friendsofsymfony/user-bundle": "~2.0",
         "hwi/oauth-bundle": "^0.6.3",
         "incenteev/composer-parameter-handler": "^2.0",

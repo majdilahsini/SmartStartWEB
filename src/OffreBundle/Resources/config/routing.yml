@@ -45,3 +45,16 @@ mes_condidatures:
 supprimer_application:
     path:     /supprimer/{id}
     defaults: { _controller: OffreBundle:Applications:delete}
+
+candidatures_offre:
+    path: /candidatures/{id}
+    defaults: { _controller: OffreBundle:Applications:affichercandidatures}
+
+accepter_candidature:
+    path: /acceptercandidature/{id}
+    defaults: { _controller: OffreBundle:Applications:accepter}
+
+refuser_candidature:
+    path: /refusercandidature/{id}
+    defaults: { _controller: OffreBundle:Applications:refuser}
+
