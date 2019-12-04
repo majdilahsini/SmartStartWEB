@@ -1,0 +1,239 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleajout.css') }}">
+
+{% endblock %}
+
+  {% block banner %}
+      <section class="banner-area relative" id="home">
+          <div class="overlay overlay-bg"></div>
+          <div class="container">
+              <div class="row d-flex align-items-center justify-content-center">
+                  <div class="about-content col-lg-12">
+                      <h1 class="text-white">
+Mes entretiens
+                      </h1>
+                  </div>
+              </div>
+          </div>
+      </section>
+  {% endblock %}
+
+{% block content %}
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <h2>Recherche</h2>
+
+            <div class="sidebar-search">
+
+                <div class="input-group custom-search-form">
+
+                    <input type="text" id="search" class="form-control" placeholder="Par poste ou date(ex: 2019-01-02)">
+                </div>
+                <!-- /input-group -->
+            </div>
+            <ul class="nav" id="side-menu">
+                <li>
+                    {#  <a href="#"> Entities<span class="fa arrow"></span></a>#}
+                    <ul class="nav nav-second-level" id="entitiesNav">
+                    </ul>
+                </li>
+            </ul><br><br><br><br>
+
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+            <script type="text/javascript">
+
+                jQuery(document).ready(function() {
+                    var searchRequest = null;
+                    $("#search").keyup(function() {
+                        var minlength = 1;
+                        var that = this;
+                        var value = $(this).val();
+                        var entitySelector = $("#entitiesNav").html('');
+                        if (value.length >= minlength ) {
+                        $("#hide").hide('fast');
+
+                    }
+                else
+                    {
+                        $("#hide").show();
+                    }
+
+                        if (value.length >= minlength ) {
+                            if (searchRequest != null)
+                                searchRequest.abort();
+                            searchRequest = $.ajax({
+                                type: "GET",
+                                url: "{{ path('ajax_search') }}",
+                                data: {
+                                    'q' : value
+                                },
+                                dataType: "text",
+                                success: function(msg){
+                                    //we need to check if the value is the same
+                                    if (value===$(that).val()) {
+                                        var result = JSON.parse(msg);
+                                        $.each(result, function(key, arr) {
+                                            $.each(arr, function(refEnt, value) {
+                                                if (key === 'ent') {
+                                                    if (refEnt !== 'error') {
+                                                        console.log(value[0]);
+                                                        var id=value[0];
+
+                                                        var path = '{{ path('modifier_interview', { 'refEnt': 'x' }) }}'
+                                                        path = path.replace("x",id);
+
+                                                        var path1 = '{{ path('delete_interview', { 'refEnt': 'xx' }) }}'
+                                                        path1 = path1.replace("xx",id);
+
+                                                        var path2 = '{{ path('add_eval', { 'refEnt': 'xxx' }) }}'
+                                                        path2 = path2.replace("xxx",id);
+
+                                                        var path3 = '{{ path('show_evalUnique', { 'refEnt': 'xxxx' }) }}'
+                                                        path3 = path3.replace("xxxx",id);
+
+                                                        entitySelector.append(
+
+                                                            "<table class='table table-hover'>"+
+                                                            "<tr style='color: saddlebrown'>"+
+                                                            "<th>"+"condidat "+"</th>"+
+                                                            "<th>"+"poste"+"</th>"+
+                                                            "<th>"+"date"+"</th>"+
+                                                            "<th>"+"heure "+"</th>"+
+                                                            "<th>"+"Action"+"</th>"+"<tr>"
+                                                            +"<tr class='table-info'>"+
+
+                                                            "<td>" +value[1]+"</td>"+
+                                                            "<td>" +value[2]+"</td>"+
+                                                            "<td>" +value[4]+"</td>"+
+                                                            "<td>" +value[3]+"</td>"+
+
+                                                            "<td><ul><li><a href='"+ path + "'>Modifer</a></li><li><a href='"+ path1 + "'>Effacer</a></li><li><a href='"+ path2 + "'>Ajouter Evaluations</a></li><li><a href='"+ path3 + "'>Afficher Evaluation</a></li></td>"+
+
+                                                            "</table>");
+                                                    } else {
+                                                        entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>
+            <a href="{{ path('affiches_offres') }}" class="btn btn-outline-info">Ajouter un entretien</a>
+            <a href="{{ path('show_eval') }}" class="btn btn-outline-info">Afficher tous les evaluations</a>
+<br><br>
+            <div id="hide">
+            <h3>LISTES DES ENTRETIENS</h3>
+    <div class="row justify-content-center d-flex" >
+        <div class="col-lg-8 post-list">
+
+
+
+
+            {% for e in list %}
+                {% if e.etat == 2 %}
+                    {% set b="#cbd4cc" %}
+                {% elseif e.etat == 1 %}
+                    {% set b="#bbff69" %}
+                {% endif %}
+                <div class="single-post d-flex flex-row"  style="background-color:{{ b }}">
+
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <h4>{{ e.username }}</h4>
+                                <label class="address"><span class="lnr lnr-bookmark"></span> Poste : </label><label> {{ e.poste }}</label> <br>
+
+
+                            </div>
+                        </div>
+
+
+
+                        <label class="address"><span class="lnr lnr-calendar-full"></span> Date : </label><label> {{ e.date_ent  |date("m/d/Y") }} </label> <br>
+
+                        <label class="address"><span class="lnr lnr-clock"></span> Heure : </label><label>{{ e.heure_ent  }} </label>
+                    </div>
+                    <div class="d-flex flex-row-reverse ">
+
+                        <br><br>
+                        <ul class="btns  " >
+                            <li><a  href="{{ path('modifier_interview', { 'refEnt': e.ref_ent }) }}" >Modifier</a></li>
+                        </ul>
+                        <ul class="btns  " >
+                            <li><a href="{{ path('delete_interview', { 'refEnt': e.ref_ent }) }}" >Effacer</a></li>
+                        </ul>
+                        {% if e.etat == 2 %}
+
+                            <ul class="btns  " >
+                                <li><a  href="{{ path('add_eval', { 'refEnt': e.ref_ent }) }}" >Ajouter Evaluations</a></li>
+
+                            </ul>
+                        {% endif %}
+
+                        {# <ul class="btns  " >
+                               <li><a  href="{{ path('show_evalUnique', { 'refEnt': e.ref_ent }) }}">Afficher Evaluation</a></li>
+                           </ul>#}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="col-lg-4 sidebar">
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </section>
+    <!-- End post Area -->
+
+
+
+{% endblock %}
+ {% block javascripts %}
+     <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+     <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+     <script src="{{ asset('js/easing.min.js') }}"></script>
+     <script src="{{ asset('js/hoverIntent.js') }}"></script>
+     <script src="{{ asset('js/superfish.min.js') }}"></script>
+     <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+     <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+     <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+     <script src="{{ asset('js/mail-script.js') }}"></script>
+     <script src="{{ asset('js/main.js') }}"></script>
+     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }} " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+ {% endblock %}
