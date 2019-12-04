@@ -34,9 +34,8 @@ class FormationsType extends AbstractType
             ->add('adresse',TextType::class)
             ->add('email')
             ->add('contact')
-            ->add('image')
+
             ->add('nombres')
-            ->add('etatFormation',TextType::class)
             ->add('domaine',EntityType::class,['class'=>'FormationBundle\Entity\DomainesFormation',
         'choice_label' => 'nomDomaine',
         'multiple' => false,

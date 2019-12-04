@@ -1,52 +1,54 @@
 {% extends 'base.html.twig' %}
 
+{% block nav %}
+    <header id="header" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-between d-flex">
+                <div id="logo">
+                    <a href={{ path('index') }}><img src="{{asset('img/logo.png')}}" alt="" title="" style="width:158px;height:30px;"/></a>
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li class="menu-active"><a href={{ path('index') }}>Home</a></li>
+                        <li class="menu-has-children"><a href="">Les Offres</a>
+                            <ul>
+                                <li><a href={{ path('ajouter_offre') }}>Ajouter une offre</a></li>
+                                <li><a href={{ path('mes_offre') }}>Consulter vos offres</a></li>
+                                <li><a href={{ path('read_offre') }}>Consulter toutes les offres</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-has-children"><a href="{{ path('reclamation_new') }}"><p>Envoyer Reclamation</p></a>
+                        <li class="menu-has-children"><a href="">Les Formations</a>
+                            <ul>
+                                <li><a href="elements.html">Ajouter une formation</a></li>
+                                <li><a href="search.html">Consulter vos formations</a></li>
+                                <li><a href="single.html">Consulter toutes les formations</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-has-children"><a href="">Crowdfundings</a>
+                            <ul>
+                                <li><a href="elements.html">Ajouter un projet</a></li>
+                                <li><a href="search.html">Consulter vos projets</a></li>
+                                <li><a href="single.html">Consulter toutes les projets</a></li>
+                            </ul>
+                        </li>
 
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
-            <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/main2.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/common.css') }}">
-        {% endblock %}
-
-       {% block nav %}
-           <header id="header" id="home">
-               <div class="container">
-                   <div class="row align-items-center justify-content-between d-flex">
-                       <div id="logo">
-                           <a href={{ path('index') }}><img src="{{asset('img/logo.png')}}" alt="" title="" style="width:158px;height:30px;"/></a>
-                       </div>
-                       <nav id="nav-menu-container">
-                           <ul class="nav-menu">
-                               <li class="menu-active"><a href={{ path('index') }}>Home</a></li>
-                               <li class="menu-active"><a href={{ path('read_offre_user') }}>Les Offres</a></li>
-                               <li class="menu-active"><a href={{ path('index') }}>Les Formations</a></li>
-                               <li class="menu-active"><a href={{ path('index') }}>Crowdfundings</a></li>
-                               <li class="menu-active"><a href={{ path('index') }}>Forum</a></li>
-                               <li class="menu-has-children"><a href=""><p>connected as : {{ app.user.username }}</p></a>
-                                   <ul>
-                                       <li><a href="{{ path('mon_profil') }}">Mon Profil</a></li>
-                                       <li><a href={{ path('mes_condidatures') }}>Mes Candidatures</a></li>
-                                       <li><a href="">Mes Formations</a></li>
-                                       <li><a href={{ path('afficherInterview') }}>Mes Entretiens</a></li>
-                                       <li><a href="">Mes Crowdfundings</a></li>
-                                       <li><a href={{ path('reclamation_index') }}>ajouter reclamation</a></li>
-                                       <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
-                                   </ul>
-                               </li>
-                           </ul>
-                       </nav><!-- #nav-menu-container -->
-                   </div>
-               </div>
-           </header><!-- #header -->
-       {% endblock %}
+                        <li class="menu-has-children"><a href=""><p>connected as : {{ app.user.username }}</p></a>
+                            <ul>
+                                <li><a href="{{ path('mon_profil') }}">Mon Profil</a></li>
+                                <li><a href="">Mes Offres</a></li>
+                                <li><a href="">Mes Formations</a></li>
+                                <li><a href="">Mes Entretiens</a></li>
+                                <li><a href="">Mes Crowdfundings</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav><!-- #nav-menu-container -->
+            </div>
+        </div>
+    </header><!-- #header -->
+{% endblock %}
 
 {% block banner %}
     <section class="banner-area relative" id="home">
@@ -62,7 +64,17 @@
                             <div class="col-lg-4 form-cols">
                                 <input type="text" class="form-control" name="search" placeholder="what are you looging for?">
                             </div>
-
+                            <div class="col-lg-3 form-cols">
+                                <div class="default-select" id="default-selects">
+                                    <select>
+                                        <option value="1">Select area</option>
+                                        <option value="2">Dhaka</option>
+                                        <option value="3">Rajshahi</option>
+                                        <option value="4">Barishal</option>
+                                        <option value="5">Noakhali</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-lg-3 form-cols">
                                 <div class="default-select" id="default-selects2">
                                     <select>
@@ -217,7 +229,7 @@
 
     <section class="counter a" style="margin-bottom: 100px; margin-top: 30px; background-color: #DA0833">
         <div align="center">
-            <table class="t" >
+            <table class="t">
                 <tr>
                     <td>
                         <div class="container">
@@ -255,32 +267,13 @@
                                 <p>Happy Members</p>
                             </div>
                         </div>
-                   </div>
-                </td>
-              </tr>
-            </table>
+        </div>
+        </td>
+        </tr>
+        </table>
         </div>
     </section>
 
-
-
+    <!-- Start feature-cat Area -->
 
 {% endblock %}
-
-        {% block javascripts %}
-            <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
-            <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('js/easing.min.js') }}"></script>
-            <script src="{{ asset('js/hoverIntent.js') }}"></script>
-            <script src="{{ asset('js/superfish.min.js') }}"></script>
-            <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
-            <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-            <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-            <script src="{{ asset('js/jquery.sticky.js') }}"></script>
-            <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
-            <script src="{{ asset('js/mail-script.js') }}"></script>
-            <script src="{{ asset('js/main.js') }}"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-        {% endblock %}
-

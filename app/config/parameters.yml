@@ -2,11 +2,12 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: psmart
+    database_name: smart_start
     database_user: root
     database_password: null
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: racemcherni1@gmail.com
+    mailer_password: Azerty1234567890
+    spool: { type: memory }
     secret: ThisTokenIsNotSoSecretChangeIt

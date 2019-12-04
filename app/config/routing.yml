@@ -1,6 +1,6 @@
-interviews:
-    resource: "@InterviewsBundle/Resources/config/routing.yml"
-    prefix:   /
+project:
+    resource: "@ProjectBundle/Resources/config/routing.yml"
+    prefix:   project
 
 offre_offres:
     resource: "@OffreBundle/Controller/OffresController.php"

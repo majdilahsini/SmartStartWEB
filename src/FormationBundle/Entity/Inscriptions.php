@@ -7,8 +7,8 @@ use UserBundle\Entity\Users;
 
 /**
  * Inscriptions
- *
- * @ORM\Table(name="inscriptions", indexes={@ORM\Index(name="formation_ref", columns={"formation_ref"}), @ORM\Index(name="entreprise_id", columns={"entreprise_id"}), @ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="domaine_Ibfk_4", columns={"domaine_ref"}), @ORM\Index(name="Inscriptions_Idfk_4", columns={"etat_id"})})
+ * @ORM\Entity(repositoryClass="FormationBundle\Repository\temporaireRepository")
+ * @ORM\Table(name="inscriptions", indexes={@ORM\Index(name="formation_ref", columns={"formation_ref"}),@ORM\Index(name="user_id", columns={"user_id"})})
  * @ORM\Entity
  */
 class Inscriptions
@@ -30,24 +30,13 @@ class Inscriptions
     private $lettreMotivation;
 
     /**
-     * @var \FormationBundle\Entity\EtatInscription
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="EtatInscription")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="etat_id", type="integer", nullable=true)
      */
     private $etat;
 
-    /**
-     * @var \FormationBundle\Entity\Formations
-     *
-     * @ORM\ManyToOne(targetEntity="Formations")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="domaine_ref", referencedColumnName="domaine_id")
-     * })
-     */
-    private $domaineRef;
+
 
     /**
      * @var \FormationBundle\Entity\Formations
@@ -60,16 +49,6 @@ class Inscriptions
     private $formationRef;
 
     /**
-     * @var \FormationBundle\Entity\Formations
-     *
-     * @ORM\ManyToOne(targetEntity="Formations")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="entreprise_id", referencedColumnName="entreprise_id")
-     * })
-     */
-    private $entreprise;
-
-    /**
      * @var Users
      *
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Users")
@@ -78,6 +57,26 @@ class Inscriptions
      * })
      */
     private $user;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="specialite", type="string", length=255)
+     */
+    private $specialite;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Datecreation", type="date")
+     */
+    private $datecreation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ecole", type="string", length=255)
+     */
+    private $ecole;
 
     /**
      * @return int
@@ -112,7 +111,7 @@ class Inscriptions
     }
 
     /**
-     * @return EtatInscription
+     * @return int
      */
     public function getEtat()
     {
@@ -120,27 +119,11 @@ class Inscriptions
     }
 
     /**
-     * @param EtatInscription $etat
+     * @param int $etat
      */
     public function setEtat($etat)
     {
         $this->etat = $etat;
-    }
-
-    /**
-     * @return Formations
-     */
-    public function getDomaineRef()
-    {
-        return $this->domaineRef;
-    }
-
-    /**
-     * @param Formations $domaineRef
-     */
-    public function setDomaineRef($domaineRef)
-    {
-        $this->domaineRef = $domaineRef;
     }
 
     /**
@@ -160,22 +143,6 @@ class Inscriptions
     }
 
     /**
-     * @return Formations
-     */
-    public function getEntreprise()
-    {
-        return $this->entreprise;
-    }
-
-    /**
-     * @param Formations $entreprise
-     */
-    public function setEntreprise($entreprise)
-    {
-        $this->entreprise = $entreprise;
-    }
-
-    /**
      * @return Users
      */
     public function getUser()
@@ -190,6 +157,56 @@ class Inscriptions
     {
         $this->user = $user;
     }
+
+    /**
+     * @return string
+     */
+    public function getSpecialite()
+    {
+        return $this->specialite;
+    }
+
+    /**
+     * @param string $specialite
+     */
+    public function setSpecialite($specialite)
+    {
+        $this->specialite = $specialite;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDatecreation()
+    {
+        return $this->datecreation;
+    }
+
+    /**
+     * @param \DateTime $datecreation
+     */
+    public function setDatecreation($datecreation)
+    {
+        $this->datecreation = $datecreation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEcole()
+    {
+        return $this->ecole;
+    }
+
+    /**
+     * @param string $ecole
+     */
+    public function setEcole($ecole)
+    {
+        $this->ecole = $ecole;
+    }
+
+
 
 
 }

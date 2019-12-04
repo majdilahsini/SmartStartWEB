@@ -1,0 +1,35 @@
+.list{
+    background-color: #BF3E26;
+    font-size: 13pt;
+    margin-bottom: 50px;
+}
+
+.list a{
+    color:#98fb98;
+}
+.list a:hover ,.list a:focus , .list a:visited{
+    color:#98fb98;
+}
+.pagination > li > a,
+.pagination > li > span{
+    color: #BF3E26;
+
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus{
+    background-color: #98fb98;
+    color:#BF3E26;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus{
+    background-color: #1C8C42;
+    color: #ffffff;
+    border: 1px solid #dddddd;
+}

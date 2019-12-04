@@ -1,5 +1,56 @@
 [
     {
+        "name": "ancarebeca/full-calendar-bundle",
+        "version": "v5.0.0",
+        "version_normalized": "5.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ancarebeca/FullCalendarBundle.git",
+            "reference": "12096b8fe471832b35a91764729ae9c15d97eba6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ancarebeca/FullCalendarBundle/zipball/12096b8fe471832b35a91764729ae9c15d97eba6",
+            "reference": "12096b8fe471832b35a91764729ae9c15d97eba6",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9",
+            "symfony/symfony": "^3.1.0"
+        },
+        "require-dev": {
+            "phpspec/phpspec": "^2.2"
+        },
+        "time": "2017-05-01T14:35:52+00:00",
+        "type": "symfony-bundle",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "AncaRebeca\\FullCalendarBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Rebeca Mora Anca",
+                "email": "anca.rebeca@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Symfony2 integration with the library FullCalendar.js",
+        "homepage": "https://github.com/ancarebeca/FullCalendarBundle",
+        "keywords": [
+            "calendar",
+            "fullcalendar",
+            "jquery calendar",
+            "symfony2 bundle",
+            "symfony2 calendar"
+        ]
+    },
+    {
         "name": "clue/stream-filter",
         "version": "v1.4.1",
         "version_normalized": "1.4.1.0",
@@ -1639,6 +1690,139 @@
         "keywords": [
             "highlight",
             "sql"
+        ]
+    },
+    {
+        "name": "knplabs/knp-components",
+        "version": "v1.3.10",
+        "version_normalized": "1.3.10.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KnpLabs/knp-components.git",
+            "reference": "fc1755ba2b77f83a3d3c99e21f3026ba2a1429be"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/fc1755ba2b77f83a3d3c99e21f3026ba2a1429be",
+            "reference": "fc1755ba2b77f83a3d3c99e21f3026ba2a1429be",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "doctrine/mongodb-odm": "~1.0@beta",
+            "doctrine/orm": "~2.4",
+            "doctrine/phpcr-odm": "~1.2",
+            "jackalope/jackalope-doctrine-dbal": "~1.2",
+            "phpunit/phpunit": "~4.2",
+            "ruflin/elastica": "~1.0",
+            "symfony/event-dispatcher": "~2.5",
+            "symfony/property-access": ">=2.3"
+        },
+        "suggest": {
+            "symfony/property-access": "To allow sorting arrays"
+        },
+        "time": "2018-09-11T07:54:48+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Knp\\Component": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "KnpLabs Team",
+                "homepage": "http://knplabs.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://github.com/KnpLabs/knp-components/contributors"
+            }
+        ],
+        "description": "Knplabs component library",
+        "homepage": "http://github.com/KnpLabs/knp-components",
+        "keywords": [
+            "components",
+            "knp",
+            "knplabs",
+            "pager",
+            "paginator"
+        ]
+    },
+    {
+        "name": "knplabs/knp-paginator-bundle",
+        "version": "v3.0.0",
+        "version_normalized": "3.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
+            "reference": "06100a8f3a1e878d3d2d5d06a61c4e648f94aed7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/06100a8f3a1e878d3d2d5d06a61c4e648f94aed7",
+            "reference": "06100a8f3a1e878d3d2d5d06a61c4e648f94aed7",
+            "shasum": ""
+        },
+        "require": {
+            "knplabs/knp-components": "~1.2",
+            "php": ">=5.6.0",
+            "symfony/framework-bundle": "~2.7|~3.0|~4.0",
+            "symfony/translation": "~2.7|~3.0|~4.0",
+            "twig/twig": "~1.12|~2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8.35|~5.4.3|~6.4",
+            "symfony/expression-language": "~2.7|~3.0|~4.0"
+        },
+        "time": "2019-02-28T13:51:20+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Knp\\Bundle\\PaginatorBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "KnpLabs Team",
+                "homepage": "http://knplabs.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle/contributors"
+            }
+        ],
+        "description": "Paginator bundle for Symfony to automate pagination and simplify sorting and other features",
+        "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle",
+        "keywords": [
+            "bundle",
+            "knp",
+            "knplabs",
+            "pager",
+            "pagination",
+            "paginator",
+            "symfony"
         ]
     },
     {
@@ -3805,6 +3989,62 @@
         "keywords": [
             "framework"
         ]
+    },
+    {
+        "name": "toiba/fullcalendar-bundle",
+        "version": "v6.2.4",
+        "version_normalized": "6.2.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/toiba/FullCalendarBundle.git",
+            "reference": "d8b22cc3a159819fa2a4bbd1c7aad026c6bbad74"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/toiba/FullCalendarBundle/zipball/d8b22cc3a159819fa2a4bbd1c7aad026c6bbad74",
+            "reference": "d8b22cc3a159819fa2a4bbd1c7aad026c6bbad74",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.5|^7.0",
+            "symfony/framework-bundle": "^3.4|^4.0"
+        },
+        "require-dev": {
+            "phpspec/phpspec": "^2.5"
+        },
+        "time": "2018-08-09T18:06:32+00:00",
+        "type": "symfony-bundle",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Toiba\\FullCalendarBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Rebeca Mora Anca",
+                "role": "Developer",
+                "email": "anca.rebeca@gmail.com"
+            },
+            {
+                "name": "Théo Attali",
+                "role": "Developer",
+                "email": "theoattali@gmail.com"
+            }
+        ],
+        "description": "Symfony integration of FullCalendar.js library. Events can be stored with Doctrine, MongoDB, CouchDB and others",
+        "homepage": "https://github.com/toiba/FullCalendarBundle",
+        "keywords": [
+            "calendar",
+            "fullcalendar",
+            "jquery calendar",
+            "symfony calendar"
+        ],
+        "abandoned": "tattali/CalendarBundle"
     },
     {
         "name": "twig/twig",
