@@ -1,3 +1,22 @@
-project_ajout:
+formation_ajout:
     resource: "@FormationBundle/Resources/config/routing/formations.yml"
-    prefix:   /formation
+    prefix:   /formations
+
+inscription_ajout:
+    resource: "@FormationBundle/Resources/config/routing/inscriptions.yml"
+    prefix:   /inscriptions
+
+ajax_search:
+    path:     /search
+    defaults: { _controller: "FormationBundle:Formations:search" }
+    methods:  GET
+
+ajax_search_all:
+    path:     /searchall
+    defaults: { _controller: "FormationBundle:Formations:searchall" }
+    methods:  GET
+
+ajax_search_user:
+    path:     /searchformation
+    defaults: { _controller: "FormationBundle:Inscriptions:searchuser" }
+    methods:  GET

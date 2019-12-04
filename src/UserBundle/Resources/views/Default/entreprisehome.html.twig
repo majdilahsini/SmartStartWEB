@@ -17,11 +17,14 @@
                                 <li><a href={{ path('read_offre') }}>Consulter toutes les offres</a></li>
                             </ul>
                         </li>
-                        <li class="menu-has-children"><a href="">Les Formations</a>
+                        <li class="menu-has-children"><a href="{{ path('formations_index')}}">Les Formations</a>
                             <ul>
-                                <li><a href="elements.html">Ajouter une formation</a></li>
-                                <li><a href="search.html">Consulter vos formations</a></li>
-                                <li><a href="single.html">Consulter toutes les formations</a></li>
+                                <li><a href="{{ path('formations_new')}}">Ajouter une formation</a></li>
+                                <li><a href="{{ path('formations_index')}}">Consulter vos formations</a></li>
+                                <li><a href="{{ path('inscrip_affich_all')}}">Consulter les inscriptions </a></li>
+                                <li><a href="{{ path('formations_index_all')}}">Consulter toutes les formations</a></li>
+                                <li><a href="{{ path('formations_nombres')}}"> Listes des inscrits aux formations </a></li>
+
                             </ul>
                         </li>
                         <li class="menu-has-children"><a href="">Crowdfundings</a>
@@ -36,7 +39,7 @@
                             <ul>
                                 <li><a href="">Mon Profil</a></li>
                                 <li><a href="">Mes Offres</a></li>
-                                <li><a href="">Mes Formations</a></li>
+                                <li><a href="{{ path('formations_index')}}">Mes Formations</a></li>
                                 <li><a href="">Mes Entretiens</a></li>
                                 <li><a href="">Mes Crowdfundings</a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>

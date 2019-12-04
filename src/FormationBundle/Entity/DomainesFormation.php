@@ -7,8 +7,8 @@ use UserBundle\Entity\Users;
 
 /**
  * DomainesFormation
- *
- * @ORM\Table(name="domaines_formation", indexes={@ORM\Index(name="entreprise_id", columns={"entreprise_id"})})
+ * @ORM\Entity(repositoryClass="FormationBundle\Repository\DomainesFormationRepository")
+ * @ORM\Table(name="domainesformation", indexes={@ORM\Index(name="entreprise_id", columns={"entreprise_id"})})
  * @ORM\Entity
  */
 class DomainesFormation

@@ -555,6 +555,250 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        elseif (0 === strpos($pathinfo, '/formation')) {
+            if (0 === strpos($pathinfo, '/formation/formations')) {
+                // formations_index
+                if ('/formation/formations' === $trimmedPathinfo) {
+                    $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::indexAction',  '_route' => 'formations_index',);
+                    if ('/' === substr($pathinfo, -1)) {
+                        // no-op
+                    } elseif ('GET' !== $canonicalMethod) {
+                        goto not_formations_index;
+                    } else {
+                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'formations_index'));
+                    }
+
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_formations_index;
+                    }
+
+                    return $ret;
+                }
+                not_formations_index:
+
+                // formations_index_all
+                if ('/formation/formations/all' === $pathinfo) {
+                    $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::indexallAction',  '_route' => 'formations_index_all',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_formations_index_all;
+                    }
+
+                    return $ret;
+                }
+                not_formations_index_all:
+
+                // formations_show
+                if (preg_match('#^/formation/formations/(?P<ref>[^/]++)/show$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_show']), array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::showAction',));
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_formations_show;
+                    }
+
+                    return $ret;
+                }
+                not_formations_show:
+
+                // formations_new
+                if ('/formation/formations/new' === $pathinfo) {
+                    $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::newAction',  '_route' => 'formations_new',);
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_formations_new;
+                    }
+
+                    return $ret;
+                }
+                not_formations_new:
+
+                // formations_edit
+                if (preg_match('#^/formation/formations/(?P<ref>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_edit']), array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::editAction',));
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_formations_edit;
+                    }
+
+                    return $ret;
+                }
+                not_formations_edit:
+
+                // formations_delete
+                if (preg_match('#^/formation/formations/(?P<ref>[^/]++)/delete$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_delete']), array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::deleteAction',));
+                    if (!in_array($requestMethod, ['DELETE'])) {
+                        $allow = array_merge($allow, ['DELETE']);
+                        goto not_formations_delete;
+                    }
+
+                    return $ret;
+                }
+                not_formations_delete:
+
+                // formations_show_alll
+                if (preg_match('#^/formation/formations/(?P<ref>[^/]++)/showall$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_show_alll']), array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::showallAction',));
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_formations_show_alll;
+                    }
+
+                    return $ret;
+                }
+                not_formations_show_alll:
+
+                // formations_nombres
+                if ('/formation/formations/nombres' === $trimmedPathinfo) {
+                    $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::listinscritsAction',  '_route' => 'formations_nombres',);
+                    if ('/' === substr($pathinfo, -1)) {
+                        // no-op
+                    } elseif ('GET' !== $canonicalMethod) {
+                        goto not_formations_nombres;
+                    } else {
+                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'formations_nombres'));
+                    }
+
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_formations_nombres;
+                    }
+
+                    return $ret;
+                }
+                not_formations_nombres:
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/formation/inscriptions')) {
+                // formations_affich_all
+                if ('/formation/inscriptions/allformations' === $pathinfo) {
+                    $ret = array (  '_controller' => 'FormationBundle\\Controller\\InscriptionsController::affichallFormationsAction',  '_route' => 'formations_affich_all',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_formations_affich_all;
+                    }
+
+                    return $ret;
+                }
+                not_formations_affich_all:
+
+                // formations_show_all
+                if (preg_match('#^/formation/inscriptions/(?P<ref>[^/]++)/showformation$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'formations_show_all']), array (  '_controller' => 'FormationBundle\\Controller\\InscriptionsController::showallFormationsAction',));
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_formations_show_all;
+                    }
+
+                    return $ret;
+                }
+                not_formations_show_all:
+
+                // ajout_filtre
+                if (preg_match('#^/formation/inscriptions/(?P<domaine>[^/]++)/filtre$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'ajout_filtre']), array (  '_controller' => 'FormationBundle\\Controller\\InscriptionsController::domaineAction',));
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_ajout_filtre;
+                    }
+
+                    return $ret;
+                }
+                not_ajout_filtre:
+
+                // inscrip_affich_all
+                if ('/formation/inscriptions/allinscriptions' === $pathinfo) {
+                    $ret = array (  '_controller' => 'FormationBundle\\Controller\\InscriptionsController::affichInscriAction',  '_route' => 'inscrip_affich_all',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_inscrip_affich_all;
+                    }
+
+                    return $ret;
+                }
+                not_inscrip_affich_all:
+
+                // etat_accepte
+                if (preg_match('#^/formation/inscriptions/(?P<id>[^/]++)/accepte$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'etat_accepte']), array (  '_controller' => 'FormationBundle\\Controller\\InscriptionsController::etataccepteAction',));
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_etat_accepte;
+                    }
+
+                    return $ret;
+                }
+                not_etat_accepte:
+
+                // etat_refuse
+                if (preg_match('#^/formation/inscriptions/(?P<id>[^/]++)/refusee$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'etat_refuse']), array (  '_controller' => 'FormationBundle\\Controller\\InscriptionsController::etatrefuseAction',));
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_etat_refuse;
+                    }
+
+                    return $ret;
+                }
+                not_etat_refuse:
+
+                // formation_smsfromadmin
+                if ('/formation/inscriptions/smssend' === $pathinfo) {
+                    $ret = array (  '_controller' => 'FormationBundle\\Controller\\InscriptionsController::sendsmsAction',  '_route' => 'formation_smsfromadmin',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_formation_smsfromadmin;
+                    }
+
+                    return $ret;
+                }
+                not_formation_smsfromadmin:
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/formation/search')) {
+                // ajax_search
+                if ('/formation/search' === $pathinfo) {
+                    $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::searchAction',  '_route' => 'ajax_search',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_ajax_search;
+                    }
+
+                    return $ret;
+                }
+                not_ajax_search:
+
+                // ajax_search_all
+                if ('/formation/searchall' === $pathinfo) {
+                    $ret = array (  '_controller' => 'FormationBundle\\Controller\\FormationsController::searchallAction',  '_route' => 'ajax_search_all',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_ajax_search_all;
+                    }
+
+                    return $ret;
+                }
+                not_ajax_search_all:
+
+                // ajax_search_user
+                if ('/formation/searchformation' === $pathinfo) {
+                    $ret = array (  '_controller' => 'FormationBundle\\Controller\\InscriptionsController::searchuserAction',  '_route' => 'ajax_search_user',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_ajax_search_user;
+                    }
+
+                    return $ret;
+                }
+                not_ajax_search_user:
+
+            }
+
+        }
+
         if ('/' === $pathinfo && !$allow) {
             throw new Symfony\Component\Routing\Exception\NoConfigurationException();
         }

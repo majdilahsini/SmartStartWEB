@@ -27,3 +27,15 @@ formations_delete:
     path:     /{ref}/delete
     defaults: { _controller: "FormationBundle:Formations:delete" }
     methods:  DELETE
+
+formations_show_alll:
+    path:     /{ref}/showall
+    defaults: { _controller: "FormationBundle:Formations:showall" }
+    methods:  GET
+
+formations_nombres:
+    path:     /nombres/
+    defaults: { _controller: "FormationBundle:Formations:listinscrits" }
+    methods:  GET
+
+

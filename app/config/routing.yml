@@ -34,3 +34,7 @@ index:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+
+formation:
+    resource: "@FormationBundle/Resources/config/routing.yml"
+    prefix:   /formation
