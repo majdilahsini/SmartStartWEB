@@ -107,68 +107,192 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/re')) {
-            if (0 === strpos($pathinfo, '/reclamation')) {
-                // reclamation_index
-                if ('/reclamation' === $trimmedPathinfo) {
-                    $ret = array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::indexAction',  '_route' => 'reclamation_index',);
-                    if ('/' === substr($pathinfo, -1)) {
-                        // no-op
-                    } elseif ('GET' !== $canonicalMethod) {
-                        goto not_reclamation_index;
-                    } else {
-                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'reclamation_index'));
-                    }
+        // interviews_homepage
+        if ('' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'InterviewsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'interviews_homepage',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_interviews_homepage;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'interviews_homepage'));
+            }
 
-                    return $ret;
-                }
-                not_reclamation_index:
+            return $ret;
+        }
+        not_interviews_homepage:
 
-                // reclamation_smsfromadmin
-                if (preg_match('#^/reclamation/(?P<id>[^/]++)/sendsms$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_smsfromadmin']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::sendsmsAction',));
-                }
+        // interview_index
+        if ('' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::indexAction',  '_route' => 'interview_index',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_interview_index;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'interview_index'));
+            }
 
-                // reclamation_indexuser
-                if ('/reclamation/indexuser' === $pathinfo) {
-                    return array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::indexuserAction',  '_route' => 'reclamation_indexuser',);
-                }
+            if (!in_array($canonicalMethod, ['GET'])) {
+                $allow = array_merge($allow, ['GET']);
+                goto not_interview_index;
+            }
 
-                // reclamation_all
-                if ('/reclamation/recall' === $pathinfo) {
-                    return array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::rdvallAction',  '_route' => 'reclamation_all',);
-                }
+            return $ret;
+        }
+        not_interview_index:
 
-                // reclamation_subject1
-                if (0 === strpos($pathinfo, '/reclamation/recsubject') && preg_match('#^/reclamation/recsubject/(?P<dd>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_subject1']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::rdvaAction',));
-                }
+        // interview_show
+        if (preg_match('#^/(?P<refEnt>[^/]++)/show$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'interview_show']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::showAction',));
+            if (!in_array($canonicalMethod, ['GET'])) {
+                $allow = array_merge($allow, ['GET']);
+                goto not_interview_show;
+            }
 
-                // reclamation_subject
-                if (0 === strpos($pathinfo, '/reclamation/subjectjax') && preg_match('#^/reclamation/subjectjax/(?P<nom>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_subject']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::subjectjaxAction',));
-                }
+            return $ret;
+        }
+        not_interview_show:
 
-                // reclamation_new
-                if ('/reclamation/new' === $pathinfo) {
-                    return array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::newAction',  '_route' => 'reclamation_new',);
-                }
+        // interview_new
+        if ('/new' === $pathinfo) {
+            $ret = array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::newAction',  '_route' => 'interview_new',);
+            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                $allow = array_merge($allow, ['GET', 'POST']);
+                goto not_interview_new;
+            }
 
-                // reclamation_show
-                if (preg_match('#^/reclamation/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_show']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::showAction',));
-                }
+            return $ret;
+        }
+        not_interview_new:
 
-                // reclamation_edit
-                if (preg_match('#^/reclamation/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_edit']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::editAction',));
-                }
+        // interview_edit
+        if (preg_match('#^/(?P<refEnt>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'interview_edit']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::editAction',));
+            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                $allow = array_merge($allow, ['GET', 'POST']);
+                goto not_interview_edit;
+            }
 
-                // reclamation_delete
-                if (preg_match('#^/reclamation/(?P<id>[^/]++)/delete$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'reclamation_delete']), array (  '_controller' => 'Reclamation1Bundle\\Controller\\ReclamationController::deleteAction',));
-                }
+            return $ret;
+        }
+        not_interview_edit:
 
+        // interview_delete
+        if (preg_match('#^/(?P<refEnt>[^/]++)/delete$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'interview_delete']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::deleteAction',));
+            if (!in_array($requestMethod, ['DELETE'])) {
+                $allow = array_merge($allow, ['DELETE']);
+                goto not_interview_delete;
+            }
+
+            return $ret;
+        }
+        not_interview_delete:
+
+        // affiches_offres
+        if ('/affichoffres_ent' === $pathinfo) {
+            $ret = array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::affichoffres_entAction',  '_route' => 'affiches_offres',);
+            if (!in_array($canonicalMethod, ['GET'])) {
+                $allow = array_merge($allow, ['GET']);
+                goto not_affiches_offres;
+            }
+
+            return $ret;
+        }
+        not_affiches_offres:
+
+        // ajouter_interview
+        if (preg_match('#^/(?P<offre_id>[^/]++)/ajout$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'ajouter_interview']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::ajouter_interviewAction',));
+            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                $allow = array_merge($allow, ['GET', 'POST']);
+                goto not_ajouter_interview;
+            }
+
+            return $ret;
+        }
+        not_ajouter_interview:
+
+        // afficherInterview
+        if ('/afficherInterview' === $pathinfo) {
+            $ret = array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::afficherInterviewAction',  '_route' => 'afficherInterview',);
+            if (!in_array($canonicalMethod, ['GET'])) {
+                $allow = array_merge($allow, ['GET']);
+                goto not_afficherInterview;
+            }
+
+            return $ret;
+        }
+        not_afficherInterview:
+
+        // modifier_interview
+        if (preg_match('#^/(?P<refEnt>[^/]++)/editinterview$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'modifier_interview']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::modifierInterviewAction',));
+            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                $allow = array_merge($allow, ['GET', 'POST']);
+                goto not_modifier_interview;
+            }
+
+            return $ret;
+        }
+        not_modifier_interview:
+
+        // delete_interview
+        if (0 === strpos($pathinfo, '/deleteInteview') && preg_match('#^/deleteInteview/(?P<refEnt>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_interview']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::deleteInterviewAction',));
+        }
+
+        // delete_eval
+        if (0 === strpos($pathinfo, '/delete_eval') && preg_match('#^/delete_eval/(?P<refEntretien>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_eval']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::delete_evalAction',));
+        }
+
+        // add_eval
+        if (0 === strpos($pathinfo, '/add_eval') && preg_match('#^/add_eval/(?P<refEnt>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'add_eval']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::add_evalAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/show_eval')) {
+            // show_evalUnique
+            if (0 === strpos($pathinfo, '/show_evalUnique') && preg_match('#^/show_evalUnique/(?P<refEnt>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'show_evalUnique']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::show_evalUniqueAction',));
+            }
+
+            // show_eval
+            if ('/show_eval' === $pathinfo) {
+                return array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::show_evalAction',  '_route' => 'show_eval',);
+            }
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/search')) {
+            // ajax_search
+            if ('/search' === $pathinfo) {
+                return array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::searchAction',  '_route' => 'ajax_search',);
+            }
+
+            // ajax_search_eval
+            if ('/searcheval' === $pathinfo) {
+                return array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::search_evalAction',  '_route' => 'ajax_search_eval',);
+            }
+
+            // ajax_search_c
+            if ('/searchC' === $pathinfo) {
+                return array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::searchCAction',  '_route' => 'ajax_search_c',);
+            }
+
+        }
+
+        // edit_eval
+        if (0 === strpos($pathinfo, '/edit_eval') && preg_match('#^/edit_eval/(?P<refEntretien>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'edit_eval']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::edit_evalAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/re')) {
+            // refuserDemandeinterview
+            if (0 === strpos($pathinfo, '/refuserDemandeinterview') && preg_match('#^/refuserDemandeinterview/(?P<offre_id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'refuserDemandeinterview']), array (  '_controller' => 'InterviewsBundle\\Controller\\InterviewController::refuserDemandeinterviewAction',));
             }
 
             // redirect_login

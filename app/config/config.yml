@@ -4,7 +4,7 @@ imports:
     - { resource: services.yml }
     - { resource: "@OffreBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
-    - { resource: "@EntretienBundle/Resources/config/services.yml" }
+
     - { resource: "@InterviewsBundle/Resources/config/services.yml" }
 
 
