@@ -107,60 +107,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/certificats')) {
-            // certificats_index
-            if ('/certificats' === $trimmedPathinfo) {
-                $ret = array (  '_controller' => 'CertificatBundle\\Controller\\CertificatsController::indexAction',  '_route' => 'certificats_index',);
-                if ('/' === substr($pathinfo, -1)) {
-                    // no-op
-                } elseif ('GET' !== $canonicalMethod) {
-                    goto not_certificats_index;
-                } else {
-                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'certificats_index'));
-                }
-
-                return $ret;
-            }
-            not_certificats_index:
-
-            // certificats_new
-            if ('/certificats/new' === $pathinfo) {
-                return array (  '_controller' => 'CertificatBundle\\Controller\\CertificatsController::newAction',  '_route' => 'certificats_new',);
-            }
-
-            // certificats_show
-            if (preg_match('#^/certificats/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'certificats_show']), array (  '_controller' => 'CertificatBundle\\Controller\\CertificatsController::showAction',));
-            }
-
-            // certificats_edit
-            if (preg_match('#^/certificats/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'certificats_edit']), array (  '_controller' => 'CertificatBundle\\Controller\\CertificatsController::editAction',));
-            }
-
-            // certificats_delete
-            if (preg_match('#^/certificats/(?P<id>[^/]++)/delete$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'certificats_delete']), array (  '_controller' => 'CertificatBundle\\Controller\\CertificatsController::deleteAction',));
-            }
-
-        }
-
-        // message_homepage
-        if ('/message' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'MessageBundle:Message:post',  '_route' => 'message_homepage',);
-            if ('/' === substr($pathinfo, -1)) {
-                // no-op
-            } elseif ('GET' !== $canonicalMethod) {
-                goto not_message_homepage;
-            } else {
-                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'message_homepage'));
-            }
-
-            return $ret;
-        }
-        not_message_homepage:
-
-        if (0 === strpos($pathinfo, '/re')) {
+        elseif (0 === strpos($pathinfo, '/re')) {
             if (0 === strpos($pathinfo, '/reclamation')) {
                 // reclamation_index
                 if ('/reclamation' === $trimmedPathinfo) {
