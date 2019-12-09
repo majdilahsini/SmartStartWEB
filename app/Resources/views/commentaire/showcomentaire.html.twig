@@ -1,0 +1,74 @@
+{% extends '@User/Default/userhome.html.twig' %}
+
+ {% block stylesheets %}
+     <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+ {% endblock %}
+
+
+
+
+{% block javascripts %}
+    <script src="{{ asset('/js/jquery-2.2.3.min.js')}}"></script>
+    <script src="{{ asset('/js/commantaire.js')}}"></script>
+    <script src="{{ asset('/js/commantaireajax.js')}}"></script>
+    <script src="{{ asset('/js/jquery-3.1.1.min.js')}}"></script>
+
+{% endblock %}
+{% block content %}
+    <center>
+        <h1>Commentaires list</h1>
+        <center> <input  type="text" id="sujet" class="form-control" placeholder="Search" ></center>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><p class="text-primary">Idcommentaire</p></th>
+                <th><p class="text-primary">Commentaire</p></th>
+                <th><p class="text-primary">Sujet</p></th>
+                <th><p class="text-primary">User</p></th>
+                <th><p class="text-primary">Actions</p></th>
+            </tr>
+            </thead>
+            <tbody id="tbc">
+{% for commentaire in commentaires %}
+    <tr>
+        <th>{{commentaire.idCommentaire}} </th>
+        <th>{{commentaire.commentaire}} </th>
+        <th>{{commentaire.idSujet}} </th>
+        <th>{{commentaire.idUser.fullname}} </th>
+        <th>
+            <ul>
+                {#<li>
+                    <a href="{{ path('commentaire_delete',  { 'idCommentaire': commentaire.idCommentaire }) }}">delete</a>
+                </li>#}
+                <li>
+                    <a href="{{ path('commentaire_edit',  { 'idCommentaire': commentaire.idCommentaire }) }}"><button type="button" class="btn btn-outline-primary">edit</button></a>
+                </li>
+            </ul>
+
+
+        </th>
+
+    </tr>
+{% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('commentaire_new') }}"><button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        Create a new commentaire
+                    </button></a>
+            </li>
+        </ul>
+    </center>
+{% endblock %}

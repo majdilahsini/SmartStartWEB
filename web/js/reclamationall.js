@@ -3,7 +3,6 @@ $(document).ready(function() {
 
     $.ajax({
         type: "GET",
-        // url: "{{ path('rappelrdv_ajax') }}",
         url: 'http://127.0.0.1:8000/reclamation/recall',
         //dataType: "jsonp",
         dataType: "text",

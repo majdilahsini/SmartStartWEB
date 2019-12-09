@@ -1,0 +1,38 @@
+{% extends '@User/Default/userhome.html.twig' %}
+
+{% block javascripts %}
+    <script src="{{ asset('/js/jquery-2.2.3.min.js')}}"></script>
+    <script src="{{ asset('/js/commantaire.js')}}"></script>
+    <script src="{{ asset('/js/commantaireajax.js')}}"></script>
+    <script src="{{ asset('/js/jquery-3.1.1.min.js')}}"></script>
+
+{% endblock %}
+{% block content %}
+   <center>
+    <h1>Commentaires list</h1>
+       <input  type="text" id="sujet" class="form-control" placeholder="Search" >
+       <table class="table table-striped">
+           <thead>
+           <tr>
+               <th><p class="badge badge-pill badge-primary">Idcommentaire</p></th>
+               <th><p class="badge badge-pill badge-primary">Commentaire</p></th>
+               <th><p class="badge badge-pill badge-primary">Sujet</p></th>
+               <th><p class="badge badge-pill badge-primary">User</p></th>
+               <th><p class="badge badge-pill badge-primary">Actions</p></th>
+           </tr>
+           </thead>
+        <tbody id="tbc">
+
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('commentaire_new') }}"><button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    Create a new commentaire
+                </button></a>
+        </li>
+    </ul>
+   </center>
+{% endblock %}

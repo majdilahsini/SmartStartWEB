@@ -27,17 +27,26 @@
                            <ul class="nav-menu">
                                <li class="menu-active"><a href={{ path('index') }}>Home</a></li>
                                <li class="menu-active"><a href={{ path('read_offre_user') }}>Les Offres</a></li>
-                               <li class="menu-active"><a href={{ path('index') }}>Les Formations</a></li>
-                               <li class="menu-active"><a href={{ path('index') }}>Crowdfundings</a></li>
-                               <li class="menu-active"><a href={{ path('index') }}>Forum</a></li>
+                               <li class="menu-active"><a href={{ path('formations_affich_all') }}>Les Formations</a></li>
+                               <li class="menu-has-children"><a href="">Crowdfundings</a>
+                                   <ul>
+                                       <li><a href="{{ path('projet_new') }}">Ajouter un projet</a></li>
+                                       <li><a href="{{ path('projet_index') }}">Consulter vos projets</a></li>
+                                       <li><a href="{{ path('projet_indexall') }}">Consulter toutes les projets</a></li>
+                                       <li><a href="{{ path('projet_show_invest') }}">Consulter Mes Invesstissement</a></li>
+
+                                       <li><a href="{{ path('projet_index') }}">Mes Projet Favorite Projet</a></li>
+                                   </ul>
+                               </li>
+                               <li class="menu-active"><a href="{{ path('forum_homepage') }}">Forum</a></li>
                                <li class="menu-has-children"><a href=""><p>connected as : {{ app.user.username }}</p></a>
                                    <ul>
                                        <li><a href="{{ path('mon_profil') }}">Mon Profil</a></li>
                                        <li><a href={{ path('mes_condidatures') }}>Mes Candidatures</a></li>
-                                       <li><a href="">Mes Formations</a></li>
-                                       <li><a href="">Mes Entretiens</a></li>
+                                       <li><a href="{{ path('formations_affich_all')}}">Mes Formations</a></li>
+                                       <li><a href="{{ path('afficherInterview') }}">Mes Entretiens</a></li>
                                        <li><a href="">Mes Crowdfundings</a></li>
-                                       <li><a href={{ path('reclamation_index') }}>ajouter reclamation</a></li>
+                                       <li><a href={{ path('reclamation_new') }}>envoyer reclamation</a></li>
                                        <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
                                    </ul>
                                </li>

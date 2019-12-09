@@ -15,7 +15,6 @@ offre_offres:
     resource: "@OffreBundle/Controller/OffresController.php"
     type:     annotation
 
-
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
@@ -35,3 +34,31 @@ index:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+project:
+    resource: "@ProjectBundle/Resources/config/routing.yml"
+    prefix:   /project
+
+formation:
+    resource: "@FormationBundle/Resources/config/routing.yml"
+    prefix:   /formation
+
+interviews:
+    resource: "@InterviewsBundle/Resources/config/routing.yml"
+    prefix:   /interviews
+
+forumsujet:
+    resource: "@ForumBundle/Controller/ForumsujetController.php"
+    type:     annotation
+
+forum:
+    resource: "@ForumBundle/Resources/config/routing.yml"
+    prefix:   /forum
+
+
+
+commentaire:
+    resource: "@ForumBundle/Resources/config/routing.yml"
+    prefix : /commentaire
+commentaire_sujet:
+    resource: "@ForumBundle/Controller/CommentaireController.php"
+    type:     annotation

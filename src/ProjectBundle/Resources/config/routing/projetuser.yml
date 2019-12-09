@@ -1,0 +1,65 @@
+projet_index_user:
+  path:     /
+  defaults: { _controller: "ProjectBundle:Projetuser:index" }
+  methods:  GET
+
+projet_show_user:
+  path:     /{idProjet}/show
+  defaults: { _controller: "ProjectBundle:Projetuser:show" }
+  methods:  [GET, POST]
+
+projet_new_user:
+  path:     /newuser
+  defaults: { _controller: "ProjectBundle:Projetuser:new" }
+  methods:  [GET, POST]
+projet_domaine_user:
+  path:     /{domaine}/domaine
+  defaults: { _controller: "ProjectBundle:Projetuser:domaine" }
+  methods:  [GET, POST]
+
+projet_edit_user:
+  path:     /{idProjet}/edit
+  defaults: { _controller: "ProjectBundle:Projetuser:edit" }
+  methods:  [GET, POST]
+
+projet_delete_user:
+  path:     /{idProjet}/delete
+  defaults: { _controller: "ProjectBundle:Projetuser:delete" }
+  methods:  DELETE
+projet_indexall_user:
+  path:     /indexall
+  defaults: { _controller: "ProjectBundle:Projetuser:indexall" }
+  methods:  GET
+projet_show_visiteur_projet_user:
+  path:     /{idProjet}/showvisiteur
+  defaults: { _controller: "ProjectBundle:InvesstirUser:showvisiteur" }
+  methods:  [GET, POST]
+projet_show_invest_user:
+  path:     /invest
+  defaults: { _controller: "ProjectBundle:InvesstirUser:affichInvestissement" }
+  methods:  GET
+projet_show_mesprojet_invest_user:
+  path:     /investmesprojet
+  defaults: { _controller: "ProjectBundle:InvesstirUser:affichInvestissementMesProjet" }
+  methods:  GET
+
+recherch_ajax_user:
+  path:     /recherch
+  defaults: { _controller: "ProjectBundle:Projetuser:search" }
+  methods:  [GET, POST]
+recherch_ajax_userm:
+  path:     /recherchm
+  defaults: { _controller: "ProjectBundle:Projetuser:searchM" }
+  methods:  [GET, POST]
+filtre_ajax_user:
+  path:     /investajax
+  defaults: { _controller: "ProjectBundle:Projetuser:filtrePro" }
+  methods:  [GET, POST]
+projet_index_domaine_user:
+  path:     /{idEtat}/domainfiltre
+  defaults: { _controller: "ProjectBundle:Projetuser:filtredom" }
+  methods:  [GET, POST]
+projet_call_user:
+  path:     /{idProjet}/message
+  defaults: { _controller: "ProjectBundle:Projetuser:messageadmine" }
+  methods:  [GET, POST]

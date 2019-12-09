@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Formations
  *
  * @ORM\Table(name="formations", indexes={@ORM\Index(name="domaine_id", columns={"domaine_id"}), @ORM\Index(name="entreprise_id", columns={"entreprise_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FormationBundle\Repository\FormationsRepository")
  */
 class Formations
 {
@@ -28,11 +28,16 @@ class Formations
      * @var string
      *
      * @ORM\Column(name="Nom", type="string", length=50, nullable=false)
+     *
+     * @Assert\NotBlank(message="champs obligatoire")
+     * @Assert\Length(min=5,minMessage = "'{{ value }}' est trop courte" )
      */
     private $nom;
 
     /**
      * @var string
+     * @Assert\NotBlank(message="champs obligatoire")
+     * @Assert\Length(min=20)
      *
      * @ORM\Column(name="description", type="string", length=500, nullable=false)
      */
@@ -40,12 +45,18 @@ class Formations
 
     /**
      * @var integer
-     *
+     * @Assert\NotNull(message="champ obligatoire")
+     * @Assert\Length(min=2,minMessage="'{{ value }}'est trop courte. Il devrait avoir 2 chiffres")
+     * @Assert\Length(max=3,maxMessage="'{{ value }}'est trop longue. Il devrait avoir 2 chiffres ou plus.")
      * @ORM\Column(name="duree", type="integer", nullable=false)
      */
     private $duree;
 
-    /**
+    /** @Assert\DateTime()
+     * @Assert\NotBlank(message="date obligatoire")
+     * @Assert\LessThanOrEqual(propertyPath="dateFin",
+     *     message = "la date de debut doit étre infenuire a la date fin "
+     * )
      * @var \DateTime
      *
      * @ORM\Column(name="date_debut", type="date", nullable=true)
@@ -53,6 +64,11 @@ class Formations
     private $dateDebut;
 
     /**
+     * @Assert\DateTime()
+     * @Assert\NotBlank(message="date obligatoire")
+     * @Assert\GreaterThan(propertyPath="dateDebut",
+     *   message = "la date finale doit étre grande que la date de debut"
+     * )
      * @var \DateTime
      *
      * @ORM\Column(name="date_fin", type="date", nullable=true)
@@ -61,29 +77,38 @@ class Formations
 
     /**
      * @var float
-     *
+     * @Assert\NotNull(message="prix obligatoire")
+     * @Assert\Length(min=2,minMessage="'{{ value }}'est trop courte. Il devrait avoir 2 chiffres")
+     * @Assert\Length(max=4,maxMessage="'{{ value }}'est trop longue. Il devrait avoir 4 chiffres ou max.")
      * @ORM\Column(name="prix", type="float", precision=10, scale=0, nullable=false)
      */
     private $prix;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="adresse obligatoire")
      * @ORM\Column(name="adresse", type="string", length=500, nullable=false)
+     * @Assert\Length(min=20,minMessage="'{{ value }}'est trop courte. Il devrait au moins 20 lettres")
+
      */
     private $adresse;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="champs obligatoire")
+     * @Assert\Email(
+     *     message = "email '{{ value }}' est invalide",
+     *  )
      * @ORM\Column(name="email", type="string", length=100, nullable=false)
      */
     private $email;
 
     /**
      * @var integer
-     *
+     * @Assert\NotNull(message="champs obligatoire")
      * @ORM\Column(name="contact", type="integer", nullable=false)
+     * @Assert\Length(min=8,minMessage="'{{ value }}'est trop courte. Il devrait etre egale a  8 chiffres")
+     * @Assert\Length(max=8,maxMessage="'{{ value }}'est trop courte. Il devrait etre egale a  8 chiffres")
      */
     private $contact;
 
@@ -96,15 +121,16 @@ class Formations
 
     /**
      * @var integer
-     *
+     * @Assert\NotNull(message="champ obligatoire")
      * @ORM\Column(name="Nombres", type="integer", nullable=true)
+     * @Assert\Length(max=1000,minMessage="'{{ value }}'est trop courte. Il devrait au moins 20 lettres")
      */
     private $nombres;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="etat_formation", type="string", length=100, nullable=false)
+     * @ORM\Column(name="etat_formation", type="integer", nullable=true)
      */
     private $etatFormation;
 
@@ -119,6 +145,13 @@ class Formations
     private $domaine;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="etat_nombres", type="integer", nullable=true)
+     */
+    private $etatNombres;
+
+    /**
      * @var Users
      *
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Users")
@@ -127,10 +160,16 @@ class Formations
      * })
      */
     private $entreprise;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datecreationformation", type="date")
+     */
+    private $datecreationformation;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="champ obligatoire")
      * @Assert\File(maxSize="500K")
      */
     public  $file;
@@ -152,22 +191,6 @@ class Formations
     }
 
     /**
-     * @return string
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * @param string $file
-     */
-    public function setFile($file)
-    {
-        $this->file = $file;
-    }
-
-    /**
      * @return int
      */
     public function getRef()
@@ -182,6 +205,23 @@ class Formations
     {
         $this->ref = $ref;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDatecreationformation()
+    {
+        return $this->datecreationformation;
+    }
+
+    /**
+     * @param \DateTime $datecreationformation
+     */
+    public function setDatecreationformation($datecreationformation)
+    {
+        $this->datecreationformation = $datecreationformation;
+    }
+
 
     /**
      * @return string
@@ -360,7 +400,7 @@ class Formations
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getEtatFormation()
     {
@@ -368,7 +408,7 @@ class Formations
     }
 
     /**
-     * @param string $etatFormation
+     * @param int $etatFormation
      */
     public function setEtatFormation($etatFormation)
     {
@@ -392,6 +432,22 @@ class Formations
     }
 
     /**
+     * @return int
+     */
+    public function getEtatNombres()
+    {
+        return $this->etatNombres;
+    }
+
+    /**
+     * @param int $etatNombres
+     */
+    public function setEtatNombres($etatNombres)
+    {
+        $this->etatNombres = $etatNombres;
+    }
+
+    /**
      * @return Users
      */
     public function getEntreprise()
@@ -406,6 +462,23 @@ class Formations
     {
         $this->entreprise = $entreprise;
     }
+
+    /**
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param string $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
 
 
 }

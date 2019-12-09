@@ -1,0 +1,74 @@
+{% extends '@User/Default/entreprisehome.html.twig' %}
+
+  {% block stylesheets %}
+      <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+      <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/ajout_ent.css') }}">
+
+  {% endblock %}
+
+{% block banner %}
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+Evaluation
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+    <center>
+
+        <table class="table table-hover">
+
+            <tr> </tr>
+            <tr> </tr>
+            <tr style="background-color: darkseagreen">
+
+                <th>condidat</th>
+                <th>evaluation</th>
+                <th>Actions</th>
+
+
+
+            </tr>
+            {% for e in list %}
+                <tr class="table-info">
+
+                    <td> {{ e.username }}</td>
+                    <td> {{ e.evaluation  }}</td>
+                    <td>
+                        <li>
+                            <a href="{{ path('edit_eval', { 'refEntretien': e.ref_entretien}) }}">Modifier</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('delete_eval', { 'refEntretien': e.ref_entretien }) }}">Supprimer</a>
+
+                        </li>
+
+                    </td>
+
+
+
+
+                </tr>
+            {% endfor %}
+
+
+        </table>
+        <a href="{{ path('afficherInterview') }}" class="btn btn-outline-info">Retour</a>
+
+    </center>
+{% endblock %}

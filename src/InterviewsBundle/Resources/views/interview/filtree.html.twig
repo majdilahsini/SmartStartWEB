@@ -1,0 +1,164 @@
+{% extends '@User/Default/entreprisehome.html.twig' %}
+{% block banner %}
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Mes entretiens
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <h2>Recherche</h2>
+
+        <div class="sidebar-search">
+
+            <div class="input-group custom-search-form">
+
+                <input type="text" id="search" class="form-control" placeholder="Taper poste">
+            </div>
+            <!-- /input-group -->
+        </div>
+        <ul class="nav" id="side-menu">
+            <li>
+                {#  <a href="#"> Entities<span class="fa arrow"></span></a>#}
+                <ul class="nav nav-second-level" id="entitiesNav">
+                </ul>
+            </li>
+        </ul><br><br><br><br>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                var searchRequest = null;
+                $("#search").keyup(function() {
+                    var minlength = 1;
+                    var that = this;
+                    var value = $(this).val();
+                    var entitySelector = $("#entitiesNav").html('');
+                    if (value.length >= minlength ) {
+                        if (searchRequest != null)
+                            searchRequest.abort();
+                        searchRequest = $.ajax({
+                            type: "GET",
+                            url: "{{ path('ajax_search') }}",
+                            data: {
+                                'q' : value
+                            },
+                            dataType: "text",
+                            success: function(msg){
+                                //we need to check if the value is the same
+                                if (value===$(that).val()) {
+                                    var result = JSON.parse(msg);
+                                    $.each(result, function(key, arr) {
+                                        $.each(arr, function(refEnt, value) {
+                                            if (key === 'ent') {
+                                                if (refEnt !== 'error') {
+                                                    console.log(value[0]);
+                                                    var id=value[0];
+
+                                                    var path = '{{ path('modifier_interview', { 'refEnt': 'x' }) }}'
+                                                    path = path.replace("x",id);
+
+                                                    var path1 = '{{ path('delete_interview', { 'refEnt': 'xx' }) }}'
+                                                    path1 = path1.replace("xx",id);
+
+                                                    var path2 = '{{ path('add_eval', { 'refEnt': 'xxx' }) }}'
+                                                    path2 = path2.replace("xxx",id);
+
+                                                    var path3 = '{{ path('show_evalUnique', { 'refEnt': 'xxxx' }) }}'
+                                                    path3 = path3.replace("xxxx",id);
+
+                                                    entitySelector.append(
+
+                                                        "<table class='table table-hover'>"+
+                                                        "<tr style='color: saddlebrown'>"+
+                                                        "<th>"+"condidat "+"</th>"+
+                                                        "<th>"+"poste"+"</th>"+
+                                                        "<th>"+"date"+"</th>"+
+                                                        "<th>"+"heure "+"</th>"+
+                                                        "<th>"+"Action"+"</th>"+"<tr>"
+                                                        +"<tr class='table-info'>"+
+
+                                                        "<td>" +value[1]+"</td>"+
+                                                        "<td>" +value[2]+"</td>"+
+                                                        "<td>" +value[4]+"</td>"+
+                                                        "<td>" +value[3]+"</td>"+
+
+                                                        "<td><ul><li><a href='"+ path + "'>Modifer</a></li><li><a href='"+ path1 + "'>Effacer</a></li><li><a href='"+ path2 + "'>Ajouter Evaluations</a></li><li><a href='"+ path3 + "'>Afficher Evaluation</a></li></td>"+
+
+                                                        "</table>");
+                                                } else {
+                                                    entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                }
+                                            }
+                                        });
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        </script></div></div>
+
+
+
+
+
+
+        <table class="table table-hover">
+    <tr> </tr>
+    <tr> </tr>
+    <tr >{#style="background-color: darkseagreen"#}
+
+        <th>  condidat   </th>
+        <th>  poste  </th>
+        <th>  date  </th>
+        <th>  heure  </th>
+        <th>  Actions  </th>
+
+
+    </tr>
+    {% for e in list %}
+    <tr class="table-info">
+
+        <td> {{ e.username }}</td>
+        <td> {{ e.poste  }}</td>
+        <td> {{ e.date_ent  |date("m/d/Y") }}</td>
+        <td> {{ e.heure_ent  }}</td>
+        <td>
+            <li>
+                <a href="{{ path('modifier_interview', { 'refEnt': e.ref_ent }) }}" >Modifier</a>
+            </li>
+            <li>
+                <a href="{{ path('delete_interview', { 'refEnt': e.ref_ent }) }}" >Effacer</a>
+
+            </li>
+            <li>
+                <a href="{{ path('add_eval', { 'refEnt': e.ref_ent }) }}" >Ajouter Evaluations</a>
+            </li>
+            <li>
+                <a href="{{ path('show_evalUnique', { 'refEnt': e.ref_ent }) }}" >Afficher Evaluation</a>
+
+            </li>
+        </td>
+    </tr>
+
+
+    {% endfor %}
+
+</table>
+    <a href="{{ path('affiches_offres') }}" class="btn btn-outline-info">Afficher Mes offres</a>
+
+{% endblock %}

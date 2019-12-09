@@ -6,6 +6,9 @@ use FormationBundle\Entity\Formations;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Twilio\Exceptions\ConfigurationException;
+use Twilio\Rest\Client;
 
 /**
  * Formation controller.
@@ -25,11 +28,17 @@ class FormationsController extends Controller
         $user = $this->getUser();
         $id = $user->getId();
         $em = $this->getDoctrine()->getManager();
+        $k = $this->getDoctrine()->getManager();
 
         $formations = $em->getRepository('FormationBundle:Formations')->findByentreprise($id);
+        $em->getRepository('FormationBundle:Formations')->testdate();
+        $em->getRepository('FormationBundle:Formations')->testnombre();
+        $k->getRepository('FormationBundle:Formations')->findByentreprise($id);
+        $top=  $k->getRepository('FormationBundle:Formations')->topthreee($id);
+
 
         return $this->render('formations/index.html.twig', array(
-            'formations' => $formations,
+            'formations' => $formations,'top' => $top,
         ));
     }
 
@@ -41,12 +50,15 @@ class FormationsController extends Controller
      */
     public function indexallAction()
     {
+
+        $user = $this->getUser();
+        $id = $user->getId();
         $em = $this->getDoctrine()->getManager();
 
         $formations = $em->getRepository('FormationBundle:Formations')->findAll();
 
-        return $this->render('formations/index.html.twig', array(
-            'formations' => $formations,
+        return $this->render('formations/indexall.html.twig', array(
+            'formations' => $formations,'id' =>$id,
         ));
     }
     /**
@@ -58,6 +70,8 @@ class FormationsController extends Controller
     public function newAction(Request $request)
     {
         $user = $this->getUser();
+        $currentdate = new \DateTime('now');
+
         $formation = new Formations();
         $form = $this->createForm('FormationBundle\Form\FormationsType', $formation);
         $form->handleRequest($request);
@@ -66,10 +80,14 @@ class FormationsController extends Controller
             $em = $this->getDoctrine()->getManager();
             $formation->setEntreprise($user);
             $formation->uploadProfilePicture();
+            $formation->setEtatFormation(1);
+            $formation->setEtatNombres(1);
+            $formation->setDatecreationformation($currentdate);
 
 
             $em->persist($formation);
             $em->flush();
+
 
             return $this->redirectToRoute('formations_show', array('ref' => $formation->getRef()));
         }
@@ -104,6 +122,7 @@ class FormationsController extends Controller
      */
     public function editAction(Request $request, Formations $formation)
     {
+
         $user = $this->getUser();
         $deleteForm = $this->createDeleteForm($formation);
         $editForm = $this->createForm('FormationBundle\Form\FormationsType', $formation);
@@ -112,9 +131,10 @@ class FormationsController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em=$this->getDoctrine()->getManager();
             $formation->uploadProfilePicture();
+            $formation->setFile($this->newAction($request));
            $em->persist($formation);
             $em->flush();
-            return $this->redirectToRoute('formations_edit', array('ref' => $formation->getRef()));
+            return $this->redirectToRoute('formations_show', array('ref' => $formation->getRef()));
         }
 
         return $this->render('formations/edit.html.twig', array(
@@ -159,4 +179,94 @@ class FormationsController extends Controller
             ->getForm()
         ;
     }
+    public function searchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $requestString = $request->get('q');
+        $user = $this->getUser();
+        $idUser = $user->getId();
+
+        $ent =  $em->getRepository('FormationBundle:Formations')->findEntitiesByString($requestString,$idUser);
+
+        if (!$ent) {
+            $result['ent']['error'] = "Formation n'excite pas ";
+        } else  {
+            $result['ent'] = $this->getRealEntities($ent);
+        }
+        return new Response(json_encode($result));
+
+    }
+    public function getRealEntities($for){
+
+
+        foreach ($for as $for)
+            $Datedeb = $for->getDateDebut();
+        $datefin = $for->getDateFin();
+        $Datedeb = $Datedeb->format('m/d/Y');
+        $datefin = $datefin->format('m/d/Y');
+        $realEntities[$for->getRef()] = [$for->getRef(),$for->getNom(),$for->getDomaine()->getNomDomaine(),$for->getDescription(),$for->getDuree(), $for->getNombres(),$Datedeb,$datefin];
+
+        return $realEntities;
+
+    }
+    public function searchallAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $requestString = $request->get('q');
+
+
+        $ent =  $em->getRepository('FormationBundle:Formations')->findEntities($requestString);
+
+        if (!$ent) {
+            $result['ent']['error'] = "Formation n'excite pas ";
+        } else  {
+            $result['ent'] = $this->getRealEntities($ent);
+        }
+        return new Response(json_encode($result));
+
+    }
+
+
+    public function trouverdomaineAction($domaine){
+        $repository =$this->getDoctrine()->getManager()->getRepository(Formations::class);
+        $formations = $repository->afficherpardomaine($domaine);
+        return $this->render('formations/affichall.html.twig',array('formations' => $formations));
+    }
+
+    public function contactAction(){
+
+
+    }
+    public function showallAction(Formations $formation)
+    {
+        $deleteForm = $this->createDeleteForm($formation);
+
+        return $this->render('formations/showallformations.html.twig', array(
+            'formation' => $formation,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    public function listinscritsAction(Request $request){
+
+        $user = $this->getUser();
+        $id = $user->getId();
+        $em = $this->getDoctrine()->getManager();
+        $list = $em->getRepository('FormationBundle:temporaire')->listinscrits($id);
+        $listinscrits  = $this->get('knp_paginator')->paginate(
+            $list,
+            $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+            3/*nbre d'éléments par page*/
+        );
+        return $this->render('formations/listinscrits.html.twig', array(
+            'list'=>$listinscrits,
+        ));
+
+    }
+
+
+
+
+
+
+
 }

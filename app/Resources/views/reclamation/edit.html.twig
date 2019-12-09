@@ -35,21 +35,38 @@
 {% block content %}
     <center>
     <h1>Reclamation edit</h1>
+        <section class="profile-detail" >
+            <div class="container" >
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="basic-information" align="center">
+                            <p style="font-weight: bold; font-size: 30px">Envoyer reclamation:</p>
+                            {{ form_start(edit_form, {'atr' : {'class' : 'serach-form-area'}}) }}
+                            <table style="width: 450px; border-collapse:separate; border-spacing: 0 15px">
+                                <tbody>
+                                <tr style="height: 22px; ">
+                                    <td style="width: 300px; height: 22px;">{{ form_label(edit_form.subject, "Subject", {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 425.2px; height: 22px;">{{ form_widget(edit_form.subject, {'attr' : {'class' :'input-smartstart'}})}}</td>
+                                </tr>
+                                <tr style="height: 22px;">
+                                    <td style="width: 300px; height: 22px;">{{ form_label(edit_form.object, 'Object', {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                    <td style="width: 200px; height: 22px;">{{ form_widget(edit_form.object, {'attr' : {'class' :'input-smartstart'}})}}</td>
+                                </tr>
+                                <tr style="height: 22.6px;">
+                                    <td style="width: 425.2px; height: 22.6px; padding-top: 50px" align="right">  <input class="submit-smartstart" type="submit" value="Confirmer" ></td>
+                                </tr>
+                            </table>
+                            {{ form_end(edit_form) }}
+                        </div>
+                    </div>
+                </div>
+                <ul>
+                    <li>
+                        <a class="btn" href="{{ path('reclamation_indexuser') }}"><button type="submit" value="Delete" class="btn supprimer-offre" name="View Job">Back to the list</button></a>
+                    </li>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+                </ul>
+            </div>
+        </section>
 
-    <ul>
-        <li>
-            <a href="{{ path('reclamation_indexuser') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-    </center>
 {% endblock %}

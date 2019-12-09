@@ -1,0 +1,184 @@
+{% extends '@User/Default/userhome.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleajout.css') }}">
+
+{% endblock %}
+{% block banner %}
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        <p> liste des Formation </p>
+
+
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+    <section class="counter " >
+        <div align="center">
+            <table class="t">
+                <tr>
+                    <td>
+                        <div class="counter-text">
+                            <h3>{{ total }}</h3>
+                            <p>Formations</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="counter-text">
+                            <h3>{{ totaldomaines }}</h3>
+                            <p>Domaines</p>
+                        </div>
+                    </td>
+
+
+
+                </tr>
+            </table>
+        </div>
+    </section>
+
+<br>
+<div class="row justify-content-center d-flex" >
+    <div class="col-lg-8 post-list">
+
+        {% for formation in formations %}
+        {% set test = 0 %}
+        {% for inscriptio in inscription %}
+            {% if formation.ref== inscriptio.formationRef.ref  and inscriptio.etat == 2 %}
+                {% set test = 1 %}
+
+            {% elseif formation.ref== inscriptio.formationRef.ref  and inscriptio.etat == 1 %}
+                {% set test = 2 %}
+            {% endif %}
+        {% endfor %}
+
+        {% if test == 1 %}
+        <div class="single-post d-flex flex-row"  style="background-color: #F3FFFA">
+            {% elseif test == 2 %}
+            <div class="single-post d-flex flex-row"  style="background-color: #FFF3E0 ">
+                {% else %}
+
+                <div class="single-post d-flex flex-row" >
+                    {% endif %}
+                    {#  {% if inscription.etat == 2 %}
+                      <div class="single-post d-flex flex-row" style="background-color: #ffe8a1" >
+                          {% elseif inscription.etat == 1 %}
+                              <div class="single-post d-flex flex-row" style="background-color:#4e555b" >#}
+
+                    <div class="thumb col-2">
+                        <center>       <img src="{{ asset('images/') }}{{ formation.image }}" alt="" height="100px" ></center>
+
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a><h4>{{ formation.nom }}</h4></a>
+                                <h6>{{ formation.entreprise.fullname }}</h6>
+                                <h6>{{ formation.domaine.nomDomaine }}</h6>
+                            </div>
+                            <ul class="btns ">
+                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+                                <li><a href="{{ path('formations_show_all', { 'ref': formation.ref }) }}">Afficher</a></li>
+                            </ul>
+                        </div>
+                        <p>
+                            {{ formation.description }}
+                        </p>
+
+
+                        <label class="address"><span class="lnr lnr-map"></span> Duree : </label><label>{{ formation.duree }} heures</label> <br>
+
+                        <label class="address"><span class="lnr lnr-database"></span> Nbres inscrits : </label><label>{{ formation.nombres }} </label>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-lg-4 sidebar">
+                <div class="single-slidebar">
+                    <h4>Formations par domaine</h4>
+                    <ul class="cat-list">
+                        {% set newArray = [] %}
+                        {% set i=0 %}
+                        {% for formation in domain %}
+
+
+                            {% if formation.domaine.nomDomaine not in newArray %}
+                                {% set newArray = newArray|merge([formation.domaine.nomDomaine]) %}
+                                <li><a class="justify-content-between d-flex" href="{{ path('ajout_filtre', { 'domaine': formation.domaine.id }) }}"><p>{{ formation.domaine.nomDomaine }}</p><span>
+                                     {% set i=0 %}
+                                            {% for formationn in domain %}
+                                                {% if formation.domaine.nomDomaine == formationn.domaine.nomDomaine %}
+                                                    {% set i=i+1 %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            {{ i }}
+
+                                </span></a></li>
+
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+
+
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            </section>
+            <!-- End post Area -->
+
+
+            <!-- Start callto-action Area -->
+            <section class="callto-action-area section-gap" id="join">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="menu-content col-lg-9">
+                            <div class="title text-center">
+                                <a class="primary-btn" href="#"> mes inscriptions</a>
+                                <a class="primary-btn" href="#"> mes formations</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/easing.min.js') }}"></script>
+    <script src="{{ asset('js/hoverIntent.js') }}"></script>
+    <script src="{{ asset('js/superfish.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/mail-script.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }} " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+{% endblock %}

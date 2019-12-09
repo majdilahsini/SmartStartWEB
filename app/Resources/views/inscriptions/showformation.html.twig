@@ -1,0 +1,150 @@
+{% extends '@User/Default/userhome.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleajout.css') }}">
+
+{% endblock %}
+
+{% block banner %}
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        <p>Détail Formation</p>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div style="background-color:#797979">
+        <br>
+        <div class="card mb-3 container">
+            <h3 class="card-header">{{ formation.nom }}</h3>
+            <div class="card-body">
+                <h6 class="card-subtitle text-muted">{{ formation.domaine.nomDomaine }}</h6>
+            </div>
+            <center> <img style="height: 250px; width: 30%; display: block;" src="{{ asset('images/') }}{{ formation.image }}" alt="Card image"></center>
+            <div class="card-body">
+                <p class="card-text"> <label><h5>Description : </h5></label>{{ formation.description }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><label><h5>Duree : </h5></label> {{ formation.duree }} heures</li>
+                <li class="list-group-item"><label><h5>Date debut : </h5></label> {% if formation.dateDebut %}{{ formation.dateDebut|date('Y-m-d') }}{% endif %}</li>
+                <li class="list-group-item"><label><h5>Date fin : </h5></label> {% if formation.dateFin %}{{ formation.dateFin|date('Y-m-d') }}{% endif %}</li>
+                <li class="list-group-item"><label><h5>Prix : </h5></label> {{ formation.prix }} DT</li>
+                <li class="list-group-item"><label><h5>Adresse : </h5></label> {{ formation.adresse }}</li>
+                <li class="list-group-item"><label><h5>Email : </h5></label> {{ formation.email }}</li>
+                <li class="list-group-item"><label><h5>Contact : </h5></label> {{ formation.contact }}</li>
+                <li class="list-group-item"><label><h5>Nbres inscrits : </h5></label> {{ formation.nombres }}</li>
+                <li class="list-group-item"><label><h5>Etat formation : </h5></label> {{ formation.etatFormation }}</li>
+            </ul>
+
+
+
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-4">
+                        <a href="{{ path('formations_affich_all') }}" class="card-link"> <button class="btn btn-outline-secondary">Back to the list</button></a>
+
+                    </div>
+
+
+                    {#  <a href="{{ path('formations_edit', { 'ref': formation.ref }) }}">S'inscrire</a> #}
+                    {% if count2  > 0 %}
+                    <div class="col-4">
+                        <label class="input">Annuler inscription</label>  {#</a>#}
+                    </div>
+                    {% else %}
+                    {%  if formation.nombres == 0 %}
+                        <div class="col-4">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="formation est complet">
+                                Inscrire
+                            </button>
+                        </div>
+                    {% else %}
+                        <div class="col-4">
+                            <a  class="btn btn-outline-secondary" data-toggle="modal" data-target="#inscrip" href=""> Inscrire</a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="inscrip">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Inscription aux formation  </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <br class="card-body"  style="font-size: 17px">
+                                            <div class="container">
+                                                <label><h5> Nom formation :</h5></label><label>{{ formation.nom }}</label><br>
+                                                <label><h5> Domaine :</h5></label><label>{{ formation.domaine.nomDomaine }}</label><br><br>
+                                                {{ form_start(form_inscip) }}
+                                                <strong><label><h5> specialité/service :</h5></label></strong> {{ form_widget(form_inscip.specialite,{'attr':{'type':'text','class':'input'}}) }} </br> </br>
+                                                <strong><label> <h5>  ecole/entreprise :</h5></label></strong>{{ form_widget(form_inscip.ecole,{'attr':{'type':'text','class':'input'}}) }} </br> </br>
+                                                <strong> <h5>  lettre de motivation :</h5> </strong><br>
+                                                {{ form_widget(form_inscip.lettreMotivation,{'attr':{'type':'text','class':'input'}}) }}  <br> <br>
+                                                <strong> <label> <h5> Date de creation :</h5> </label></strong> {{ date |date('Y-m-d') }} </br> </br>
+                                                {{ form_widget(form_inscip) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <div class="col-4">
+                                                {#  <a href="{{ path('ajout_show', { 'ref': formation.ref }) }}" class="card-link"> #}
+                                                <button class="btn btn-danger ">Annuler</button>  {#</a>#}
+                                            </div>
+                                            <div class="col-4">
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="submit" value="Confirmer" class="btn btn-success" >
+                                                {{ form_end(form_inscip) }}
+                                            </div>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                        </div>
+                    {% endif %}
+
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <div class="card" style="background-color:#424242" >
+
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/easing.min.js') }}"></script>
+    <script src="{{ asset('js/hoverIntent.js') }}"></script>
+    <script src="{{ asset('js/superfish.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/mail-script.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }} " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+{% endblock %}

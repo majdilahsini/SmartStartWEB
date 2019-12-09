@@ -48,7 +48,7 @@ class ReclamationController extends Controller
     public function sendsmsAction(Request $request, Reclamation $rec)
     {
         $sid    = "AC93d52324cba1b10f5ca7726421b05652";
-        $token  = "d8812d7a4a8864ccc9f7899a38f3abb3";
+        $token  = "7a6390a6e1fe2e5ccfba51246a3f8170";
         $twilio = new Client($sid, $token);
 
         $message = $twilio->messages
@@ -89,11 +89,11 @@ class ReclamationController extends Controller
         $mar=array();
 
         $em = $this->getDoctrine()->getManager();
-        $rappelrdvs =  $em->getRepository('Reclamation1Bundle:Reclamation')->findall();
-        if(!$rappelrdvs) {
-            $mar = "Aucun rappel ";
+        $recla =  $em->getRepository('Reclamation1Bundle:Reclamation')->findall();
+        if(!$recla) {
+            $mar = "pas d'entite ";
         } else {
-            $mar= $this->getRealEntitiesall($rappelrdvs);
+            $mar= $this->getRealEntitiesall($recla);
         }
 
         $response->headers->set('Content-Type', 'application/json');
@@ -104,9 +104,9 @@ class ReclamationController extends Controller
 
 
     }
-    public function getRealEntitiesall($rappelrdvs){
-        foreach ($rappelrdvs as $i => $item){
-            $realEntities[$i] = ['id'=>$rappelrdvs[$i]->getId(),'Subject'=>$rappelrdvs[$i]->getSubject(),'Object'=>$rappelrdvs[$i]->getObject(),'id_user'=>$rappelrdvs[$i]->getIdUser()->getUsername()];
+    public function getRealEntitiesall($recla){
+        foreach ($recla as $i => $item){
+            $realEntities[$i] = ['id'=>$recla[$i]->getId(),'Subject'=>$recla[$i]->getSubject(),'Object'=>$recla[$i]->getObject(),'id_user'=>$recla[$i]->getIdUser()->getUsername()];
 
         }
         return $realEntities;
@@ -120,17 +120,17 @@ class ReclamationController extends Controller
      * @Route("/recsubject/{dd}", name="reclamation_subject1")
      * @Method("GET")
      */
-    public function rdvaAction($dd)
+    public function reclaaAction($dd)
     {  $response = new JsonResponse();
 
         $ma=array();
 
         $em = $this->getDoctrine()->getManager();
-        $rappelrdvs =  $em->getRepository('Reclamation1Bundle:Reclamation')->findEntitiesBysubject($dd);
-        if(!$rappelrdvs) {
+        $recla =  $em->getRepository('Reclamation1Bundle:Reclamation')->findEntitiesBysubject($dd);
+        if(!$recla) {
             $ma['error']= "error";
         } else {
-            $ma= $this->getRealEntitiesspec($rappelrdvs);
+            $ma= $this->getRealEntitiesspec($recla);
         }
 
         $response->headers->set('Content-Type', 'application/json');
@@ -141,9 +141,9 @@ class ReclamationController extends Controller
 
 
     }
-    public function getRealEntitiesspec($rappelrdvs){
-        foreach ($rappelrdvs as $rappelrdvs){
-            $realEntities[] = $rappelrdvs->getSubject();
+    public function getRealEntitiesspec($recla){
+        foreach ($recla as $recla){
+            $realEntities[] = $recla->getSubject();
         }
         return $realEntities;
     }
@@ -165,11 +165,11 @@ class ReclamationController extends Controller
         $mar=array();
 
         $em = $this->getDoctrine()->getManager();
-        $rappelrdvs =  $em->getRepository('Reclamation1Bundle:Reclamation')->findBy(array('subject'=>$nom));
-        if(!$rappelrdvs) {
+        $recla =  $em->getRepository('Reclamation1Bundle:Reclamation')->findBy(array('subject'=>$nom));
+        if(!$recla) {
             $mar = "Aucun rappel ";
         } else {
-            $mar= $this->getRealEntitiesall($rappelrdvs);
+            $mar= $this->getRealEntitiesall($recla);
         }
 
         $response->headers->set('Content-Type', 'application/json');
@@ -181,9 +181,9 @@ class ReclamationController extends Controller
     }
 
 
-    public function getRealEntitiess($rappelrdvs){
-        foreach ($rappelrdvs as $i => $item){
-            $realEntities[$i] = ['id'=>$rappelrdvs[$i]->getId(),'Subject'=>$rappelrdvs[$i]->getSubject(),'Object'=>$rappelrdvs[$i]->getObject(),'id_user'=>$rappelrdvs[$i]->getIdUser()->getUsername()];
+    public function getRealEntitiess($recla){
+        foreach ($recla as $i => $item){
+            $realEntities[$i] = ['id'=>$recla[$i]->getId(),'Subject'=>$recla[$i]->getSubject(),'Object'=>$recla[$i]->getObject(),'id_user'=>$recla[$i]->getIdUser()->getUsername()];
 
         }
         return $realEntities;
@@ -273,16 +273,15 @@ class ReclamationController extends Controller
      * @Route("/{id}/delete", name="reclamation_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Reclamation $reclamation)
+    public function deleteAction($id)
     {
-        $form = $this->createDeleteForm($reclamation);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($reclamation);
-            $em->flush();
-        }
+        $em = $this->getDoctrine()->getManager();
+        $r=$em->getRepository('Reclamation1Bundle:Reclamation')->find($id);
+        $em->remove($r);
+        $em->flush();
+
+
 
         return $this->redirectToRoute('reclamation_index');
     }
@@ -302,4 +301,46 @@ class ReclamationController extends Controller
             ->getForm()
         ;
     }
+
+
+    /**
+     * Deletes a reclamation entity.
+     *
+     * @Route("/indexuser/{id}/delete", name="reclamation_delete_id")
+     * @Method("DELETE")
+     */
+    public function deletebyidAction($id)
+    {
+
+
+
+            $em = $this->getDoctrine()->getManager();
+            $r=$em->getRepository('Reclamation1Bundle:Reclamation')->find($id);
+            $em->remove($r);
+            $em->flush();
+
+
+        return $this->redirectToRoute('reclamation_indexuser');
+    }
+    /**
+     * Deletes a reclamation entity.
+     *
+     * @Route("/{id}/deletee", name="reclamation_delete_idadmin")
+     * @Method("DELETE")
+     */
+    public function deletebyyidAction($id)
+    {
+
+
+
+        $em = $this->getDoctrine()->getManager();
+        $r=$em->getRepository('Reclamation1Bundle:Reclamation')->find($id);
+        $em->remove($r);
+        $em->flush();
+
+
+        return $this->redirectToRoute('reclamation_index');
+    }
+
+
 }

@@ -38,38 +38,103 @@
             crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/easing.min.js') }}"></script>
+    <script src="{{ asset('js/hoverIntent.js') }}"></script>
+    <script src="{{ asset('js/superfish.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/mail-script.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }} " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
 {% endblock %}
 {% block content %}
     <h1>Reclamation</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ reclamation.id }}</td>
-            </tr>
-            <tr>
-                <th>Subject</th>
-                <td>{{ reclamation.subject }}</td>
-            </tr>
-            <tr>
-                <th>Object</th>
-                <td>{{ reclamation.object }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="jobs">
+        <div class="container">
+            <div class="heading">
 
-    <ul>
-        <li>
-            <a href="{{ path('reclamation_indexuser') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            </div>
+
+            <div class="companies">
+                    <div class="company-list">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2">
+                                <div class="company-logo" align="center" style="position: absolute;   left: 50%;  top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+                                    <img src="{{asset('img/o3.png')}}" class="img-responsive" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                <div class="company-content">
+                                    <h3>{{ reclamation.subject }}</h3>
+                                    <p>
+                      <span class="company-name">
+                      <i class="fa fa-weixin" ></i>{{ reclamation.subject}}</span>
+
+                                        <span class="company-name">
+                      <i class="fa fa-user-o" ></i>{{reclamation.iduser}}</span>
+
+
+                                    </p>
+                                </div>
+                            </div>
+
+                                <div class="col-md-2 col-sm-2">
+                                   <button type="submit" value="Delete" class="btn supprimer-offre" name="View Job" data-toggle="modal" data-target="#conn">Supprimer</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="conn">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Supprimer la formation </h4>
+
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="card-body"  style="font-size: 17px">
+                                                        <label>Vous-êtes sûr de vouloir supprimer cette formation?</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <div class="col-4">
+                                                        <a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}" class="card-link">
+                                                            <button class="btn btn-danger ">Annuler</button></a>
+                                                    </div>
+                                                    <div class="col-4">
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <a href={{ path('reclamation_delete_id', {'id':reclamation.id}) }} class="card-link"> <input type="submit" value="Confirmer" class="btn btn-success" ></a>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <a href="{{ path('reclamation_indexuser') }}"><button type="submit" value="Delete" class="btn supprimer-offre" name="View Job">Back to the list</button></a>
+                                    <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}"><button type="submit" value="Delete" class="btn supprimer-offre" name="View Job">Edit</button></a>
+                                </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

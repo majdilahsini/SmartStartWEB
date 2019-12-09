@@ -1,0 +1,73 @@
+{% extends '@User/Default/entreprisehome.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ajout_ent.css') }}">
+
+{% endblock %}
+
+{% block banner %}
+
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Planifier l'entretien
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="{{ asset("css/style-voya.css") }}" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Barlow:300,400,500" rel="stylesheet">
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'} })}}
+<h1 class="header-w3ls">
+CREER UN NOUVEAU ENTRETIEN
+</h1>
+    {% if app.session.flashBag.has('ajoute') %}
+    <div class="alert alert-fail">
+        {% for msg in app.session.flashBag.get('ajoute') %}
+            {{ msg }}
+        {% endfor %}
+    </div>
+
+    {% endif %}
+    </div>
+<!-- multistep form -->
+<div class="main-bothside">
+
+    <div class="form-group">
+        <div class="form-mid-w3ls">
+            <h4 style="font-size: 18px ">Date :<span style="color: red; "> *</span></h4>
+            {{ form_widget(form.dateEnt, {'type' : 'Date', 'attr' : {'class' : 'form-control', 'placeholder' : 'Departure date ...'}}) }}
+            </div>
+        <div class="form-mid-w3ls">
+            <h4 style="font-size: 18px ">Heure :<span style="color: red; "> *</span></h4>
+            {{ form_widget(form.heureEnt, {'type' : 'text', 'attr' : { 'placeholder' : 'Destination...'}}) }}
+              </div>
+
+    </div>
+</div>
+
+    <input type="submit" value="Create" />
+
+
+
+    {{ form_end(form) }}
+{% endblock %}
+
+

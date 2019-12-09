@@ -18,9 +18,8 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-
-
 {% endblock %}
+
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="{{ asset('/js/bootstrap3-typeahead.min.js')}}"></script>
@@ -40,16 +39,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 {% endblock %}
 {% block content %}
-    <h1>Reclamation creation</h1>
+    <section class="profile-detail" >
+        <div class="container" >
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="basic-information" align="center">
+                        <p style="font-weight: bold; font-size: 30px">Envoyer reclamation:</p>
+                        {{ form_start(form, {'atr' : {'class' : 'serach-form-area'}}) }}
+                        <table style="width: 450px; border-collapse:separate; border-spacing: 0 15px">
+                            <tbody>
+                            <tr style="height: 22px; ">
+                                <td style="width: 300px; height: 22px;">{{ form_label(form.subject, "Subject", {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                <td style="width: 425.2px; height: 22px;">{{ form_widget(form.subject, {'attr' : {'class' :'input-smartstart'}})}}</td>
+                            </tr>
+                            <tr style="height: 22px;">
+                                <td style="width: 300px; height: 22px;">{{ form_label(form.object, 'Object', {'label_attr' : {'class' : 'label-smartstart'}}) }}</td>
+                                <td style="width: 200px; height: 22px;">{{ form_widget(form.object, {'attr' : {'class' :'input-smartstart'}})}}</td>
+                            </tr>
+                            <tr style="height: 22.6px;">
+                                <td style="width: 425.2px; height: 22.6px; padding-top: 50px" align="right">  <input class="submit-smartstart" type="submit" value="Confirmer" ></td>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+                            </tr>
 
-    <ul>
-        <li>
-            <a href="{{ path('reclamation_indexuser') }}">Back to the list</a>
-        </li>
-    </ul>
+                        </table>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

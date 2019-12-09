@@ -1,0 +1,6 @@
+forum_homepage:
+    path:     /forum
+    defaults: { _controller: ForumBundle:Forumsujet:index }
+forum_sujet:
+    resource: "@ForumBundle/Controller/ForumsujetController.php"
+    type:     annotation

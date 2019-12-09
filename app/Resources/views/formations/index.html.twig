@@ -1,5 +1,4 @@
-{% extends 'base.html.twig' %}
-
+{% extends '@User/Default/entreprisehome.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
@@ -13,54 +12,8 @@
     <link rel="stylesheet" href="{{ asset('css/styleajout.css') }}">
 
 {% endblock %}
-{% block nav %}
-    <header id="header" id="home">
-        <div class="container">
-            <div class="row align-items-center justify-content-between d-flex">
-                <div id="logo">
-                    <a href={{ path('index') }}><img src="img/logo.png" alt="" title="" style="width:158px;height:30px;"/></a>
-                </div>
-                <nav id="nav-menu-container">
-                    <ul class="nav-menu">
-                        <li class="menu-active"><a href={{ path('index') }}>Home</a></li>
-                        <li class="menu-has-children"><a href="">Les Offres</a>
-                            <ul>
-                                <li><a href={{ path('ajouter_offre') }}>Ajouter une offre</a></li>
-                                <li><a href={{ path('mes_offre') }}>Consulter vos offres</a></li>
-                                <li><a href={{ path('read_offre') }}>Consulter toutes les offres</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-has-children"><a href="">Les Formations</a>
-                            <ul>
-                                <li><a href="elements.html">Ajouter une formation</a></li>
-                                <li><a href="search.html">Consulter vos formations</a></li>
-                                <li><a href="single.html">Consulter toutes les formations</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-has-children"><a href="">Crowdfundings</a>
-                            <ul>
-                                <li><a href="elements.html">Ajouter un projet</a></li>
-                                <li><a href="search.html">Consulter vos projets</a></li>
-                                <li><a href="single.html">Consulter toutes les projets</a></li>
-                            </ul>
-                        </li>
 
-                        <li class="menu-has-children"><a href="">Mon Espace</a>
-                            <ul>
-                                <li><a href="">Mon Profil</a></li>
-                                <li><a href="">Mes Offres</a></li>
-                                <li><a href="">Mes Formations</a></li>
-                                <li><a href="">Mes Entretiens</a></li>
-                                <li><a href="">Mes Crowdfundings</a></li>
-                                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav><!-- #nav-menu-container -->
-            </div>
-        </div>
-    </header><!-- #header -->
-{% endblock %}
+
 
   {% block banner %}
       <section class="banner-area relative" id="home">
@@ -69,71 +22,302 @@
               <div class="row d-flex align-items-center justify-content-center">
                   <div class="about-content col-lg-12">
                       <h1 class="text-white">
-                          Nouvelle Formation
+                          Mes Formation
                       </h1>
-                      <p class="text-white link-nav"><a href="index.html.twig">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="category.html"> Liste des formations</a></p>
                   </div>
               </div>
           </div>
       </section>
   {% endblock %}
 {% block content %}
+    <section class="counter " >
+        <div align="center">
+            <table class="t">
+                <tr>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Domaine</th>
-                <th>Description</th>
-                <th>Duree</th>
-                <th>Datedebut</th>
-                <th>Datefin</th>
-                <th>Prix</th>
-                <th>Adresse</th>
-                <th>Email</th>
-                <th>Contact</th>
-                <th>Image</th>
-                <th>Nombres</th>
-                <th>Etatformation</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for formation in formations %}
-            <tr>
-                <td>{{ formation.nom }}</td>
-                <td>{{ formation.domaine.nomDomaine }}</td>
-                <td>{{ formation.description }}</td>
-                <td>{{ formation.duree }}</td>
-                <td>{% if formation.dateDebut %}{{ formation.dateDebut|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if formation.dateFin %}{{ formation.dateFin|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ formation.prix }}</td>
-                <td>{{ formation.adresse }}</td>
-                <td>{{ formation.email }}</td>
-                <td>{{ formation.contact }}</td>
-                <td>{{ formation.image }}</td>
-                <td>{{ formation.nombres }}</td>
-                <td>{{ formation.etatFormation }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('formations_show', { 'ref': formation.ref }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('formations_edit', { 'ref': formation.ref }) }}">edit</a>
-                        </li>
+
+
+
+                </tr>
+            </table>
+        </div>
+    </section>
+    <br>
+
+    <div class="col-8">
+
+        <h2>Recherche formation</h2>
+        <br>
+        <div class="sidebar-search">
+
+            <div class="input-group custom-search-form">
+
+                <input type="text" id="search" class="form-control" placeholder="Taper formation">
+            </div>
+            <!-- /input-group -->
+        </div>
+        <ul class="nav" id="side-menu">
+            <li>
+                {#  <a href="#"> Entities<span class="fa arrow"></span></a>#}
+                <ul class="nav nav-second-level" id="entitiesNav">
+                </ul>
+            </li>
+        </ul>
+
+        <script type="text/javascript" src="{{ asset ('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js')}}"></script>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                var searchRequest = null;
+                $("#search").keyup(function() {
+                    var minlength = 1;
+                    var that = this;
+                    var value = $(this).val();
+                    var entitySelector = $("#entitiesNav").html('');
+                    if (value.length >= minlength ) {
+                        $("#hide").hide('fast');
+                    }
+                    else
+                    {
+                        $("#hide").show();
+                    }
+                    if (value.length >= minlength ) {
+                        if (searchRequest != null)
+                            searchRequest.abort();
+                        searchRequest = $.ajax({
+                            type: "GET",
+                            url: "{{ path('ajax_search-entreprise') }}",
+                            data: {
+                                'q' : value
+                            },
+                            dataType: "text",
+                            success: function(msg){
+                                //we need to check if the value is the same
+                                if (value===$(that).val()) {
+                                    var result = JSON.parse(msg);
+                                    $.each(result, function(key, arr) {
+                                        $.each(arr, function(refEnt, value) {
+                                            if (key === 'ent') {
+                                                if (refEnt !== 'error') {
+                                                    console.log(value[0]);
+                                                    var id=value[0];
+
+                                                    var path = '{{ path('formations_show',{'ref': 'x'}) }}'
+                                                    path = path.replace("x",id);
+
+
+
+                                                    entitySelector.append(
+                                                        " <div class='single-post d-flex flex-row' style='background-color: #f5c6cb '>"+
+                                                        "<div class='thumb col-1'>"+
+
+                                                        "</div>"+
+                                                        " <div class='details' >"+
+                                                        "<div class='title d-flex flex-row justify-content-between'>"+
+                                                        " <div class='titles'>"+
+                                                        " <a href='"+ path + "'><h4>"+ value[1] + "</h4></a>"+
+                                                        " <label>"+ value[2] + "</label>"+"<br>"+
+                                                        " <label>"+ value[3] + "</label>"+
+                                                        " </div>"+
+                                                        " <ul class='btns '>"+
+                                                        "<li><a href='"+ path + "' class='submit'>Afficher</a></li>"+
+                                                        "</ul>"+
+                                                        "</div>"+
+
+                                                        " <h5><label>Duree : </label>"+ value[4] + " HEURES</h5>"+
+                                                        "<label><h6>Nombres restant :</h6> </label> "+ value[5] + ""+
+                                                        " </div>"+
+                                                        " </div>");
+                                                } else {
+                                                    entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                }
+                                            }
+                                        });
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    </div>
+    </div>
+    <br>
+    <div class="row justify-content-center d-flex" >
+        <div class="col-lg-8 post-list">
+            <div id="hide">
+
+
+            {% for formation in formations %}
+            {% if formation.etatFormation ==1 %}
+            {% if formation.etatNombres == 2 %}
+            {% set b="#9fcdff" %}
+            <div class="single-post d-flex flex-row"  style="background-color:{{ b }}">
+                {% elseif formation.etatNombres == 1 %}
+                <div class="single-post d-flex flex-row">
+                    {% endif %}
+
+
+                    <div class="thumb col-2">
+                        <center>  <img src="{{ asset('images/') }}{{ formation.image }}" alt="" height="100px"  ></center>
+
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a  href="{{ path('formations_show', { 'ref': formation.ref }) }}"><h4>{{ formation.nom }}</h4></a>
+                                <h6>{{ formation.domaine.nomDomaine }}</h6>
+                            </div>
+                            <ul class="btns "  >
+                                <li><a  href="{{ path('formations_show', { 'ref': formation.ref }) }}">Afficher</a></li>
+                            </ul>
+                        </div>
+                        <p>
+                            {{ formation.description }}
+                        </p>
+                        <label class="address"><span class="lnr lnr-map"></span> Duree : </label><label>{{ formation.duree }} heures</label> <br>
+
+                        <label class="address"><span class="lnr lnr-database"></span> Nbres restants : </label><label>{{ formation.nombres }} </label>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            </div>
+            <div class="col-lg-4 sidebar">
+                <div class="single-slidebar">
+                    <h4>Formations par domaine</h4>
+                    <ul class="cat-list">
+                        {% set newArray = [] %}
+                        {% set i=0 %}
+                        {% for formation in formations %}
+
+
+                            {% if formation.domaine.nomDomaine not in newArray %}
+                                {% set newArray = newArray|merge([formation.domaine.nomDomaine]) %}
+                                <li><a class="justify-content-between d-flex" href="category.html"><p>{{ formation.domaine.nomDomaine }}</p><span>
+                                     {% set i=0 %}
+                                            {% for formationn in formations %}
+                                                {% if formation.domaine.nomDomaine == formationn.domaine.nomDomaine %}
+                                                    {% set i=i+1 %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            {{ i }}
+
+                                </span></a></li>
+
+                            {% endif %}
+                        {% endfor %}
                     </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('formations_new') }}">Create a new formation</a>
-        </li>
-    </ul>
+                <div class="single-slidebar">
+                    <h4>Top Formations inscrits</h4>
+
+                    <div class="active-relatedjob-carusel">
+                        {% for k in top %}
+                            <div class="single-rated">
+                              <center>  <img src="{{ asset('images/') }}{{ k.image }}" height="250px"  alt=""> </center>
+                                <a href="{{ path('formations_index') }}"><h4>{{ k.nom }}</h4></a>
+                                <h6>{{ k.domaine.nomDomaine }}</h6>
+                                <p> <h6>Description :</h6>
+                                {{ k.description }} </p>
+                                <p class="address"><span class="lnr lnr-map"></span> Duree : {{ k.duree }}</p>
+                                <p class="address"><span class="lnr lnr-database"></span> Nombres restant : {{k.nombres}}</p>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- End post Area -->
+
+
+    <!-- Start callto-action Area -->
+    <section class="callto-action-area section-gap" id="join">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content col-lg-9">
+                    <div class="title text-center">
+                        <a class="primary-btn" href={{ path('formations_new')}}>Ajouter une formation</a>
+                        <a class="primary-btn" href={{ path('formations_index') }}>Retour au haut du page </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {#  <table>
+          <thead>
+              <tr>
+                  <th>Nom</th>
+                  <th>Domaine</th>
+                  <th>Description</th>
+                  <th>Duree</th>
+                  <th>Datedebut</th>
+                  <th>Datefin</th>
+                  <th>Prix</th>
+                  <th>Adresse</th>
+                  <th>Email</th>
+                  <th>Contact</th>
+                  <th>Image</th>
+                  <th>Nombres</th>
+                  <th>Etatformation</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+          {% for formation in formations %}
+              <tr>
+                  <td>{{ formation.nom }}</td>
+                  <td>{{ formation.domaine.nomDomaine }}</td>
+                  <td>{{ formation.description }}</td>
+                  <td>{{ formation.duree }}</td>
+                  <td>{% if formation.dateDebut %}{{ formation.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                  <td>{% if formation.dateFin %}{{ formation.dateFin|date('Y-m-d') }}{% endif %}</td>
+                  <td>{{ formation.prix }}</td>
+                  <td>{{ formation.adresse }}</td>
+                  <td>{{ formation.email }}</td>
+                  <td>{{ formation.contact }}</td>
+                  <td>{{ formation.image }}</td>
+                  <td>{{ formation.nombres }}</td>
+                  <td>{{ formation.etatFormation }}</td>
+                  <td>
+                      <ul>
+                          <li>
+                              <a href="{{ path('formations_show', { 'ref': formation.ref }) }}">show</a>
+                          </li>
+                          <li>
+                              <a href="{{ path('formations_edit', { 'ref': formation.ref }) }}">edit</a>
+                          </li>
+                      </ul>
+                  </td>
+              </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+
+      <ul>
+          <li>
+              <a href="{{ path('formations_new') }}">Create a new formation</a>
+          </li>
+      </ul>#}
+
 {% endblock %}
  {% block javascripts %}
      <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>

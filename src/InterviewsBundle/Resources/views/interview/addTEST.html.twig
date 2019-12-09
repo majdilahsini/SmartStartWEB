@@ -1,0 +1,87 @@
+{% extends '@User/Default/entreprisehome.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap2.css.map') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ajout_ent.css') }}">
+
+{% endblock %}
+
+{% block banner %}
+
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Planifier l'entretien
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+ <div style="background-color: #edeae1">
+     <div> <br>    <br>    <br>    <br></div>
+
+     <center>  <h1>Plannifier entretien</h1></center>
+     <br>
+         <br>
+         <div class="container">
+             <div class="contact-form">
+                 <div class="input-fields" >
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
+    {% if app.session.flashBag.has('ajoute') %}
+        <div class="alert alert-danger">
+            {% for msg in app.session.flashBag.get('ajoute') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+
+    {% endif %}
+                     <h3>Date</h3>{{ form_widget(form.dateEnt) }}
+                     <br><br>
+
+                     <h3>Heure</h3> <h6>hh:mm</h6> <br>
+                     {{ form_row(form.heureEnt) }}
+
+<br><br>
+
+
+
+                             <input type="submit" value="ajouter" class="btn btn-success" />
+    {{ form_end(form) }}
+
+
+
+                         </div> <br>    <br>    <br>    <br></div><br>    <br>    <br>    <br></div> <br>    <br>    <br>    <br></div>
+{% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+        <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/easing.min.js') }}"></script>
+        <script src="{{ asset('js/hoverIntent.js') }}"></script>
+        <script src="{{ asset('js/superfish.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+        <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+        <script src="{{ asset('js/mail-script.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }} " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    {% endblock %}
